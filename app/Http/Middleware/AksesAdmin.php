@@ -23,6 +23,6 @@ class AksesAdmin
             }
         }
 
-        return redirect()->route('login');
+        return redirect()->route('admin_403');
     }
 }
