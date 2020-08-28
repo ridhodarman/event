@@ -16,7 +16,9 @@
       <script src="js/respond.min.js"></script>
     <![endif]-->
     <script type="text/javascript" src="{{ URL::asset('dist/js/site.min.js') }}"></script>
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.21/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.21/datatables.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <style>
       *{margin: 0px auto;}
       html,body{
@@ -98,15 +100,15 @@
                 <li class="list-group-item"><input type="text" class="form-control search-query" placeholder="Search Something"></li>
                 <li class="list-group-item" id="dashboard"><a href="{{route('admin_index')}}"><i class="glyphicon glyphicon-home"></i>Dashboard </a></li>
                 <li>
-                    <a href="#demo4" class="list-group-item " data-toggle="collapse"><i class="glyphicon glyphicon-certificate"></i> User  <span class="glyphicon glyphicon-chevron-right"></span></a>
-                      <li class="collapse" id="demo4">
-                        <a href="#" class="list-group-item">&emsp;&emsp; User terdaftar</a>
-                        <a href="{{route('agen')}}" class="list-group-item">&emsp;&emsp; Agen User</a>
+                    <a href="#user" class="list-group-item " data-toggle="collapse" id="tab-user"><i class="glyphicon glyphicon-user"></i> User  <span class="glyphicon glyphicon-chevron-right"></span></a>
+                      <li class="collapse" id="user">
+                        <a href="{{route('user_register')}}" class="list-group-item" id="user_register">&emsp;&emsp; User terdaftar</a>
+                        <a href="{{route('agen')}}" class="list-group-item" id="agen">&emsp;&emsp; Agen User</a>
                       </li>
                   </li>
+                <li class="list-group-item" id="event"><a href="{{route('event')}}"><i class="glyphicon glyphicon-bell"></i>Event</li>
                 <li class="list-group-item"><a href="{{ URL::asset('list.html') }}"><i class="glyphicon glyphicon-th-list"></i>Tables and List </a></li>
                 <li class="list-group-item"><a href="{{ URL::asset('forms.html') }}"><i class="glyphicon glyphicon-list-alt"></i>Forms</a></li>
-                <li class="list-group-item"><a href="{{ URL::asset('alerts.html') }}"><i class="glyphicon glyphicon-bell"></i>Alerts</li>
                 <li class="list-group-item"><a href="{{ URL::asset('timeline.html') }}" ><i class="glyphicon glyphicon-indent-left"></i>Timeline</a></li>
                 <li class="list-group-item"><a href="{{ URL::asset('calendars.html') }}" ><i class="glyphicon glyphicon-calendar"></i>Calendars</a></li>
                 <li class="list-group-item"><a href="{{ URL::asset('typography.html') }}" ><i class="glyphicon glyphicon-font"></i>Typography</a></li>
@@ -146,7 +148,7 @@
     <!--footer-->
   </body>
   <footer>
-    <div class="kebawah site-footer">
+    <!-- <div class="kebawah site-footer">
       <div class="container">
         
         <div class="row">
@@ -179,7 +181,7 @@
             </ul>
           </div>
           <div class="col-md-6">
-            <!-- Begin MailChimp Signup Form -->
+            <!-- Begin MailChimp Signup Form --/>
             <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
             <div id="mc_embed_signup">
             <h3 style="margin-bottom: 15px;">Newsletter</h3>
@@ -188,7 +190,7 @@
                 <span class="clear"><input type="" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary" readonly></span>
             </form>
             </div>
-            <!--End mc_embed_signup-->
+            <!--End mc_embed_signup --/>
           </div>
         </div>
         <hr class="dashed" />
@@ -197,6 +199,6 @@
           <p>Code licensed under <a href="http://opensource.org/licenses/mit-license.html') }}" target="_blank" rel="external nofollow">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/" rel="external nofollow">CC BY 3.0</a>.</p>
         </div>
       </div>
-    </div>
+    </div> -->
   </footer>
 </html>

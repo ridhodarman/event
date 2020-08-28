@@ -15,9 +15,10 @@ class CreateTiketsTable extends Migration
     {
         Schema::create('tikets', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_tiket');
-            $table->string('bukti_pembayaran');
-            $table->text('keterangan');
+            $table->string('kode_tiket')->unique();
+            $table->string('bukti_pembayaran')->nullable();
+            $table->text('keterangan')->nullable();
+            $table->foreignId('tiket_id')->nullable()->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('agen_id')->nullable()->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
             $table->softDeletes('deleted_at', 0);

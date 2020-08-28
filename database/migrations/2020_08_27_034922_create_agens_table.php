@@ -16,7 +16,6 @@ class CreateAgensTable extends Migration
         Schema::create('agens', function (Blueprint $table) {
             $table->id();
             $table->string('no_whatsapp')->nullable();
-            $table->string('kode_agen')->;
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
             $table->softDeletes('deleted_at', 0);

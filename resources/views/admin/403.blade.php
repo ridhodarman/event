@@ -1466,7 +1466,7 @@
                 <tspan x="100" y="355" fill="#BF3E73" font-size="65">403</tspan>
                 <tspan x="93" y="380" fill="#6BA184" font-size="15">Access Forbidden.</tspan>
                 <tspan x="0" y="403" fill="#6BA184" font-size="9.7">Halaman ini khusus untuk admin. Silahkan kembali ke
-                    <tspan x="237" fill="#233f6e" font-size="9.8"> <a href="{{ route('welcome') }}" style="color: blue">halaman utama</a> </tspan>
+                    <tspan x="237" fill="#233f6e" font-size="9.8"> <a href="{{ route('home') }}" style="color: blue">halaman utama</a> </tspan>
                 </tspan>
             </text>
         </g>

@@ -16,7 +16,6 @@ class CreateKampusesTable extends Migration
         Schema::create('kampuses', function (Blueprint $table) {
             $table->id();
             $table->string('nama_kampus');
-            $table->string('kode_kampus');
             $table->timestamps();
             $table->softDeletes('deleted_at', 0);
         });
