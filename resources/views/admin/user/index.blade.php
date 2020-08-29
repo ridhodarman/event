@@ -13,6 +13,7 @@
           <th>No</th>
           <th>Nama</th>
           <th>Email</th>
+          <th>Waktu Register</th>
           <th>Status</th>
         </tr>
       </thead>
@@ -22,6 +23,7 @@
           <td>{{ $loop->iteration }}</td>
           <td>{{$u->name}}</td>
           <td>{{$u->email}}</td>
+          <td>{{$u->created_at}}</td>
           <td>
             @if ($u->role == 99)
             <span class="label label-danger">Admin</span>

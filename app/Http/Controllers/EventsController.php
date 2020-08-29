@@ -9,8 +9,6 @@ use File;
 
 class EventsController extends Controller
 {
-    use SoftDeletes;
-    protected $dates = ['deleted_at'];
     /**
      * Display a listing of the resource.
      *

@@ -60,14 +60,14 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand">Bootflat-Admin</a>
+            <a href="#" class="navbar-brand">Admin</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div id="bs-content-row-navbar-collapse-5" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="#">Getting Started</a></li>
-              <li class="active"><a href="#">Documentation</a></li>
+              <li class="active"><a href="#">Homepage</a></li>
+              <li class="active"><a href="{{route('agen_index')}}" target="_blank">halaman agen</a></li>
               <!-- <li class="disabled"><a href="#">Link</a></li> -->
               <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ Auth::user()->name }} <b class="caret"></b></a>
@@ -114,35 +114,7 @@
                       </li>
                   </li>
                 <li class="list-group-item" id="event"><a href="{{route('event')}}"><i class="glyphicon glyphicon-bell"></i>Event</li>
-                <li class="list-group-item"><a href="{{ URL::asset('list.html') }}"><i class="glyphicon glyphicon-th-list"></i>Tables and List </a></li>
-                <li class="list-group-item"><a href="{{ URL::asset('forms.html') }}"><i class="glyphicon glyphicon-list-alt"></i>Forms</a></li>
-                <li class="list-group-item"><a href="{{ URL::asset('timeline.html') }}" ><i class="glyphicon glyphicon-indent-left"></i>Timeline</a></li>
-                <li class="list-group-item"><a href="{{ URL::asset('calendars.html') }}" ><i class="glyphicon glyphicon-calendar"></i>Calendars</a></li>
-                <li class="list-group-item"><a href="{{ URL::asset('typography.html') }}" ><i class="glyphicon glyphicon-font"></i>Typography</a></li>
-                <li class="list-group-item"><a href="{{ URL::asset('footers.html') }}" ><i class="glyphicon glyphicon-minus"></i>Footers</a></li>
-                <li class="list-group-item"><a href="{{ URL::asset('panels.html') }}" ><i class="glyphicon glyphicon-list-alt"></i>Panels</a></li>
-                <li class="list-group-item"><a href="{{ URL::asset('navs.html') }}" ><i class="glyphicon glyphicon-th-list"></i>Navs</a></li>
-                <li class="list-group-item"><a href="{{ URL::asset('colors.html') }}" ><i class="glyphicon glyphicon-tint"></i>Colors</a></li>
-                <li class="list-group-item"><a href="{{ URL::asset('flex.html') }}" ><i class="glyphicon glyphicon-th"></i>Flex</a></li>
-                <li class="list-group-item"><a href="{{ URL::asset('login.html') }}" ><i class="glyphicon glyphicon-lock"></i>Login</a></li>
-                <li>
-                  <a href="#demo3" class="list-group-item " data-toggle="collapse">Item 3  <span class="glyphicon glyphicon-chevron-right"></span></a>
-                  <div class="collapse" id="demo3">
-                    <a href="#SubMenu1" class="list-group-item" data-toggle="collapse">Subitem 1  <span class="glyphicon glyphicon-chevron-right"></span></a>
-                    <div class="collapse list-group-submenu" id="SubMenu1">
-                      <a href="#" class="list-group-item">Subitem 1 a</a>
-                      <a href="#" class="list-group-item">Subitem 2 b</a>
-                      <a href="#SubSubMenu1" class="list-group-item" data-toggle="collapse">Subitem 3 c <span class="glyphicon glyphicon-chevron-right"></span></a>
-                      <div class="collapse list-group-submenu list-group-submenu-1" id="SubSubMenu1">
-                        <a href="#" class="list-group-item">Sub sub item 1</a>
-                        <a href="#" class="list-group-item">Sub sub item 2</a>
-                      </div>
-                      <a href="#" class="list-group-item">Subitem 4 d</a>
-                    </div>
-                    <a href="javascript:;" class="list-group-item">Subitem 2</a>
-                    <a href="javascript:;" class="list-group-item">Subitem 3</a>
-                  </div>
-                </li>
+                  <li class="list-group-item" id="event"><a href="#"><i class="glyphicon glyphicon-list-alt"></i>Riwayat Penjualan tiket</li>
               </ul>
           </div>
           <div class="col-xs-12 col-sm-9 content">

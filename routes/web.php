@@ -23,6 +23,7 @@ Route::post('/changePassword','HomeController@changePassword')->name('changePass
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin_403', function () { return view('admin.403'); })->name('admin_403');
+Route::get('/agen_403', function () { return view('agen.403'); })->name('agen_403');
 
 Route::middleware(['AksesAdmin'])->group(function () {
     Route::get('/admin_index', function () { return view('admin.index'); })->name('admin_index');
@@ -53,4 +54,8 @@ Route::middleware(['AksesAdmin'])->group(function () {
     Route::get('/agen', 'AgensController@index')->name('agen');
     Route::post('/agen', 'AgensController@store');
     Route::delete('/agen/{agen}', 'AgensController@destroy');
+});
+
+Route::middleware(['AksesAgen'])->group(function () {
+    Route::get('/agen_index', function () { return view('agen.index'); })->name('agen_index');
 });

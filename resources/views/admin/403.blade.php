@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>CodePen - Svg 403 Access Forbidden.</title>
+    <title>403 Access Forbidden. |CodePen - Svg </title>
     <link rel="stylesheet" href="{{ URL::asset('403/style.css') }}">
 
 </head>

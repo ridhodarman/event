@@ -14,7 +14,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $user = User::select('users.id','name', 'email', 'role', 'agens.id AS agen')
+        $user = User::select('users.id','name', 'email', 'role', 'users.created_at', 'agens.id AS agen')
                     ->leftJoin('agens', 'agens.user_id', '=', 'users.id')
                     ->orderBy('name')->get();
         return view ('admin.user.index',['user' => $user]);
