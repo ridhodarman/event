@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Event;
-use Illuminate\Http\Request;
 use App\Jenis_tiket;
+use Illuminate\Http\Request;
 
-class EventsController extends Controller
+class Jenis_tiketsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $event = Event::select('id','nama_event', 'tanggal_mulai')->orderBy('tanggal_mulai', 'DESC')->get();
-        //return $jenis;
-        return view ('admin.event.index',['event' => $event]);
+        //
     }
 
     /**
@@ -25,9 +22,9 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($event)
     {
-        return view('admin.event.tambah');
+        return view( 'admin.jenis_tiket.tambah',['event' => $event] );
     }
 
     /**
@@ -36,55 +33,54 @@ class EventsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $event)
     {
         $this->validate($request, [
-			'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000|unique:events,foto_brosur',
-            'nama_event' => 'required|not_regex:/`/i',
-            'tanggal_mulai' => 'date|nullable'
+			'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000|unique:jenis_tikets,foto_tiket',
+            'nama_tiket' => 'required|not_regex:/`/i',
+            'harga' => 'integer|nullable'
 		]);
         
         $file = $request->file('file');
         
         if ($request->file){
 
-            $nama2 = preg_replace('/[^A-Za-z0-9\-]/', '', $request->nama_event);
+            $nama2 = preg_replace('/[^A-Za-z0-9\-]/', '', $request->nama_tiket);
             $nama_file = $nama2."_".time().".".$file->getClientOriginalExtension();
     
                     // isi dengan nama folder tempat kemana file diupload
-            $tujuan_upload = 'foto/brosur';
+            $tujuan_upload = 'foto/tiket';
             $file->move($tujuan_upload,$nama_file);
 
             $request->merge([
-                'foto_brosur' => $nama_file,
+                'foto_tiket' => $event.$nama_file,
+                'event_id' => $event,
             ]);
         }
 
-        Event::create($request->all());
-        $pesan = "<b>".$request->nama_event.'</b> berhasil ditambahkan';
-        return redirect('/event')->with('status', $pesan);
+        Jenis_tiket::create($request->all());
+        $pesan = $request->nama_tiket.' berhasil ditambahkan';
+        return redirect('/event/'.$event)->with('status', $pesan);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Event  $event
+     * @param  \App\Jenis_tiket  $jenis_tiket
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show(Jenis_tiket $jenis_tiket)
     {
-        //return $event;
-        $jenis_tiket = Jenis_tiket::select('id','nama_tiket')->where('event_id', '=', $event->id)->orderBy('nama_tiket')->get();
-        return view ('admin.event.show',['event' => $event, 'jenis_tiket' => $jenis_tiket]);
+        return $jenis_tiket;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Event  $event
+     * @param  \App\Jenis_tiket  $jenis_tiket
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
+    public function edit(Jenis_tiket $jenis_tiket)
     {
         //
     }
@@ -93,10 +89,10 @@ class EventsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Event  $event
+     * @param  \App\Jenis_tiket  $jenis_tiket
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(Request $request, Jenis_tiket $jenis_tiket)
     {
         //
     }
@@ -104,10 +100,10 @@ class EventsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Event  $event
+     * @param  \App\Jenis_tiket  $jenis_tiket
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function destroy(Jenis_tiket $jenis_tiket)
     {
         //
     }

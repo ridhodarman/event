@@ -16,11 +16,9 @@
         {!! session('status') !!}
     </div>
     @elseif (session('hapus'))
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         {!! session('hapus') !!}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
     </div>
     @endif
     <div style="float: right;">
@@ -38,6 +36,7 @@
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
+                    <th>Tanggal mulai event</th>
                     <th>-</th>
                 </tr>
             </thead>
@@ -46,10 +45,11 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{$e->nama_event}}</td>
+                    <td>{{$e->tanggal_mulai}}</td>
                     <td>
-                        <a href="event/{{$e->id}}">
+                        <a href="{{ route('event') }}/{{$e->id}}">
                             <button class="btn btn-primary btn-xs">
-                                <i class="fa fa-edit"></i> detail
+                                <i class="glyphicon glyphicon-new-window"></i> detail
                             </button>
                         </a>
                     </td>
