@@ -10,9 +10,9 @@
 </div>
 <div class="panel-body">
     <div style="float: right;">
-        <a href="{{ route('jenis_tiket') }}/{{ $jenis_tiket->id }}">
+        <a href="{{ route('event') }}/{{ $event->id }}">
             <button type="button" class="btn btn-default">
-                <i class="glyphicon glyphicon-chevron-left"></i> Kembali ke informasi jenis tiket
+                <i class="glyphicon glyphicon-chevron-left"></i> Kembali ke informasi event
             </button>
         </a>
     </div>
@@ -22,7 +22,7 @@
         @method('patch')
         @csrf
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Foto Tiket</label>
+            <label class="col-sm-2 col-form-label">Foto Brosur</label>
             <div class="col-sm-10">
                 <input type="file" name="file" value="{{ old('file') }}"
                     class="form-control @error('file') is-invalid @enderror">

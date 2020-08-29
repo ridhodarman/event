@@ -10,23 +10,23 @@
 </div>
 <div class="panel-body">
     <div style="float: right;">
-        <a href="{{ route('jenis_tiket') }}/{{ $jenis_tiket->id }}">
+        <a href="{{ route('event') }}/{{ $event->id }}">
             <button type="button" class="btn btn-default">
                 <i class="glyphicon glyphicon-chevron-left"></i> Kembali ke informasi jenis tiket
             </button>
         </a>
     </div>
-    <h4 class="font-weight-bold" style="padding-bottom: 30px;">Edit Jenis Tiket</h4>
+    <h4 class="font-weight-bold" style="padding-bottom: 30px;">Edit Event</h4>
 
     <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
         @method('patch')
         @csrf
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Nama Tiket</label>
+            <label class="col-sm-2 col-form-label">Nama Jenis</label>
             <div class="col-sm-10">
-                <input type="text" name="nama_tiket" class="form-control @error('nama_tiket') is-invalid @enderror"
-                    value="{{ old('nama_tiket', $jenis_tiket->nama_tiket) }}">
-                @error('nama_tiket')
+                <input type="text" name="nama_event" class="form-control @error('nama_event') is-invalid @enderror"
+                    value="{{ old('nama_event', $event->nama_event) }}">
+                @error('nama_event')
                 <div class="alert alert-danger">
                     {{ $message }}
                 </div>
@@ -35,14 +35,10 @@
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Harga Tiket</label>
+            <label class="col-sm-2 col-form-label">Tanggal Mulai</label>
             <div class="col-sm-10">
-                <div class="input-group">
-                    <span class="input-group-addon">Rp</span>
-                    <input type="text" name="harga" class="form-control @error('harga') is-invalid @enderror" value="{{ old('harga', $jenis_tiket->harga) }}">
-                    <span class="input-group-addon">,00</span>
-                </div>
-                @error('harga')
+                <input type="date" name="tanggal_mulai" value="{{ old('tanggal_mulai', $event->tanggal_mulai) }}" class="form-control @error('tanggal_mulai') is-invalid @enderror">
+                @error('tanggal_mulai')
                 <div class="alert alert-danger">
                     {{ $message }}
                 </div>
@@ -51,17 +47,18 @@
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Keterangan</label>
+            <label class="col-sm-2 col-form-label">Deskripsi</label>
             <div class="col-sm-10">
-                <textarea class="form-control @error('keterangan') is-invalid @enderror" name="keterangan"
-                                placeholder="">{{ old('keterangan', $jenis_tiket->keterangan) }}</textarea>
-                @error('keterangan')
+                <textarea class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi"
+                                placeholder="">{{ old('deskripsi', $event->deskripsi) }}</textarea>
+                @error('deskripsi')
                 <div class="alert alert-danger">
                     {{ $message }}
                 </div>
                 @enderror
             </div>
         </div>
+        
         <div style="float: right;">
             <button type="submit" class="btn btn-primary mr-2">Edit</button>
         </div>

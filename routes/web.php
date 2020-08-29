@@ -31,9 +31,12 @@ Route::middleware(['AksesAdmin'])->group(function () {
     Route::get('/event/tambah', 'EventsController@create');
     Route::post('/event', 'EventsController@store');
     Route::get('/event/{event}', 'EventsController@show');
-    Route::get('/event/{jenis_post}/edit', 'EventsController@edit');
-    Route::patch('/event/{jenis_post}/edit', 'EventsController@update');
-    Route::delete('/event/{jenis_post}', 'EventsController@destroy');
+    Route::get('/event/{event}/edit', 'EventsController@edit');
+    Route::patch('/event/{event}/edit', 'EventsController@update');
+    Route::delete('/event/{event}', 'EventsController@destroy');
+    Route::delete('/event/{event}/hapus_foto', 'EventsController@hapus_foto');
+    Route::get('/event/{event}/foto', 'EventsController@form_upload_foto');
+    Route::patch('/event/{event}/foto', 'EventsController@upload_foto');
 
     Route::get('/jenis_tiket', 'Jenis_tiketsController@index')->name('jenis_tiket');
     Route::get('/jenis_tiket/{event}/tambah', 'Jenis_tiketsController@create');
@@ -42,7 +45,6 @@ Route::middleware(['AksesAdmin'])->group(function () {
     Route::get('/jenis_tiket/{jenis_tiket}/edit', 'Jenis_tiketsController@edit');
     Route::patch('/jenis_tiket/{jenis_tiket}/edit', 'Jenis_tiketsController@update');
     Route::delete('/jenis_tiket/{jenis_tiket}', 'Jenis_tiketsController@destroy');
-
     Route::delete('/jenis_tiket/{jenis_tiket}/hapus_foto', 'Jenis_tiketsController@hapus_foto');
     Route::get('/jenis_tiket/{jenis_tiket}/foto', 'Jenis_tiketsController@form_upload_foto');
     Route::patch('/jenis_tiket/{jenis_tiket}/foto', 'Jenis_tiketsController@upload_foto');

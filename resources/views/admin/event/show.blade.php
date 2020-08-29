@@ -14,6 +14,16 @@
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         {!! session('hapus-tiket') !!}
     </div>
+    @elseif (session('status-hapus-foto'))
+    <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {!! session('status-hapus-foto') !!}
+    </div>
+    @elseif (session('status-foto'))
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {!! session('status-foto') !!}
+    </div>
     @endif
     <form action="{{ route('event') }}/{{$event->id}}" method="POST" class="d-inline" style="float: left">
         &emsp;
@@ -74,37 +84,33 @@
                         </tr>
                     </table>
                 </div>
-                @if ($event->foto_brosur)
-                <div class="col-md-5">
-                    <a href="{{ URL::asset('foto/brosur/'.$event->foto_brosur) }}" target="_blank">
-                        <img src="{{ URL::asset('foto/brosur/'.$event->foto_brosur) }}" width="350px">
-                    </a>
-                    <br /> <br />
-
-                    <form action="{{ route('event') }}/{{$event->id}}/brosur" method="POST" class="d-inline">
-                        <a href="">
-                            <button type="button" class="btn btn-secondary btn-xs">Ganti Foto Brosur</button>
+                
+                <div class="col-md-5" style="text-align: center;">
+                    @if ($event->foto_brosur)
+                        <a href="{{ URL::asset('foto/brosur/'.$event->foto_brosur) }}" target="_blank">
+                            <img src="{{ URL::asset('foto/brosur/'.$event->foto_brosur) }}" width="350px">
                         </a>
-                        @method('delete')
-                        @csrf
-                        <button type="button" class="btn btn-danger btn-xs" id="hapus-brosur">
-                            <i class="ti-trash"></i> Hapus Foto Brosur
-                        </button>
-                    </form>
+                        <br /> <br />
+
+                        <form action="{{ route('event') }}/{{$event->id}}/hapus_foto" method="POST" class="d-inline">
+                            @method('delete')
+                            @csrf
+                            <button type="button" class="btn btn-danger btn-xs" id="hapus-brosur">
+                                <i class="ti-trash"></i> Hapus Foto Brosur
+                            </button>
+                        </form>
                     @else
-                    <center>
                         <h3>
                             <i class="fa fa-image"></i>
                         </h3>
                         belum ada foto brusur
                         <br />
-                        <a href="">
+                        <a href="{{ route('event') }}/{{$event->id}}/foto">
                             <button type="button" class="btn btn-primary btn-xs">
                                 <i class="fa fa-upload"></i>
                                 Upload Foto Brosur
                             </button>
                         </a>
-                    </center>
                     @endif
                 </div>
             </div>

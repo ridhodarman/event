@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Event;
 use Illuminate\Http\Request;
 use App\Jenis_tiket;
+use File;
 
 class EventsController extends Controller
 {
@@ -86,7 +87,7 @@ class EventsController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view ('admin.event.edit',['event' => $event]);
     }
 
     /**
@@ -98,7 +99,17 @@ class EventsController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        $request->validate([
+            'nama_event' => 'required|not_regex:/`/i'
+        ]);
+        Event::where('id', $event->id)
+            ->update([
+                'nama_event' => $request->nama_event,
+                'tanggal_mulai' => $request->tanggal_mulai,
+                'deskripsi' => $request->deskripsi
+            ]);
+        $pesan = "Data event ".$request->nama_event.' berhasil diubah';
+        return redirect('/event/'.$event->id)->with('status', $pesan);
     }
 
     /**
@@ -109,6 +120,61 @@ class EventsController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $gambar = Event::where('id', $event->id)->first();
+        File::delete('foto/brosur/'.$gambar->foto_brosur);
+    
+        Event::where('id', $event->id)
+        ->update([
+            'foto_brosur' => null
+        ]);
+        
+        $event = Event::find($event->id);
+        $event->delete();
+
+        $pesan = "Event <b>".$event->nama_event.'</b> berhasil dihapus';
+        return redirect('/event/')->with('hapus', $pesan);
+    }
+
+    public function hapus_foto(Event $event)
+    {   
+        // hapus cover
+        $gambar = Event::where('id', $event->id)->first();
+        File::delete('foto/brosur/'.$gambar->foto_brosur);
+    
+        Event::where('id', $event->id)
+            ->update([
+                'foto_brosur' => null
+            ]);
+        $pesan = "Foto brosur berhasil dihapus !";
+        return redirect('/event/'.$event->id)->with('status-hapus-foto', $pesan);
+    }
+
+    public function form_upload_foto(Event $event)
+    {
+        return view ('admin.event.foto',['event' => $event]);
+    }
+
+    public function upload_foto(Request $request, Event $event)
+    {
+        $gambar = Event::where('id', $event->id)->first();
+        if($gambar->cover){
+            File::delete('foto/'.$gambar->cover);
+        }
+        
+        $this->validate($request, [
+			'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4000|unique:events,foto_brosur,required'
+		]);
+        $file = $request->file('file');
+        $nama2 = preg_replace('/[^A-Za-z0-9\-]/', '', $request->nama_tiket);
+        $nama_file = $nama2."_".time().".".$file->getClientOriginalExtension();
+        $tujuan_upload = 'foto/brosur';
+        $file->move($tujuan_upload,$nama_file);
+        
+        Event::where('id', $event->id)
+            ->update([
+                'foto_brosur' => $nama_file
+            ]);
+        $pesan = "Foto tiket berhasil di-upload !";
+        return redirect('/event/'.$event->id)->with('status-foto', $pesan);
     }
 }

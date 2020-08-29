@@ -84,22 +84,22 @@
                         </tr>
                     </table>
                 </div>
-                @if ($jenis_tiket->foto_tiket)
-                <div class="col-md-5">
-                    <a href="{{ URL::asset('foto/tiket/'.$jenis_tiket->foto_tiket) }}" target="_blank">
-                        <img src="{{ URL::asset('foto/tiket/'.$jenis_tiket->foto_tiket) }}" width="350px">
-                    </a>
-                    <br /> <br />
+                
+                <div class="col-md-5" style="text-align: center;">
+                    @if ($jenis_tiket->foto_tiket)
+                        <a href="{{ URL::asset('foto/tiket/'.$jenis_tiket->foto_tiket) }}" target="_blank">
+                            <img src="{{ URL::asset('foto/tiket/'.$jenis_tiket->foto_tiket) }}" width="350px">
+                        </a>
+                        <br /> <br />
 
-                    <form action="{{ route('jenis_tiket') }}/{{$jenis_tiket->id}}/hapus_foto" method="POST" class="d-inline">
-                        @method('delete')
-                        @csrf
-                        <button type="button" class="btn btn-danger btn-xs" id="hapus-brosur">
-                            <i class="glyphicon glyphicon-floppy-remove"></i> Hapus Foto Tiket
-                        </button>
-                    </form>
+                        <form action="{{ route('jenis_tiket') }}/{{$jenis_tiket->id}}/hapus_foto" method="POST" class="d-inline">
+                            @method('delete')
+                            @csrf
+                            <button type="button" class="btn btn-danger btn-xs" id="hapus-brosur">
+                                <i class="glyphicon glyphicon-floppy-remove"></i> Hapus Foto Tiket
+                            </button>
+                        </form>
                     @else
-                    <center>
                         <h3>
                             <i class="fa fa-image"></i>
                         </h3>
@@ -111,7 +111,6 @@
                                 Upload Foto Tiket
                             </button>
                         </a>
-                    </center>
                     @endif
                 </div>
             </div>
