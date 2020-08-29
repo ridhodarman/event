@@ -19,7 +19,13 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.21/datatables.min.css"/>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.21/datatables.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- tambahan style tombol -->
     <link rel="stylesheet" href="{{ URL::asset('css/style2.css') }}">
+
+    <!-- pencarian select option -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <style>
       *{margin: 0px auto;}
       html,body{
@@ -103,7 +109,7 @@
                 <li>
                     <a href="#user" class="list-group-item " data-toggle="collapse" id="tab-user"><i class="glyphicon glyphicon-user"></i> User  <span class="glyphicon glyphicon-chevron-right"></span></a>
                       <li class="collapse" id="user">
-                        <a href="{{route('user_register')}}" class="list-group-item" id="user_register">&emsp;&emsp; User terdaftar</a>
+                        <a href="{{route('user')}}" class="list-group-item" id="user_register">&emsp;&emsp; User terdaftar</a>
                         <a href="{{route('agen')}}" class="list-group-item" id="agen">&emsp;&emsp; Agen User</a>
                       </li>
                   </li>

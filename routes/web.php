@@ -49,6 +49,8 @@ Route::middleware(['AksesAdmin'])->group(function () {
     Route::get('/jenis_tiket/{jenis_tiket}/foto', 'Jenis_tiketsController@form_upload_foto');
     Route::patch('/jenis_tiket/{jenis_tiket}/foto', 'Jenis_tiketsController@upload_foto');
 
-    Route::get('/admin/agen', function () { return view('admin.agen.index'); })->name('agen');
-    Route::get('/admin/user', function () { return view('admin.user.index'); })->name('user_register');
+    Route::get('/user', 'UsersController@index')->name('user');
+    Route::get('/agen', 'AgensController@index')->name('agen');
+    Route::post('/agen', 'AgensController@store');
+    Route::delete('/agen/{agen}', 'AgensController@destroy');
 });
