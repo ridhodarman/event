@@ -58,4 +58,12 @@ Route::middleware(['AksesAdmin'])->group(function () {
 
 Route::middleware(['AksesAgen'])->group(function () {
     Route::get('/agen_index', 'PagesController@agen_index')->name('agen_index');
+    Route::get('/agen/tiket', 'PagesController@agen_index')->name('tiket');
+    Route::get('/agen/tiket/event/{event}', 'TiketsController@event');
+    Route::get('/agen/tiket/tambah/event/{event}', 'TiketsController@create');
+    Route::post('/agen/tiket/tambah/event/{event}', 'TiketsController@store');
+    Route::get('/agen/tiket/{tiket}', 'TiketsController@show');
+    Route::get('/agen/tiket/{tiket}/edit', 'TiketsController@edit');
+    Route::patch('/agen/tiket/{tiket}/edit', 'TiketsController@update');
+    Route::delete('/agen/tiket/{tiket}', 'TiketsController@destroy');
 });

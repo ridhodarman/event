@@ -40,6 +40,10 @@
 </div><!-- panel body -->
 
 <script>
+  $(document).ready(function () {
+      $('#example').DataTable();
+  });
+  
   $("#tab-user").click();
   $("#user_register").css("font-weight", "bolder");
 </script>

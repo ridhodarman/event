@@ -28,12 +28,17 @@
     <!-- bootstrap wysihtml5 - text editor -->
     <link href="{{ URL::asset('agen_page/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}" rel="stylesheet" type="text/css" />
 
+    <link href="{{ URL::asset('agen_page/plugins/datatables/dataTables.bootstrap.css') }}" rel="stylesheet" type="text/css" />
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    
   </head>
   <body class="skin-blue">
     <div class="wrapper">
@@ -202,6 +207,9 @@
 
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <!-- <script src="{{ URL::asset('agen_page/dist/js/pages/dashboard.js') }}" type="text/javascript"></script> -->
+
+    <script src="{{ URL::asset('agen_page/plugins/datatables/jquery.dataTables.js') }}" type="text/javascript"></script>
+    <script src="{{ URL::asset('agen_page/plugins/datatables/dataTables.bootstrap.js') }}" type="text/javascript"></script>
 
     <!-- AdminLTE for demo purposes -->
     <script src="{{ URL::asset('agen_page/dist/js/demo.js') }}" type="text/javascript"></script>
