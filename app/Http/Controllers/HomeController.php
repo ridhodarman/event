@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Auth;
+use App\Agen;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = Auth::user()->id;
+        $agen = Agen::where('user_id', $user)->first();
+        return view ('home',['agen' => $agen]);
     }
 
     public function showChangePasswordForm(){

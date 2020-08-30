@@ -5,6 +5,11 @@ if (Auth::check())
         header("Location: admin_index");
         die();
     }
+
+    if ($agen) {
+        header("Location: agen_index");
+        die();
+    }
 }
 @endphp
 

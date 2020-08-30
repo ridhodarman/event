@@ -57,5 +57,5 @@ Route::middleware(['AksesAdmin'])->group(function () {
 });
 
 Route::middleware(['AksesAgen'])->group(function () {
-    Route::get('/agen_index', function () { return view('agen.index'); })->name('agen_index');
+    Route::get('/agen_index', 'PagesController@agen_index')->name('agen_index');
 });
