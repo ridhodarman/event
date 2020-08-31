@@ -75,9 +75,16 @@ class TiketsController extends Controller
      * @param  \App\Tiket  $tiket
      * @return \Illuminate\Http\Response
      */
-    public function show(Tiket $tiket)
+    public function show($tiket)
     {
-        //
+
+        $tiket = Tiket::select('tikets.*', 'jenis_tikets.nama_tiket', 'events.nama_event', 'jenis_tikets.event_id')
+                    ->join('jenis_tikets', 'jenis_tikets.id', '=', 'tikets.jenis_tiket')
+                    ->join('events', 'events.id', '=', 'jenis_tikets.event_id')
+                    ->where('tikets.id', '=', $tiket)
+                    ->first();
+
+        return view( 'agen.tiket.show',['tiket' => $tiket] );
     }
 
     /**
@@ -116,12 +123,31 @@ class TiketsController extends Controller
 
     public function event($event)
     {
+        if (Auth::check()) { $user = Auth::user()->id; }
+        $agen = Agen::select('id')->where('user_id', $user)->first();
+
         $tiket = Tiket::select('tikets.id','nama_peserta', 'nama_tiket', 'asal', 'tikets.created_at')
                         ->join('jenis_tikets', 'jenis_tikets.id', '=', 'tikets.jenis_tiket')
                         ->join('events', 'events.id', '=', 'jenis_tikets.event_id')
-                        ->where('events.id', '=', $event)->orderBy('tikets.created_at')->get();
+                        ->where('events.id', '=', $event)
+                        ->where('agen_id', '=', $agen->id)
+                        ->orderBy('tikets.created_at')->get();
         $event = Event::select('id', 'nama_event')->where('id', '=', $event)->first();
         //return $tiket;
         return view ('agen.tiket.event',['tiket' => $tiket, 'event' => $event]);
+    }
+
+    public function cetak($tiket)
+    {
+
+        $tiket = Tiket::select('tikets.*', 'jenis_tikets.nama_tiket', 'events.nama_event', 
+                                'jenis_tikets.event_id', 'jenis_tikets.foto_tiket'
+                                )
+                    ->join('jenis_tikets', 'jenis_tikets.id', '=', 'tikets.jenis_tiket')
+                    ->join('events', 'events.id', '=', 'jenis_tikets.event_id')
+                    ->where('tikets.id', '=', $tiket)
+                    ->first();
+
+        return view( 'agen.tiket.print',['tiket' => $tiket] );
     }
 }

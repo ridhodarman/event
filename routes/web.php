@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('index');
 
 Auth::routes();
 Route::get('/changePassword','HomeController@showChangePasswordForm');
@@ -67,3 +67,6 @@ Route::middleware(['AksesAgen'])->group(function () {
     Route::patch('/agen/tiket/{tiket}/edit', 'TiketsController@update');
     Route::delete('/agen/tiket/{tiket}', 'TiketsController@destroy');
 });
+
+Route::get('/kode_tiket', 'PagesController@kode_tiket')->name('kode');
+Route::get('/kode_tiket/cetak/{kode}', 'TiketsController@cetak');

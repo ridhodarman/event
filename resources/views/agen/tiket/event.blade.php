@@ -46,7 +46,7 @@
                 <td>{{$t->nama_tiket}}</td>
                 <td>{{$t->created_at}}</td>
                 <td>
-                    <a href="{{ route('tiket') }}/tambah/event/{{$t->id}}">
+                    <a href="{{ route('tiket') }}/{{$t->id}}">
                         <span class="label label-info">
                             <i class="fa fa-folder-open-o"></i> View detail
                         </span>
@@ -61,15 +61,8 @@
 </section><!-- /.content -->
 
 <script>
-    $(function () {
-        $('#example').dataTable({
-          "bPaginate": true,
-          "bLengthChange": false,
-          "bFilter": false,
-          "bSort": true,
-          "bInfo": true,
-          "bAutoWidth": false
-        });
-      });
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
 </script>
 @endsection

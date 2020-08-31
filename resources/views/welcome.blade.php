@@ -103,7 +103,7 @@
     mkdir($tempdir);
 
     //isi qrcode jika di scan
-    $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"."cek";
+    $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"."cek-tiket";
     $codeContents = $actual_link; 
   
  //simpan file kedalam folder temp dengan nama 001.png

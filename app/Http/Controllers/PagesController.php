@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Agen;
 use Auth;
 use App\Event;
+use App\Tiket;
 
 class PagesController extends Controller
 {
@@ -24,6 +25,11 @@ class PagesController extends Controller
         $event = Event::select('id','nama_event', 'tanggal_mulai', 'deskripsi', 'foto_brosur')->where('tanggal_mulai', '>=', $tgl)->orderBy('tanggal_mulai')->get();
 
         return view ('agen.index',['agen' => $agen, 'event' => $event]);
+    }
+
+    public function kode_tiket()
+    {
+        //
     }
 
     /**
