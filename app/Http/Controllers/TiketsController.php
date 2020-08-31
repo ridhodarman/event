@@ -78,7 +78,8 @@ class TiketsController extends Controller
     public function show($tiket)
     {
 
-        $tiket = Tiket::select('tikets.*', 'jenis_tikets.nama_tiket', 'events.nama_event', 'jenis_tikets.event_id')
+        $tiket = Tiket::select('tikets.*', 'jenis_tikets.nama_tiket', 'events.nama_event', 
+                                'jenis_tikets.event_id', 'jenis_tikets.foto_tiket')
                     ->join('jenis_tikets', 'jenis_tikets.id', '=', 'tikets.jenis_tiket')
                     ->join('events', 'events.id', '=', 'jenis_tikets.event_id')
                     ->where('tikets.id', '=', $tiket)

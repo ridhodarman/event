@@ -62,18 +62,82 @@
                 </div>
             </div>
         </div>
+        @php
+            $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]"."/kode_tiket/".$tiket->kode_tiket;
+            $link = base64_encode($link);
+            $n = base64_encode($tiket->nama_peserta);
+            $e = base64_encode($tiket->nama_event);
+            $t = base64_encode($tiket->nama_tiket);
+            $k = base64_encode($tiket->kode_tiket);
+            $f = base64_encode($tiket->foto_tiket);
+        @endphp
         <div class="col-sm-6">
-            <a class="btn btn-social btn-github" href="{{ route('kode') }}/cetak/{{$tiket->id}}" target="_blank">
+            <a class="btn btn-social btn-github" 
+                href="{{ route('index') }}/print2.php?
+                    link={{$link}}&
+                    n={{$n}}&
+                    e={{$e}}&
+                    t={{$t}}&
+                    k={{$k}}&
+                    f={{$f}}&
+                    " 
+                target="_blank">
                 <i class="fa fa-barcode"></i> Print Tiket
             </a>
             <br /><br />
-            <a class="btn btn-social btn-google-plus mt-2">
+            <button type="button" class="btn btn-social btn-google-plus" data-toggle="modal"
+                data-target="#exampleModal-e">
                 <i class="fa fa-envelope"></i> Kirim tiket via E-mail
-            </a>
+            </button>
+            <div class="modal fade" id="exampleModal-e" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Kirim tiket via E-mail</h4>
+                        </div>
+                        <div class="modal-body">
+                            Masukkan E-mail
+                            <input type="text" class="form-control" placeholder="masukkan email peserta ..."/>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default"
+                                data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary"
+                                data-dismiss="modal">Kirim</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div>
+            </div>
             <br /><br />
-            <a class="btn btn-social btn-success">
-                <i class="fa fa-whatsapp"></i> Kirim tiket via Whatsapp
-            </a>
+            <button type="button" class="btn btn-social btn-success" data-toggle="modal"
+                data-target="#exampleModal-wa">
+                <i class="fa fa-whatsapp"></i> Kirim tiket via WhatsApp
+            </button>
+            <div class="modal fade" id="exampleModal-wa" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Kirim tiket via WhatsApp</h4>
+                        </div>
+                        <div class="modal-body">
+                            Masukkan nomor WhatsApp
+                            <input type="text" class="form-control"/>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default"
+                                data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary"
+                                data-dismiss="modal">Kirim</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div>
+            </div>
         </div>
     </diV>
 
