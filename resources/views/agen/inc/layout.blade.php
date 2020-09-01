@@ -39,6 +39,9 @@
     <![endif]-->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.21/datatables.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
   </head>
   <body class="skin-blue">
@@ -46,7 +49,7 @@
       
       <header class="main-header">
         <!-- Logo -->
-        <a href="{{ URL::asset('agen_page/index2.html') }}" class="logo"><b>Agen</b>Page</a>
+        <a href="{{ URL::asset('agen_page/index2.html') }}" class="logo"><b>Agen</b></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -220,6 +223,9 @@
       $(function() {
           $("img.lazy").lazyload({effect : "fadeIn"});// untuk dipasang di <img src='xxxx'>
           $("div.lazy").lazyload({effect : "fadeIn"});// untuk dipasang sebagai background / div
+      });
+      $( document ).ready(function() {
+        $( ".no-print" ).hide();
       });
     </script>
   </body>

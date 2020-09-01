@@ -74,12 +74,12 @@
         <div class="col-sm-6">
             <a class="btn btn-social btn-github" 
                 href="{{ route('index') }}/print2.php?
-                    link={{$link}}&
-                    n={{$n}}&
-                    e={{$e}}&
-                    t={{$t}}&
-                    k={{$k}}&
-                    f={{$f}}&
+link={{$link}}&
+n={{$n}}&
+e={{$e}}&
+t={{$t}}&
+k={{$k}}&
+f={{$f}}&
                     " 
                 target="_blank">
                 <i class="fa fa-barcode"></i> Print Tiket
@@ -114,7 +114,7 @@
             <br /><br />
             <button type="button" class="btn btn-social btn-success" data-toggle="modal"
                 data-target="#exampleModal-wa">
-                <i class="fa fa-whatsapp"></i> Kirim tiket via WhatsApp
+                <i class="fa fa-whatsapp"></i> Kirim via WhatsApp
             </button>
             <div class="modal fade" id="exampleModal-wa" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -126,13 +126,26 @@
                             <h4 class="modal-title">Kirim tiket via WhatsApp</h4>
                         </div>
                         <div class="modal-body">
-                            Masukkan nomor WhatsApp
-                            <input type="text" class="form-control"/>
+                            <label> Masukkan nomor WhatsApp </label>
+                            <div class="input-group">
+                                <span class="input-group-addon">+62</span>
+                                <input type="text" class="form-control" placeholder="8xxxxxxx" id="no_wa">
+                            </div>
+                            <br/>
+                            <label> Pesan </label>
+                            <textarea class="form-control" id="pesan_wa">
+Hi {{ $tiket->nama_peserta }}. 
+Anda sudah terdaftar pada event "{{ $tiket->nama_event }}." 
+Kode tiket anda adalah: {{ $tiket->kode_tiket }} .
+
+Untuk validasi atau cek tiket dapat dilakukan melalui link: 
+{{ $cek = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]"."/cek-tiket" }}
+                            </textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default"
                                 data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary"
+                            <button type="button" class="btn btn-primary" onclick="kirim_wa()"
                                 data-dismiss="modal">Kirim</button>
                         </div>
                     </div><!-- /.modal-content -->
@@ -143,5 +156,12 @@
 
 </section><!-- /.content -->
 
+<script>
 
+    function kirim_wa(){
+        let nomor = document.getElementById("no_wa").value;
+        let pesan = document.getElementById("pesan_wa").value;
+        window.open(`https://api.whatsapp.com/send?phone=62${nomor}&text=${pesan}`); 
+    }
+</script>
 @endsection

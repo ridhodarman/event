@@ -52,10 +52,24 @@ class TiketsController extends Controller
         ]);
         if (Auth::check()) { $user = Auth::user()->id; }
         $agen = Agen::select('id')->where('user_id', $user)->first();
-        $event = Jenis_tiket::select('event_id')->where('id', $agen->event_id)->first();
+        $jt = Jenis_tiket::select('event_id')->where('id', $request->jenis_tiket)->first();
+        
+        $ketemu = false;
+        while ($ketemu == false) {
+            $permitted_chars = '0123456789';
 
-        $permitted_chars = '0123456789QWERTYUIOPASDFGHJKLZXCVBNM';
-        $kode = $request->jenis_tiket.substr(str_shuffle($permitted_chars), 0, 4);
+            $j = $request->jenis_tiket;
+            while ($j > 25){
+                $j = ceil($j/2);
+            }
+            $alphabet = range('A', 'Z');
+            $alpha = $alphabet[$j];
+            $kode = $alpha."-".substr(str_shuffle($permitted_chars), 0, 3);
+            $t = Tiket::select('id')->where('kode_tiket', $kode)->get();
+            if ( count($t) ==0 ){
+                $ketemu = true;
+            }
+        }
         
         $request->merge([
             'agen_id' => $agen->id,
@@ -66,7 +80,7 @@ class TiketsController extends Controller
         Tiket::create($request->all());
         $pesan = "tiket berhasil ditambahkan";
         
-        return redirect('/agen/tiket/event/'.$event->id)->with('status', $pesan);
+        return redirect('/agen/tiket/event/'.$jt->event_id)->with('status', $pesan);
     }
 
     /**

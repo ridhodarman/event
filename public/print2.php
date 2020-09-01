@@ -74,8 +74,8 @@ height:1%;
         </div>
         	<div style="float: right;">
         		<?php echo base64_decode($_GET['n']); ?> <br/>
-        		Tiket: <?php echo base64_decode($_GET['k']); ?> <br/>
-        		<?php echo base64_decode($_GET['e']); ?> <br/>
+        		<small> Tiket: <?php echo base64_decode($_GET['k']); ?> </small><br/>
+        		<small style="font-size: 70%"> <?php echo base64_decode($_GET['e']); ?> </small><br/>
         		Kode Tiket: <b><?php echo base64_decode($_GET['k']); ?></b> <br/>
         	
 <?php
@@ -103,7 +103,7 @@ height:1%;
 
             echo '<img src="'.$tempdir.$namaFile.'" />';  
         	$cek = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]"."/cek-tiket";
-        	echo "<br/><small>Scan QR Code atau verifikasi tiket di: <u style='color: darkblue;'>".$cek."</u></small>";
+        	echo "<br/><small>Scan QR Code atau verifikasi tiket di: <a href='".$cek."' target='_blank'><u>".$cek."</u></a></small>";
         ?>
 
         	</div>
