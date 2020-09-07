@@ -165,4 +165,19 @@ class TiketsController extends Controller
 
         return view( 'agen.tiket.print',['tiket' => $tiket] );
     }
+
+    public function cek($tiket)
+    {
+        $tiket = Tiket::select('tikets.*', 'jenis_tikets.nama_tiket', 'events.nama_event', 
+                                'jenis_tikets.event_id', 'jenis_tikets.foto_tiket', 
+                                'users.name', 'agens.no_whatsapp')
+                    ->join('jenis_tikets', 'jenis_tikets.id', '=', 'tikets.jenis_tiket')
+                    ->join('events', 'events.id', '=', 'jenis_tikets.event_id')
+                    ->join('agens', 'agens.id', '=', 'tikets.agen_id')
+                    ->join('users', 'users.id', '=', 'agens.user_id')
+                    ->where('tikets.kode_tiket', '=', $tiket)
+                    ->first();
+        //return $tiket;
+        return view( 'kode.cek',['tiket' => $tiket] );
+    }
 }
