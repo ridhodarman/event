@@ -18,7 +18,16 @@ class TiketsController extends Controller
      */
     public function index()
     {
-        //
+        if (Auth::check()) { $user = Auth::user()->id; }
+        $agen = Agen::select('id')->where('user_id', $user)->first();
+
+        $tiket = Tiket::select('tikets.id','nama_peserta', 'nama_tiket', 'events.nama_event', 'tikets.created_at')
+                        ->join('jenis_tikets', 'jenis_tikets.id', '=', 'tikets.jenis_tiket')
+                        ->join('events', 'events.id', '=', 'jenis_tikets.event_id')
+                        ->where('agen_id', '=', $agen->id)
+                        ->orderBy('tikets.created_at')->get();
+        //return $tiket;
+        return view ('agen.tiket.index',['tiket' => $tiket]);
     }
 
     /**
@@ -180,4 +189,5 @@ class TiketsController extends Controller
         //return $tiket;
         return view( 'kode.cek',['tiket' => $tiket] );
     }
+
 }

@@ -113,12 +113,14 @@ f={{$f}}&
                         </tr>
                         <tr>
                             <td>
-                                <button class="contact1-form-btn" type="button">
-                                    <span>
-                                        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                                        Back
-                                    </span>
-                                </button>
+                                <a href="{{route('cek')}}">
+                                    <button class="contact1-form-btn" type="button">
+                                        <span>
+                                            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                                            Back
+                                        </span>
+                                    </button>
+                                </a>
                             </td>
                         </tr>
                         @if ( isset($tiket->name) )

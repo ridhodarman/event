@@ -59,7 +59,7 @@
         </div>
     </div>
     <br/>
-    <a href="{{ route('tiket') }}/tambah/event/{{$event->id}}">
+    <a href="{{ route('agen_index') }}">
         <button class="btn btn-default">
             <i class="fa fa-arrow-circle-o-left"></i> Kembali ke dashboard
         </button>

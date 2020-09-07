@@ -142,8 +142,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Penjualan Tiket</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Riwayat Penjualan tiket</a></l>
+                <li><a href="{{route('tiket')}}/penjualan"><i class="fa fa-circle-o"></i> Penjualan Tiket</a></li>
+                <li><a href="{{route('tiket')}}"><i class="fa fa-circle-o"></i> Riwayat Penjualan tiket</a></l>
               </ul>
             </li>
 
@@ -154,7 +154,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="{{route('cek')}}" target="_blank"><i class="fa fa-circle-o text-warning"></i> Cek Tiket</a></li>
-                <li><a href="#" target="_blank"><i class="fa fa-circle-o text-info"></i> User Page</a></l>
+                <li><a href="{{route('index')}}" target="_blank"><i class="fa fa-circle-o text-info"></i> User Page</a></l>
               </ul>
             </li>
           </ul>

@@ -27,6 +27,12 @@ class PagesController extends Controller
         return view ('agen.index',['agen' => $agen, 'event' => $event]);
     }
 
+    public function penjualan()
+    {
+        $event = Event::select('id','nama_event', 'tanggal_mulai', 'deskripsi', 'foto_brosur')->orderBy('tanggal_mulai')->get();
+        return view ('agen.tiket.penjualan',['event' => $event]);
+    }
+
     public function kode_tiket()
     {
         //

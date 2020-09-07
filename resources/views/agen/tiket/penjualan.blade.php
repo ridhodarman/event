@@ -4,7 +4,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Riwayat Penjualan Tiket
+        Penjualan Tiket
         <small></small>
     </h1>
     <ol class="breadcrumb" style="padding-right: 100px;">
@@ -26,25 +26,21 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama Peserta</th>
                         <th>Event</th>
-                        <th>Jenis Tiket</th>
-                        <th>Tanggal Input</th>
-                        <th>-</th>
+                        <th>Tanggal Pelaksanaan</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($tiket as $t)
+                    @foreach ($event as $e)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{$t->nama_peserta}}</td>
-                        <td>{{$t->nama_event}}</td>
-                        <td>{{$t->nama_tiket}}</td>
-                        <td>{{$t->created_at}}</td>
+                        <td>{{$e->nama_event}}</td>
+                        <td>{{ $e->tanggal_mulai }}</td>
                         <td>
-                            <a href="{{ route('tiket') }}/{{$t->id}}">
-                                <span class="label label-info">
-                                    <i class="fa fa-folder-open-o"></i> View detail
+                            <a href="{{ route('tiket') }}/event/{{$e->id}}">
+                                <span class="label label-success">
+                                    <i class="fa fa-fw fa-ticket"></i> Lihat Penjualan Tiket
                                 </span>
                             </a>
                         </td>
