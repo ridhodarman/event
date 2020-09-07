@@ -68,5 +68,6 @@ Route::middleware(['AksesAgen'])->group(function () {
     Route::delete('/agen/tiket/{tiket}', 'TiketsController@destroy');
 });
 
+Route::get('/cek-tiket', function () { return view('kode.index'); })->name('cek');
 Route::get('/kode_tiket', 'PagesController@kode_tiket')->name('kode');
 Route::get('/kode_tiket/cetak/{kode}', 'TiketsController@cetak');

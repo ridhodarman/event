@@ -153,7 +153,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#" target="_blank"><i class="fa fa-circle-o text-warning"></i> Cek Tiket</a></li>
+                <li><a href="{{route('cek')}}" target="_blank"><i class="fa fa-circle-o text-warning"></i> Cek Tiket</a></li>
                 <li><a href="#" target="_blank"><i class="fa fa-circle-o text-info"></i> User Page</a></l>
               </ul>
             </li>
