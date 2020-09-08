@@ -32,11 +32,13 @@
         <div class="container-contact1">
             <div class="contact1-pic js-tilt" data-tilt>
                 <img src="{{ URL::asset('cek_tiket/images/img-01.png') }}" alt="IMG">
+                
+                <div style="font-weight: lighter; font-size: 70%;">Powered by QOSin Event</div>
             </div>
 
             <form class="contact1-form validate-form">
                 <span class="contact1-form-title">
-                    Cek Tiket Anda
+                    Cek Tiket Anda<br/>
                 </span>
 
                 <div class="wrap-input1 validate-input" data-validate="Name is required">

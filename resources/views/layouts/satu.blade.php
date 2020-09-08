@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{ URL::asset('halaman_awal/assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ URL::asset('cek_tiket/images/icons/favicon.ico') }}" rel="icon">
   <link href="{{ URL::asset('halaman_awal/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->

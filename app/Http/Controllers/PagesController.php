@@ -7,6 +7,7 @@ use App\Agen;
 use Auth;
 use App\Event;
 use App\Tiket;
+use App\Faq;
 
 class PagesController extends Controller
 {
@@ -18,8 +19,9 @@ class PagesController extends Controller
 
     public function index()
     {
-        $event = Event::select('id','nama_event', 'tanggal_mulai', 'deskripsi', 'foto_brosur')->orderBy('tanggal_mulai')->get();
-        return view ('index',['event' => $event]);
+        $event = Event::select('id','nama_event', 'tanggal_mulai', 'deskripsi', 'foto_brosur')->orderBy('tanggal_mulai', 'desc')->get();
+        $faq = Faq::select('tanya', 'jawab')->orderBy('urutan')->get();
+        return view ('index',['event' => $event, 'faq' => $faq]);
     }
     public function agen_index()
     {
