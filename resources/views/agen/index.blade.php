@@ -68,22 +68,33 @@
   @if($a->no_whatsapp)
 
   @else
-  <div class="box box-solid box-warning">
-    <div class="box-header">
-      <h3 class="box-title">Pemberitahuan</h3>
-      <div class="box-tools pull-right">
-        <button class="btn btn-warning btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
-        <button class="btn btn-warning btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
-      </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <div class="modal fade" id="exampleModal-profil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Lengkapi Profil</h4>
+        </div>
+        <div class="modal-body">
+          <p> Sepertinya anda belum meng-inputkan Nomor WhatsApp anda. Silahkan lengkapi profil anda dahulu </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Nanti Saja</button>
+          <a href="#">
+            <button type="button" class="btn btn-primary" onclick="kirim_wa()" data-dismiss="modal">Edit Profil</button>
+          </a>
+        </div>
+      </div><!-- /.modal-content -->
     </div>
-    <div class="box-body">
-      <p>
-        Profil anda sepertinya belum lengkap, silahkan lengkapi profil anda
-        <code>disini.</code>
-      </p>
-
-    </div><!-- /.box-body -->
-  </div><!-- /.box -->
+  </div>
+  <script>
+    $(document).ready(function () {
+      $('#exampleModal-profil').modal('show');
+    });
+  </script>
   @endif
   @endforeach
 </section><!-- /.content -->

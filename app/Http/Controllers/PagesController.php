@@ -15,6 +15,12 @@ class PagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function index()
+    {
+        $event = Event::select('id','nama_event', 'tanggal_mulai', 'deskripsi', 'foto_brosur')->orderBy('tanggal_mulai')->get();
+        return view ('index',['event' => $event]);
+    }
     public function agen_index()
     {
         if (Auth::check()) { $user = Auth::user()->id; }
