@@ -5,7 +5,7 @@
 <header id="header" class="fixed-top ">
   <div class="container d-flex align-items-center">
 
-    <h1 class="logo mr-auto"><a href="index.html">{{ config('app.name', 'Laravel') }}</a></h1>
+    <h1 class="logo mr-auto"><a href="index.html">QOSIN EVENT</a></h1>
     <!-- Uncomment below if you prefer to use an image logo -->
     <!-- <a href="index.html" class="logo mr-auto"><img src="{{ URL::asset('halaman_awal/assets/img/logo.png') }}" alt="" class="img-fluid"></a>-->
 
@@ -49,8 +49,8 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-        <h1>Better Solutions For Your Business</h1>
-        <h2>We are team of talanted designers making websites with Bootstrap</h2>
+        <h1>Selamat Datang di QOSin Event</h1>
+        <h2>Asdf ghjkl zxc vbnm qwerty uiopoiu kjhjj asdsa mnvmn !</h2>
         <div class="d-lg-flex">
           <a href="#about" class="btn-get-started scrollto">Get Started</a>
           <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox btn-watch-video" data-vbtype="video" data-autoplay="true"> Watch Video <i class="icofont-play-alt-2"></i></a>
@@ -73,7 +73,15 @@
       <div class="row" data-aos="zoom-in">
 
         <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-          <img src="{{ URL::asset('halaman_awal/assets/img/clients/client-1.png') }}" class="img-fluid" alt="">
+          <a href="//qosin.id" title="Belanja kebutuhan pokok sehari-hari">
+            <img src="{{ URL::asset('halaman_awal/assets/img/clients/shop2.png') }}" class="img-fluid" alt="">
+          </a>
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          <a href="//qosin.id/kos/cari" title="Cari kos atau kontrakan">
+            <img src="{{ URL::asset('halaman_awal/assets/img/clients/kos.webp') }}" class="img-fluid" alt="">
+          </a>
         </div>
 
         <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
@@ -82,10 +90,6 @@
 
         <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
           <img src="{{ URL::asset('halaman_awal/assets/img/clients/client-3.png') }}" class="img-fluid" alt="">
-        </div>
-
-        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-          <img src="{{ URL::asset('halaman_awal/assets/img/clients/client-4.png') }}" class="img-fluid" alt="">
         </div>
 
         <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
