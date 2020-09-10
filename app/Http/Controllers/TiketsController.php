@@ -162,7 +162,7 @@ class TiketsController extends Controller
         $tiket->delete();
 
         $pesan = "tiket #".$tiket->kode_tiket." ".$tiket->nama_peserta." berhasil dihapus";
-        return redirect('/agen/tiket/penjualan')->with('hapus', $pesan);
+        return redirect('/agen/tiket')->with('hapus', $pesan);
     }
 
     public function event($event)

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="shortcut icon" href="{{ URL::asset('favicon_16.ico') }}"/>
+    <link rel="shortcut icon" href=""/>
     <link rel="bookmark" href="{{ URL::asset('favicon_16.ico') }}"/>
     <!-- site css -->
     <link rel="stylesheet" href="{{ URL::asset('dist/css/site.min.css') }}">
@@ -114,7 +114,8 @@
                       </li>
                   </li>
                 <li class="list-group-item" id="event"><a href="{{route('event')}}"><i class="glyphicon glyphicon-bell"></i>Event</li>
-                  <li class="list-group-item" id="event"><a href="#"><i class="glyphicon glyphicon-list-alt"></i>Riwayat Penjualan tiket</li>
+                <li class="list-group-item" id="tiket"><a href="{{route('tiket2')}}"><i class="glyphicon glyphicon-list-alt"></i>Riwayat Penjualan tiket</li>
+                <li class="list-group-item" id="event"><a href="#"><i class="glyphicon glyphicon-list-alt"></i>FAQ</li>
               </ul>
           </div>
           <div class="col-xs-12 col-sm-9 content">

@@ -136,4 +136,15 @@ class PagesController extends Controller
         $pesan = "Profile sudah di-update";
         return redirect('profil')->with('status', $pesan);
     }
+
+    public function tiket() {
+        $tiket = Tiket::select('tikets.id','nama_peserta', 'nama_tiket', 'events.nama_event', 'tikets.created_at', 'users.name')
+                        ->join('jenis_tikets', 'jenis_tikets.id', '=', 'tikets.jenis_tiket')
+                        ->join('events', 'events.id', '=', 'jenis_tikets.event_id')
+                        ->join('agens', 'agens.id', '=', 'tikets.agen_id')
+                        ->join('users', 'users.id', '=', 'agens.user_id')
+                        ->orderBy('tikets.created_at')->get();
+        //return $tiket;
+        return view ('admin.tiket.index',['tiket' => $tiket]);
+    }
 }
