@@ -8,6 +8,7 @@ use Auth;
 use App\Event;
 use App\Tiket;
 use App\Faq;
+use App\User;
 
 class PagesController extends Controller
 {
@@ -73,9 +74,10 @@ class PagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Event $event)
     {
-        //
+        //return $event;
+        return view ('show',['event' => $event]);
     }
 
     /**
@@ -110,5 +112,28 @@ class PagesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function profil()
+    {
+        if (Auth::check()) { $user = Auth::user()->id; }
+        $agen = Agen::select('name', 'no_whatsapp')
+                    ->join('users', 'users.id', '=', 'agens.user_id')
+                    ->where('user_id', $user)->first();
+        //return $agen;
+        return view ('agen.profil',['agen' => $agen]);
+    }
+
+    public function edit_profil(Request $request) {
+        if (Auth::check()) { $user = Auth::user()->id; }
+
+        $request->validate([
+            'name' => 'required|not_regex:/`/i',
+            'no_whatsapp' => 'required|not_regex:/`/i'
+        ]);
+        User::where('id', $user)->update([ 'name' => $request->name ]);
+        Agen::where('user_id', $user)->update([ 'no_whatsapp' => $request->no_whatsapp ]);
+        $pesan = "Profile sudah di-update";
+        return redirect('profil')->with('status', $pesan);
     }
 }

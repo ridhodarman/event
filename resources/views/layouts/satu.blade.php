@@ -38,6 +38,47 @@
 
 <body>
   @yield('content')
+  <div class="container footer-bottom clearfix">
+    <div class="copyright">
+      &copy;  <strong><span> </span></strong>. Some Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
+      Designed by <a href="#">BootstrapMade</a>
+    </div>
+  </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{{ URL::asset('halaman_awal/assets/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ URL::asset('halaman_awal/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ URL::asset('halaman_awal/assets/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
+  <script src="{{ URL::asset('halaman_awal/assets/vendor/php-email-form/validate.js') }}"></script>
+  <script src="{{ URL::asset('halaman_awal/assets/vendor/waypoints/jquery.waypoints.min.js') }}"></script>
+  <script src="{{ URL::asset('halaman_awal/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ URL::asset('halaman_awal/assets/vendor/venobox/venobox.min.js') }}"></script>
+  <script src="{{ URL::asset('halaman_awal/assets/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
+  <script src="{{ URL::asset('halaman_awal/assets/vendor/aos/aos.js') }}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{{ URL::asset('halaman_awal/assets/js/main.js') }}"></script>
+
+  <script src="{{ URL::asset('assets/lazyload/jquery.lazyload.min.js') }}" type="text/javascript"></script>
+    <script type="text/javascript" charset="utf-8">
+      $(function() {
+          $("img.lazy").lazyload({effect : "fadeIn"});// untuk dipasang di <img src='xxxx'>
+          $("div.lazy").lazyload({effect : "fadeIn"});// untuk dipasang sebagai background / div
+      });
+      $( document ).ready(function() {
+        $( ".no-print" ).hide();
+      });
+    </script>
 </body>
 
 </html>

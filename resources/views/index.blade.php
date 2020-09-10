@@ -1,11 +1,12 @@
 @extends('layouts.satu')
 
 @section('content')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top ">
   <div class="container d-flex align-items-center">
 
-    <h1 class="logo mr-auto"><a href="index.html">QOSIN EVENT</a></h1>
+    <h1 class="logo mr-auto"><a href="#">QOSIN EVENT</a></h1>
     <!-- Uncomment below if you prefer to use an image logo -->
     <!-- <a href="index.html" class="logo mr-auto"><img src="{{ URL::asset('halaman_awal/assets/img/logo.png') }}" alt="" class="img-fluid"></a>-->
 
@@ -14,24 +15,28 @@
         <li class="active"><a href="#home">Home</a></li>
         <li><a href="#event">List Event</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <!-- <li><a href="#team">Team</a></li>
-        <li class="drop-down"><a href="">Drop Down</a>
+        <li class="drop-down"><a href="javascript:;">Agen</a>
           <ul>
-            <li><a href="#">Drop Down 1</a></li>
-            <li class="drop-down"><a href="#">Deep Drop Down</a>
+            <li class="drop-down"><a href="#">Akses</a>
               <ul>
-                <li><a href="#">Deep Drop Down 1</a></li>
-                <li><a href="#">Deep Drop Down 2</a></li>
-                <li><a href="#">Deep Drop Down 3</a></li>
-                <li><a href="#">Deep Drop Down 4</a></li>
-                <li><a href="#">Deep Drop Down 5</a></li>
+                @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{ route('agen_index') }}">Halaman Agen</a>
+                    @else
+                      <li><a href="{{ route('login') }}">Sign In</a></li>
+                        @if (Route::has('register'))
+                          <li><a href="{{ route('register') }}">Sign Up</a></li>
+                        @endif
+                    @endauth
+                </div>
+                @endif
+                
               </ul>
             </li>
-            <li><a href="#">Drop Down 2</a></li>
-            <li><a href="#">Drop Down 3</a></li>
-            <li><a href="#">Drop Down 4</a></li>
+            <li><a href="https://api.whatsapp.com/send?phone=6282283493446&text=Hai admin, saya ingin bertanya tentang qosin event" target="_blank">Tanya admin</a></li>
           </ul>
-        </li> -->
+        </li>
         <li><a href="#contact">Contact</a></li>
         <!-- <li><a href="{{route('cek')}}" target="_blank">Cek Tiket</a></li> -->
       </ul>
@@ -56,7 +61,8 @@
         </div>
       </div>
       <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-        <img src="{{ URL::asset('halaman_awal/assets/img/hero-img.png') }}" class="img-fluid animated" alt="">
+        <img src="http://placehold.it/150x100" data-original="{{ URL::asset('halaman_awal/assets/img/hero-img.png') }}"
+          class="lazy img-fluid animated">
       </div>
     </div>
   </div>
@@ -73,17 +79,19 @@
 
         <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
           <a href="//qosin.id" title="Belanja kebutuhan pokok sehari-hari">
+            Mau Belanja ?
             <img src="{{ URL::asset('halaman_awal/assets/img/clients/shop2.png') }}" class="img-fluid" alt="">
           </a>
         </div>
 
         <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
           <a href="//qosin.id/kos/cari" title="Cari kos atau kontrakan">
+            Mau Cari Kos atau Kontrakan ?
             <img src="{{ URL::asset('halaman_awal/assets/img/clients/kos.webp') }}" class="img-fluid" alt="">
           </a>
         </div>
 
-        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+        <!-- <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
           <img src="{{ URL::asset('halaman_awal/assets/img/clients/client-2.png') }}" class="img-fluid" alt="">
         </div>
 
@@ -97,7 +105,7 @@
 
         <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
           <img src="{{ URL::asset('halaman_awal/assets/img/clients/client-6.png') }}" class="img-fluid" alt="">
-        </div>
+        </div> -->
 
       </div>
 
@@ -118,16 +126,20 @@
       @foreach ($event as $e)
       <div class="col-lg-6 mt-4">
           <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="{{ $loop->iteration }}00">
-            <div><img src="{{ URL::asset('foto/brosur/'.$e->foto_brosur) }}" class="img-fluid" alt=""></div>
+            <div>
+              <img src="http://placehold.it/150x100" data-original="{{ URL::asset('foto/brosur/'.$e->foto_brosur) }}"
+                class="lazy img-fluid" style="cursor: pointer;"
+                onclick="javascript:location.href=`{{route('index')}}/show/{{ $e->id }}`">
+            </div>
             <div class="member-info">
               <h4>{{ $e->nama_event }}</h4>
               <small style="color: gray"> {{ $e->tanggal_mulai }}</small>
-              <p>{{ substr($e->deskripsi,0,20) }}<a href="" target="_blank">...Readmore</a></p>
+              <p>{{ substr($e->deskripsi,0,20) }}<a href="{{route('index')}}/show/{{ $e->id }}">...Readmore</a></p>
               <div class="social">
-                <a href=""><i class="ri-twitter-fill"></i></a>
-                <a href=""><i class="ri-facebook-fill"></i></a>
-                <a href=""><i class="ri-instagram-fill"></i></a>
-                <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                <a href="javascript:;"><i class="ri-twitter-fill"></i></a>
+                <a href="javascript:;"><i class="ri-facebook-fill"></i></a>
+                <a href="javascript:;"><i class="ri-instagram-fill"></i></a>
+                <a href="javascript:;"> <i class="ri-linkedin-box-fill"></i> </a>
               </div>
             </div>
           </div>
@@ -204,12 +216,12 @@
         </div>
 
         <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+          <div class="php-email-form">
             
             
             <div class="form-group">
               <label for="name">Message</label>
-              <textarea class="form-control" name="message" rows="10" data-rule="required" data-msg="Please write something for us" placeholder="tuliskan pertanyaan anda disini..."></textarea>
+              <textarea id="pesan" class="form-control" name="message" rows="10" data-rule="required" data-msg="Please write something for us" placeholder="tuliskan pertanyaan anda disini..."></textarea>
               <div class="validate"></div>
             </div>
             <div class="mb-3">
@@ -217,8 +229,8 @@
               <div class="error-message"></div>
               <div class="sent-message">Your message has been sent. Thank you!</div>
             </div>
-            <div class="text-center"><button type="submit">Send Message (WA)</button></div>
-          </form>
+            <div class="text-center"><button type="submit" onclick="kirim_wa()">Send Message (WA)</button></div>
+          </div>
         </div>
 
       </div>
@@ -227,6 +239,18 @@
   </section><!-- End Contact Section -->
 
 </main><!-- End #main -->
+
+<script>
+  function kirim_wa(){
+      let pesan = document.getElementById("pesan").value;
+      if (pesan != "") {
+        window.open(`https://api.whatsapp.com/send?phone=6282283493446&text=${pesan}`); 
+      }
+      else {
+        swal("Silahkan tuliskan pertanyaan anda pada kolom yang disediakan");
+      }
+  }
+</script>
 
 <!-- ======= Footer ======= -->
 <footer id="footer">
@@ -250,34 +274,5 @@
     </div>
   </div>
 
-  <div class="container footer-bottom clearfix">
-    <div class="copyright">
-      &copy;  <strong><span> </span></strong>. Some Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-      Designed by <a href="#">BootstrapMade</a>
-    </div>
-  </div>
-</footer><!-- End Footer -->
-
-<a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
-<div id="preloader"></div>
-
-<!-- Vendor JS Files -->
-<script src="{{ URL::asset('halaman_awal/assets/vendor/jquery/jquery.min.js') }}"></script>
-<script src="{{ URL::asset('halaman_awal/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ URL::asset('halaman_awal/assets/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
-<script src="{{ URL::asset('halaman_awal/assets/vendor/php-email-form/validate.js') }}"></script>
-<script src="{{ URL::asset('halaman_awal/assets/vendor/waypoints/jquery.waypoints.min.js') }}"></script>
-<script src="{{ URL::asset('halaman_awal/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-<script src="{{ URL::asset('halaman_awal/assets/vendor/venobox/venobox.min.js') }}"></script>
-<script src="{{ URL::asset('halaman_awal/assets/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
-<script src="{{ URL::asset('halaman_awal/assets/vendor/aos/aos.js') }}"></script>
-
-<!-- Template Main JS File -->
-<script src="{{ URL::asset('halaman_awal/assets/js/main.js') }}"></script>
+  
 @endsection

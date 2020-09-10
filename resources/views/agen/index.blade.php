@@ -29,7 +29,7 @@
     <!-- timeline item -->
     <li>
       @php
-      $teks = substr($e->deskripsi,0,200).' ... <a href="" target="_blank">Readmore</a>';
+      
       $tgl = date('Y-m-d');
       $tgl1 = new DateTime($e->tanggal_mulai);
       $tgl2 = new DateTime($tgl);
@@ -41,8 +41,8 @@
         <h3 class="timeline-header"><a href="javascript:;">{{ $e->nama_event }}</a> .</h3>
         <div class="timeline-body">
           <img src="http://placehold.it/150x100" data-original="{{ URL::asset('foto/brosur/'.$e->foto_brosur) }}"
-            class="lazy" width="100px" onclick="window.open(`{{ URL::asset('foto/brosur/'.$e->foto_brosur) }}`)">
-          {!! $teks !!} <br /> <br />
+            class="lazy" width="100px" onclick="window.open(`{{ URL::asset('foto/brosur/'.$e->foto_brosur) }}`)" style="cursor: pointer;">
+          {{ substr($e->deskripsi,0,200) }}... <a href="{{route('index')}}/show/{{ $e->id }}" target="_blank">Readmore</a><br /> <br />
           <a href="{{ route('tiket') }}/event/{{$e->id}}">
             <button class="btn btn-success"><i class="fa fa-fw fa-ticket"></i> Klik disini untuk penjualan
               tiket</button>
@@ -83,8 +83,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Nanti Saja</button>
-          <a href="#">
-            <button type="button" class="btn btn-primary" onclick="kirim_wa()" data-dismiss="modal">Edit Profil</button>
+          <a href="{{route('profil')}}">
+            <button type="button" class="btn btn-primary" >Edit Profil Sekarang</button>
           </a>
         </div>
       </div><!-- /.modal-content -->
