@@ -1,6 +1,7 @@
 @extends('agen.inc.layout')
 
 @section('content')
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <ol class="breadcrumb" style="padding-right: 100px;">
@@ -47,6 +48,10 @@
                                 <td>{{$tiket->nama_tiket}}</td>
                             </tr>
                             <tr>
+                                <td>Keterangan:</td>
+                                <td>{{$tiket->keterangan}}</td>
+                            </tr>
+                            <tr>
                                 <td>Dibuat Pada:</td>
                                 <td>{{$tiket->created_at}}
                             </tr>
@@ -59,6 +64,79 @@
 
                         </tbody>
                     </table>
+
+                    <button class="btn btn-app" data-toggle="modal" data-target="#exampleModal-hapus"
+                        style="color: red;">
+                        <i class="fa fa-trash"></i> Hapus
+                    </button>
+                    <div class="modal fade" id="exampleModal-hapus" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">Hapus Tiket</h4>
+                                </div>
+                                <div class="modal-body">
+                                    Yakin hapus tiket ini?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default"
+                                        data-dismiss="modal">Cancel</button>
+                                    &emsp;
+                                    <form action="" method="POST" class="d-inline" style="float: right">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger">Hapus Sekarang</button>
+                                    </form>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div>
+                    </div>
+
+                    <button class="btn btn-app" data-toggle="modal" data-target="#exampleModal-edit"
+                        style="color: darkblue;">
+                        <i class="fa fa-edit"></i> Edit
+                    </button>
+                    <div class="modal fade" id="exampleModal-edit" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <form action="" method="POST">
+                                @method('patch')
+                                @csrf
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">Edit Tiket</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label>Nama Peserta</label>
+                                        <input type="text" class="form-control" name="nama_peserta" value="{{$tiket->nama_peserta}}"/>
+                                        <br/>
+                                        <label>Jenis Tiket</label>
+                                        <select class="form-control" id="jenis" name="jenis_tiket">
+                                            @foreach ($jenis as $j)
+                                            <option value="{{ $j->id }}">{{ $j->nama_tiket }}</option>
+                                            @endforeach
+                                        </select>
+                                        <br/>
+                                        <label>Asal</label>
+                                        <input type="text" class="form-control" name="asal" value="{{$tiket->asal}}"/>
+                                        <br/>
+                                        <label>Keterangan</label>
+                                        <textarea class="form-control" name="keterangan">{{$tiket->keterangan}}</textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default"
+                                            data-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -153,8 +231,15 @@ Untuk validasi atau cek tiket dapat dilakukan melalui link:
             </div>
         </div>
     </diV>
-
 </section><!-- /.content -->
+
+@php
+    echo '
+        <script>
+            let jenis ='.$tiket->jenis.'
+        </script>
+    '
+@endphp
 
 <script>
 
@@ -163,5 +248,9 @@ Untuk validasi atau cek tiket dapat dilakukan melalui link:
         let pesan = document.getElementById("pesan_wa").value;
         window.open(`https://api.whatsapp.com/send?phone=62${nomor}&text=${pesan}`); 
     }
+
+    $( document ).ready(function() {
+        $("#jenis").val(jenis);
+    });
 </script>
 @endsection

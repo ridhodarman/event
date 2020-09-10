@@ -16,6 +16,10 @@
 <script>
     swal("success!", "{!! session('status') !!}", "success");
 </script>
+@else if (session('hapus'))
+<script>
+    swal("{!! session('hapus') !!}");
+</script>
 @endif
 <!-- Main content -->
 <section class="content">

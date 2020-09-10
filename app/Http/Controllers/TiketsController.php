@@ -71,9 +71,10 @@ class TiketsController extends Controller
             while ($j > 25){
                 $j = ceil($j/2);
             }
-            $alphabet = range('A', 'Z');
-            $alpha = $alphabet[$j];
-            $kode = $alpha."-".substr(str_shuffle($permitted_chars), 0, 3);
+            // $alphabet = range('A', 'Z');
+            // $alpha = $alphabet[$j];
+            // $kode = $alpha."-".substr(str_shuffle($permitted_chars), 0, 3);
+            $kode = $j.substr(str_shuffle($permitted_chars), 0, 3);
             $t = Tiket::select('id')->where('kode_tiket', $kode)->get();
             if ( count($t) ==0 ){
                 $ketemu = true;
@@ -101,14 +102,16 @@ class TiketsController extends Controller
     public function show($tiket)
     {
 
-        $tiket = Tiket::select('tikets.*', 'jenis_tikets.nama_tiket', 'events.nama_event', 
-                                'jenis_tikets.event_id', 'jenis_tikets.foto_tiket')
+        $tiket = Tiket::select('tikets.*', 'jenis_tikets.nama_tiket', 'events.nama_event',  'tikets.keterangan',
+                                'jenis_tikets.event_id', 'jenis_tikets.foto_tiket', 'jenis_tikets.id as jenis')
                     ->join('jenis_tikets', 'jenis_tikets.id', '=', 'tikets.jenis_tiket')
                     ->join('events', 'events.id', '=', 'jenis_tikets.event_id')
                     ->where('tikets.id', '=', $tiket)
                     ->first();
 
-        return view( 'agen.tiket.show',['tiket' => $tiket] );
+        $jenis = Jenis_tiket::Select('id', 'nama_tiket')->get();
+        
+        return view( 'agen.tiket.show',['tiket' => $tiket, 'jenis' => $jenis] );
     }
 
     /**
@@ -131,7 +134,20 @@ class TiketsController extends Controller
      */
     public function update(Request $request, Tiket $tiket)
     {
-        //
+        //return $request;
+        $request->validate([
+            'nama_peserta' => 'required|not_regex:/`/i',
+            'jenis_tiket' => 'required|not_regex:/`/i'
+        ]);
+
+        Tiket::where('id', $tiket->id)->update([ 
+                'nama_peserta' => $request->nama_peserta,
+                'jenis_tiket' => $request->jenis_tiket,
+                'asal' => $request->asal,
+                'keterangan' => $request->keterangan
+            ]);
+        $pesan = "Data tiket berhasil diubah";
+        return redirect('/agen/tiket/'.$tiket->id)->with('status', $pesan);
     }
 
     /**
@@ -142,7 +158,11 @@ class TiketsController extends Controller
      */
     public function destroy(Tiket $tiket)
     {
-        //
+        $tiket = Tiket::find($tiket->id);
+        $tiket->delete();
+
+        $pesan = "tiket #".$tiket->kode_tiket." ".$tiket->nama_peserta." berhasil dihapus";
+        return redirect('/agen/tiket/penjualan')->with('hapus', $pesan);
     }
 
     public function event($event)
