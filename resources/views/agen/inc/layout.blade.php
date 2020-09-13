@@ -49,7 +49,7 @@
       
       <header class="main-header">
         <!-- Logo -->
-        <a href="{{ URL::asset('agen_page/index2.html') }}" class="logo"><b>Agen</b></a>
+        <a href="{{route('agen_index')}}" class="logo"><b>Agen</b></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->

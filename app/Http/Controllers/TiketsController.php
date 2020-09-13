@@ -57,7 +57,9 @@ class TiketsController extends Controller
     {
         $this->validate($request, [
             'nama_peserta' => 'required|not_regex:/`/i',
-            'jenis_tiket' => 'required'
+            'jenis_tiket' => 'required',
+            'no_wa' => 'min:10|starts_with:8|nullable|not_regex:/`/i',
+            'e_mail' => ['string', 'email', 'max:255', 'nullable']
         ]);
         if (Auth::check()) { $user = Auth::user()->id; }
         $agen = Agen::select('id')->where('user_id', $user)->first();
@@ -137,13 +139,17 @@ class TiketsController extends Controller
         //return $request;
         $request->validate([
             'nama_peserta' => 'required|not_regex:/`/i',
-            'jenis_tiket' => 'required|not_regex:/`/i'
+            'jenis_tiket' => 'required',
+            'no_wa' => 'min:10|starts_with:8|nullable|not_regex:/`/i',
+            'e_mail' => ['string', 'email', 'max:255', 'nullable']
         ]);
 
         Tiket::where('id', $tiket->id)->update([ 
                 'nama_peserta' => $request->nama_peserta,
                 'jenis_tiket' => $request->jenis_tiket,
                 'asal' => $request->asal,
+                'no_wa' => $request->no_wa,
+                'e_mail' => $request->e_mail,
                 'keterangan' => $request->keterangan
             ]);
         $pesan = "Data tiket berhasil diubah";

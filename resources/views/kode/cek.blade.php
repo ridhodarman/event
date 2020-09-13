@@ -65,7 +65,10 @@
                         @endphp
                         <tr>
                             <td>No. WA:</td>
-                            <td>{{$no}}</td>
+                            <td>
+                                @if ($tiket->no_wa) +62 @endif
+                                {{$no}}
+                            </td>
                         </tr>
                         @php
                             try {

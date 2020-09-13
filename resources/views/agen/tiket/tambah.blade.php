@@ -52,6 +52,34 @@
                     @enderror
                 </div>
 
+                <div class="form-group">
+                    <label>No. Whatsapp</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">+62</span>
+                        <input type="text" class="form-control" placeholder="8xxxxxxx" 
+                        name="no_wa" class="form-control @error('no_wa') is-invalid @enderror"
+                        value="{{ old('no_wa') }}"/>
+                    </div>
+                    @error('no_wa')
+                    <div class="alert alert-danger">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="text" class="form-control"
+                        placeholder="" 
+                        name="e_mail" class="form-control @error('e_mail') is-invalid @enderror"
+                        value="{{ old('e_mail') }}"/>
+                    @error('e_mail')
+                    <div class="alert alert-danger">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
                 <!-- radio --><br />
                 <div class="form-group">
                     <label>Pilih Tiket</label>

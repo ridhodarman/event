@@ -40,6 +40,16 @@
                                 <td>{{$tiket->asal}}</td>
                             </tr>
                             <tr>
+                                <td>No Whatsapp:</td>
+                                <td> @if ($tiket->no_wa) +62 @endif
+                                    {{$tiket->no_wa}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>E-mail:</td>
+                                <td>{{$tiket->e_mail}}</td>
+                            </tr>
+                            <tr>
                                 <td>Event:</td>
                                 <td>{{$tiket->nama_event}}</td>
                             </tr>
@@ -114,6 +124,12 @@
                                     <div class="modal-body">
                                         <label>Nama Peserta</label>
                                         <input type="text" class="form-control" name="nama_peserta" value="{{$tiket->nama_peserta}}"/>
+                                        @error('nama_peserta')
+                                        <div class="alert alert-danger">
+                                            {{ $message }}
+                                        </div>
+                                        <script>$(document).ready(function () { $('#exampleModal-edit').modal('show'); });</script>
+                                        @enderror
                                         <br/>
                                         <label>Jenis Tiket</label>
                                         <select class="form-control" id="jenis" name="jenis_tiket">
@@ -123,10 +139,52 @@
                                         </select>
                                         <br/>
                                         <label>Asal</label>
-                                        <input type="text" class="form-control" name="asal" value="{{$tiket->asal}}"/>
+                                        <input type="text" class="form-control" name="asal" value="{{ old('asal', $tiket->asal) }}"/>
+                                        @error('asal')
+                                        <div class="alert alert-danger">
+                                            {{ $message }}
+                                        </div>
+                                        <script>$(document).ready(function () { $('#exampleModal-edit').modal('show'); });</script>
+                                        @enderror
+                                        <br/>
+                                        <div class="form-group">
+                                            <label>No. Whatsapp</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">+62</span>
+                                                <input type="text" class="form-control" placeholder="8xxxxxxx" 
+                                                name="no_wa" class="form-control @error('no_wa') is-invalid @enderror"
+                                                value="{{ old('no_wa', $tiket->no_wa) }}"/>
+                                            </div>
+                                            @error('no_wa')
+                                            <div class="alert alert-danger">
+                                                {{ $message }}
+                                            </div>
+                                            <script>$(document).ready(function () { $('#exampleModal-edit').modal('show'); });</script>
+                                            @enderror
+                                        </div>
+                        
+                                        <div class="form-group">
+                                            <label>E-mail</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="" 
+                                                name="e_mail" class="form-control @error('e_mail') is-invalid @enderror"
+                                                value="{{ old('e_mail', $tiket->e_mail) }}"/>
+                                            @error('e_mail')
+                                            <div class="alert alert-danger">
+                                                {{ $message }}
+                                            </div>
+                                            <script>$(document).ready(function () { $('#exampleModal-edit').modal('show'); });</script>
+                                            @enderror
+                                        </div>
                                         <br/>
                                         <label>Keterangan</label>
                                         <textarea class="form-control" name="keterangan">{{$tiket->keterangan}}</textarea>
+                                        @error('keterangan')
+                                        <div class="alert alert-danger">
+                                            {{ $message }}
+                                        </div>
+                                        <script>$(document).ready(function () { $('#exampleModal-edit').modal('show'); });</script>
+                                        @enderror
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default"
@@ -178,7 +236,7 @@ f={{$f}}&
                         </div>
                         <div class="modal-body">
                             Masukkan E-mail
-                            <input type="text" class="form-control" placeholder="masukkan email peserta ..."/>
+                            <input type="text" class="form-control" placeholder="masukkan email peserta ..." value="{{$tiket->e_mail}}"/>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default"
@@ -207,7 +265,7 @@ f={{$f}}&
                             <label> Masukkan nomor WhatsApp </label>
                             <div class="input-group">
                                 <span class="input-group-addon">+62</span>
-                                <input type="text" class="form-control" placeholder="8xxxxxxx" id="no_wa">
+                                <input type="text" class="form-control" placeholder="8xxxxxxx" id="no_wa" value="{{$tiket->no_wa}}">
                             </div>
                             <br/>
                             <label> Pesan </label>
