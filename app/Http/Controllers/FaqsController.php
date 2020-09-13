@@ -14,7 +14,8 @@ class FaqsController extends Controller
      */
     public function index()
     {
-        //
+        $faq = Faq::select('id','urutan', 'tanya', 'jawab')->orderBy('urutan')->get();
+        return view ('admin.faq.index',['faq' => $faq]);
     }
 
     /**

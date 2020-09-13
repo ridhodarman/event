@@ -57,7 +57,7 @@
         <h2>Selamat datang di qosin event !</h2>
         <div class="d-lg-flex">
           <a href="#event" class="btn-get-started scrollto">Get Started</a>
-          <!-- <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox btn-watch-video" data-vbtype="video" data-autoplay="true"> Watch Video <i class="icofont-play-alt-2"></i></a> -->
+          <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox btn-watch-video" data-vbtype="video" data-autoplay="true"> Watch Video <i class="icofont-play-alt-2"></i></a>
         </div>
       </div>
       <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
@@ -76,8 +76,8 @@
     <div class="container">
 
       <div class="row" data-aos="zoom-in">
-        &nbsp;
-        <!-- <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+
+        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
           <a href="//qosin.id" title="Belanja kebutuhan pokok sehari-hari">
             Mau Belanja ?
             <img src="{{ URL::asset('halaman_awal/assets/img/clients/shop2.png') }}" class="img-fluid" alt="">
@@ -89,7 +89,7 @@
             Mau Cari Kos atau Kontrakan ?
             <img src="{{ URL::asset('halaman_awal/assets/img/clients/kos.webp') }}" class="img-fluid" alt="">
           </a>
-        </div> -->
+        </div>
 
         <!-- <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
           <img src="{{ URL::asset('halaman_awal/assets/img/clients/client-2.png') }}" class="img-fluid" alt="">
@@ -124,27 +124,24 @@
 
       <div class="row">
       @foreach ($event as $e)
-      <div class="col-lg-12 mt-4">
+      <div class="col-lg-6 mt-4">
           <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="{{ $loop->iteration }}00">
             <div>
-              <h5>{{ $e->nama_event }}</h5>
-              <small style="color: gray"> {{ $e->tanggal_mulai }}</small>
               <img src="http://placehold.it/150x100" data-original="{{ URL::asset('foto/brosur/'.$e->foto_brosur) }}"
-                class="lazy img-fluid">
-                
-              <p>{{ $e->deskripsi }}</p>
+                class="lazy img-fluid" style="cursor: pointer;"
+                onclick="javascript:location.href=`{{route('index')}}/show/{{ $e->id }}`">
             </div>
-            <!-- <div class="member-info">
+            <div class="member-info">
               <h4>{{ $e->nama_event }}</h4>
               <small style="color: gray"> {{ $e->tanggal_mulai }}</small>
-              <p>{{ $e->deskripsi }}</p>
+              <p>{{ substr($e->deskripsi,0,20) }}<a href="{{route('index')}}/show/{{ $e->id }}">...Readmore</a></p>
               <div class="social">
                 <a href="javascript:;"><i class="ri-twitter-fill"></i></a>
                 <a href="javascript:;"><i class="ri-facebook-fill"></i></a>
                 <a href="javascript:;"><i class="ri-instagram-fill"></i></a>
                 <a href="javascript:;"> <i class="ri-linkedin-box-fill"></i> </a>
               </div>
-            </div> -->
+            </div>
           </div>
         </div>
       @endforeach

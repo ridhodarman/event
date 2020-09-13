@@ -55,6 +55,32 @@
                             <td>Asal:</td>
                             <td>{{$tiket->asal}}</td>
                         </tr>
+                        @php
+                            try {
+                                $no = substr($tiket->no_wa, 0, -3)."***";
+                            }
+                            catch (Exception $e) {
+                                $no = $tiket->no_wa;
+                            }
+                        @endphp
+                        <tr>
+                            <td>No. WA:</td>
+                            <td>{{$no}}</td>
+                        </tr>
+                        @php
+                            try {
+                                $email = explode("@", $tiket->e_mail);
+                                $e = substr($email[0], 0, -3)."***";
+                                $e2 = $e."@".$email[1];
+                            }
+                            catch (Exception $e) {
+                                $e2 = $tiket->e_mail;
+                            }
+                        @endphp
+                        <tr>
+                            <td>Email:</td>
+                            <td>{{$e2}}</td>
+                        </tr>
                         <tr>
                             <td>Event:</td>
                             <td>{{$tiket->nama_event}}</td>

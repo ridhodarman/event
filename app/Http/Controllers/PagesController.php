@@ -20,7 +20,8 @@ class PagesController extends Controller
 
     public function index()
     {
-        $event = Event::select('id','nama_event', 'tanggal_mulai', 'deskripsi', 'foto_brosur')->orderBy('tanggal_mulai', 'desc')->get();
+        $tgl = date('Y-m-d');
+        $event = Event::select('id','nama_event', 'tanggal_mulai', 'deskripsi', 'foto_brosur')->where('tanggal_mulai', '>=', $tgl)->orderBy('tanggal_mulai')->get();
         $faq = Faq::select('tanya', 'jawab')->orderBy('urutan')->get();
         return view ('index',['event' => $event, 'faq' => $faq]);
     }
