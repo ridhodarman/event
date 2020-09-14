@@ -40,7 +40,7 @@
         <span class="time"><i class="fa fa-clock-o"></i>{{ $hari }} hari lagi</span>
         <h3 class="timeline-header"><a href="javascript:;">{{ $e->nama_event }}</a> .</h3>
         <div class="timeline-body">
-          <img src="http://placehold.it/150x100" data-original="{{ URL::asset('foto/brosur/'.$e->foto_brosur) }}"
+          <img src="{{ URL::asset('assets/150x100.png') }}" data-original="{{ URL::asset('foto/brosur/'.$e->foto_brosur) }}"
             class="lazy" width="100px" onclick="window.open(`{{ URL::asset('foto/brosur/'.$e->foto_brosur) }}`)" style="cursor: pointer;">
           {{ substr($e->deskripsi,0,200) }}... <a href="{{route('index')}}/show/{{ $e->id }}" target="_blank">Readmore</a><br /> <br />
           <a href="{{ route('tiket') }}/event/{{$e->id}}">
@@ -68,7 +68,7 @@
   @if($a->no_whatsapp)
 
   @else
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <script src="{{ URL::asset('agen_page/jquery.min.js') }}" type="text/javascript"></script>
   <div class="modal fade" id="exampleModal-profil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">

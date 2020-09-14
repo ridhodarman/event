@@ -23,7 +23,7 @@
                 <li><a href="{{ route('register') }}">Sign Up</a></li>
               </ul>
             </li>
-            <li><a href="https://api.whatsapp.com/send?phone=6282283493446&text=Hai admin, saya ingin bertanya tentang qosin event" target="_blank">Tanya admin</a></li>
+            <li><a href="https://api.whatsapp.com/send?phone=6281371855757&text=Hai admin, saya ingin bertanya tentang qosin event" target="_blank">Tanya admin</a></li>
           </ul>
         </li>
         <!-- <li><a href="{{route('cek')}}" target="_blank">Cek Tiket</a></li> -->
@@ -53,7 +53,7 @@
       <div class="row">
         <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
             <div class="php-email-form">
-                <img src="http://placehold.it/150x100" data-original="{{ URL::asset('foto/brosur/'.$event->foto_brosur) }}"
+                <img src="{{ URL::asset('assets/150x100.png') }}" data-original="{{ URL::asset('foto/brosur/'.$event->foto_brosur) }}"
                 class="lazy img-fluid">
             </div>
           </div>

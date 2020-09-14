@@ -69,6 +69,7 @@ Route::middleware(['AksesAgen'])->group(function () {
     Route::get('/agen/tiket/{tiket}', 'TiketsController@show');
     Route::patch('/agen/tiket/{tiket}', 'TiketsController@update');
     Route::delete('/agen/tiket/{tiket}', 'TiketsController@destroy');
+    Route::get('/agen/tiket/print/{kode}', 'PagesController@print');
     Route::get('/profil', 'PagesController@profil')->name('profil');
     Route::patch('/profil', 'PagesController@edit_profil');
     Route::patch('/profil', 'PagesController@edit_profil');

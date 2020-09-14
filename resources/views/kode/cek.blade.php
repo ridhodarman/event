@@ -57,7 +57,7 @@
                         </tr>
                         @php
                             try {
-                                $no = substr($tiket->no_wa, 0, -3)."***";
+                                $no = "+62".substr($tiket->no_wa, 0, -3)."***";
                             }
                             catch (Exception $e) {
                                 $no = $tiket->no_wa;
@@ -66,7 +66,6 @@
                         <tr>
                             <td>No. WA:</td>
                             <td>
-                                @if ($tiket->no_wa) +62 @endif
                                 {{$no}}
                             </td>
                         </tr>
@@ -96,11 +95,11 @@
 
                     </tbody>
                 </table>
-
+                <p> Username dan password Webinar & Talkshow internasional akan dikirim pada H-1 acara via e-mail</p>
                 @else
                 <span class="contact1-form-title" style="color: orange">
                     Tiket Anda Belum Terdaftar <br />
-                    <small>Silah cek kembali tiket anda, atau hubungi admin/agen</small>
+                    <small>Silah cek kembali tiket anda, atau hubungi admin/panitian</small>
                 </span>
                 @endif
 
@@ -158,7 +157,7 @@ f={{$f}}&
                                 <br />
                                 <p>
                                     <small>
-                                        CP Agen: {{$tiket->name}} ({{ $tiket->no_whatsapp }})
+                                        CP Panitia: {{$tiket->name}} ({{ $tiket->no_whatsapp }})
                                     </small>
                                 </p>
                             </td>

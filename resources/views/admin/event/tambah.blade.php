@@ -21,7 +21,7 @@
     <form class="forms-sample" action="{{ route('event') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Nama Jenis</label>
+            <label class="col-sm-2 col-form-label">Nama </label>
             <div class="col-sm-10">
                 <input type="text" name="nama_event" class="form-control @error('nama_event') is-invalid @enderror"
                     value="{{ old('nama_event') }}">

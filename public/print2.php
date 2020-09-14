@@ -73,10 +73,11 @@ height:1%;
         	&nbsp;
         </div>
         	<div style="float: right;">
-        		<?php echo base64_decode($_GET['n']); ?> <br/>
-        		<small> Tiket: <?php echo base64_decode($_GET['k']); ?> </small><br/>
-        		<small style="font-size: 70%"> <?php echo base64_decode($_GET['e']); ?> </small><br/>
-        		Kode Tiket: <b><?php echo base64_decode($_GET['k']); ?></b> <br/>
+        		<small><?php echo base64_decode($_GET['n']); ?> <br/></small>
+        		<small style="font-size: 73%"> Asal: <?php echo base64_decode($_GET['a']); ?> </small><br/>
+        		<small style="font-size: 73%"> No. Whatsapp: <?php echo base64_decode($_GET['w']); ?> </small><br/>
+            <small style="font-size: 73%"> Email: <?php echo base64_decode($_GET['e']); ?> </small><br/>
+        		<small>Kode Tiket: <b><?php echo base64_decode($_GET['k']); ?></b></small> <br/>
         	
 <?php
         
@@ -95,7 +96,7 @@ height:1%;
             //ECC Level
             $level=QR_ECLEVEL_H;
             //Ukuran pixel
-            $UkuranPixel=2;
+            $UkuranPixel=1.8;
             //Ukuran frame
             $UkuranFrame=0;
 
@@ -103,7 +104,7 @@ height:1%;
 
             echo '<img src="'.$tempdir.$namaFile.'" />';  
         	$cek = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]"."/cek-tiket";
-        	echo "<br/><small>Scan QR Code atau verifikasi tiket di: <a href='".$cek."' target='_blank'><u>".$cek."</u></a></small>";
+        	echo "<br/><small style='font-size: 75%''>Scan QR Code atau verifikasi tiket di:<br> <a href='".$cek."' target='_blank'><u>".$cek."</u></a></small>";
         ?>
 
         	</div>

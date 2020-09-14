@@ -1,7 +1,7 @@
 @extends('agen.inc.layout')
 
 @section('content')
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="{{ URL::asset('agen_page/jquery.min.js') }}" type="text/javascript"></script>
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <ol class="breadcrumb" style="padding-right: 100px;">
@@ -202,18 +202,36 @@
             $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]"."/kode_tiket/".$tiket->kode_tiket;
             $link = base64_encode($link);
             $n = base64_encode($tiket->nama_peserta);
-            $e = base64_encode($tiket->nama_event);
-            $t = base64_encode($tiket->nama_tiket);
+            $a = base64_encode($tiket->asal);
+            //$w = base64_encode($tiket->no_wa);
+            $e = base64_encode($tiket->email);
             $k = base64_encode($tiket->kode_tiket);
             $f = base64_encode($tiket->foto_tiket);
+
+            try {
+                $w = base64_encode( "+62".substr($tiket->no_wa, 0, -3)."***" );
+            }
+            catch (Exception $e) {
+                $w = base64_encode( $tiket->no_wa );
+            }
+
+            try {
+                $email = explode("@", $tiket->e_mail);
+                $e = substr($email[0], 0, -3)."***";
+                $e = base64_encode( $e."@".$email[1] );
+            }
+            catch (Exception $e) {
+                $e = base64_encode( $tiket->e_mail );
+            }
         @endphp
         <div class="col-sm-6">
             <a class="btn btn-social btn-github" 
                 href="{{ route('index') }}/print2.php?
 link={{$link}}&
 n={{$n}}&
+a={{$a}}&
+w={{$w}}&
 e={{$e}}&
-t={{$t}}&
 k={{$k}}&
 f={{$f}}&
                     " 
@@ -271,9 +289,7 @@ f={{$f}}&
                             <label> Pesan </label>
                             <textarea class="form-control" id="pesan_wa">
 Hi {{ $tiket->nama_peserta }}. 
-Anda sudah terdaftar pada event "{{ $tiket->nama_event }}." 
 Kode tiket anda adalah: {{ $tiket->kode_tiket }} .
-
 Untuk validasi atau cek tiket dapat dilakukan melalui link: 
 {{ $cek = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]"."/cek-tiket" }}
                             </textarea>

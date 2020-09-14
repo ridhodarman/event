@@ -39,7 +39,7 @@ class PagesController extends Controller
 
     public function penjualan()
     {
-        $event = Event::select('id','nama_event', 'tanggal_mulai', 'deskripsi', 'foto_brosur')->orderBy('tanggal_mulai')->get();
+        $event = Event::select('id','nama_event', 'tanggal_mulai', 'deskripsi', 'foto_brosur')->orderBy('tanggal_mulai', 'desc')->get();
         return view ('agen.tiket.penjualan',['event' => $event]);
     }
 
@@ -147,5 +147,21 @@ class PagesController extends Controller
                         ->orderBy('tikets.created_at')->get();
         //return $tiket;
         return view ('admin.tiket.index',['tiket' => $tiket]);
+    }
+
+    public function print($kode) {
+        $tiket = Tiket::select('tikets.*', 'jenis_tikets.nama_tiket', 'events.nama_event', 
+                                'jenis_tikets.event_id', 'jenis_tikets.foto_tiket'
+                                )
+                    ->join('jenis_tikets', 'jenis_tikets.id', '=', 'tikets.jenis_tiket')
+                    ->join('events', 'events.id', '=', 'jenis_tikets.event_id')
+                    ->where('tikets.kode_tiket', '=', $kode)
+                    ->first();
+
+        if (!$tiket) {
+            return "tiket tidak ditemukan";
+        }
+        
+        return view ('agen.tiket.print',['tiket' => $tiket]);
     }
 }

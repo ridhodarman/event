@@ -2,6 +2,7 @@
 
 @section('content')
 <!-- Content Header (Page header) -->
+<script src="{{ URL::asset('agen_page/jquery.min.js') }}" type="text/javascript"></script>
 <section class="content-header">
     <h1>
         Penjualan Tiket
@@ -16,14 +17,13 @@
 <script>
     swal("success!", "{!! session('status') !!}", "success");
 </script>
-@else if (session('hapus'))
+@elseif (session('hapus'))
 <script>
     swal("{!! session('hapus') !!}");
 </script>
 @endif
 <!-- Main content -->
 <section class="content">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <div class="table-responsive">
         <div class="box">
             <table id="example" class="table table-striped table-bordered table-hover display">
@@ -39,7 +39,7 @@
                     @foreach ($event as $e)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{$e->nama_event}}</td>
+                        <td>{{ $e->nama_event }}</td>
                         <td>{{ $e->tanggal_mulai }}</td>
                         <td>
                             <a href="{{ route('tiket') }}/event/{{$e->id}}">

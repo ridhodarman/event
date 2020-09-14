@@ -40,14 +40,14 @@
   @yield('content')
   <div class="container footer-bottom clearfix">
     <div class="copyright">
-      &copy;  <strong><span> </span></strong>. Some Rights Reserved
+      &copy;  <strong><span> </span></strong> Some Rights Reserved
     </div>
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-      Designed by <a href="#">BootstrapMade</a>
+       <a href="#">.</a>
     </div>
   </div>
   </footer><!-- End Footer -->

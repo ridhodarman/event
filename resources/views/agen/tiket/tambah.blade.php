@@ -105,7 +105,11 @@
                                             <h4 class="modal-title">{{ $j->nama_tiket }}</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <p>{{ $j->keterangan }}</p>
+                                            @php $paragraphs = explode(PHP_EOL, $j->keterangan); @endphp
+                                            @foreach($paragraphs as $paragraph)
+                                                <p>{{{ $paragraph }}}</p>
+                                            @endforeach
+                                            <strong>Harga:</strong>
                                             <p>Rp. {{ $j->harga }}</p>
                                             <a href="{{ URL::asset('foto/tiket/'.$j->foto_tiket) }}" target="_blank">
                                                 view tiket <i class="fa fa-unlink"></i>

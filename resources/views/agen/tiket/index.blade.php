@@ -19,7 +19,7 @@
 @endif
 <!-- Main content -->
 <section class="content">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="{{ URL::asset('agen_page/jquery.min.js') }}" type="text/javascript"></script>
     <div class="table-responsive">
         <div class="box">
             <table id="example" class="table table-striped table-bordered table-hover display">
