@@ -166,7 +166,7 @@ class EventsController extends Controller
 			'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4000|unique:events,foto_brosur,required'
 		]);
         $file = $request->file('file');
-        $nama2 = preg_replace('/[^A-Za-z0-9\-]/', '', $request->nama_event);
+        $nama2 = preg_replace('/[^A-Za-z0-9\-]/', '', $event->nama_event);
         $nama_file = $nama2."_".time().".".$file->getClientOriginalExtension();
         $tujuan_upload = 'foto/brosur';
         $file->move($tujuan_upload,$nama_file);

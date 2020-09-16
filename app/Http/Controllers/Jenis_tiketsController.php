@@ -163,7 +163,7 @@ class Jenis_tiketsController extends Controller
 			'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4000|unique:jenis_tikets,foto_tiket,required'
 		]);
         $file = $request->file('file');
-        $nama2 = preg_replace('/[^A-Za-z0-9\-]/', '', $request->nama_tiket);
+        $nama2 = preg_replace('/[^A-Za-z0-9\-]/', '', $jenis_tiket->nama_tiket);
         $nama_file = $jenis_tiket->event_id."-".$nama2."_".time().".".$file->getClientOriginalExtension();
         $tujuan_upload = 'foto/tiket';
         $file->move($tujuan_upload,$nama_file);

@@ -144,9 +144,22 @@ class PagesController extends Controller
                         ->join('events', 'events.id', '=', 'jenis_tikets.event_id')
                         ->join('agens', 'agens.id', '=', 'tikets.agen_id')
                         ->join('users', 'users.id', '=', 'agens.user_id')
-                        ->orderBy('tikets.created_at')->get();
+                        ->orderBy('tikets.created_at', 'desc')->get();
         //return $tiket;
         return view ('admin.tiket.index',['tiket' => $tiket]);
+    }
+
+    public function tiket_info($id) {
+        $tiket = Tiket::select('tikets.*', 'nama_tiket', 'nama_event', 'event_id', 'foto_tiket',
+                                'name', 'no_whatsapp', 'email'
+                        )
+                        ->join('jenis_tikets', 'jenis_tikets.id', '=', 'tikets.jenis_tiket')
+                        ->join('events', 'events.id', '=', 'jenis_tikets.event_id')
+                        ->join('agens', 'agens.id', '=', 'tikets.agen_id')
+                        ->join('users', 'users.id', '=', 'agens.user_id')
+                        ->where('tikets.id', $id)->first();
+        //return $tiket;
+        return view ('admin.tiket.show',['tiket' => $tiket]);
     }
 
     public function print($kode) {

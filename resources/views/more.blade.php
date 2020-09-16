@@ -63,7 +63,7 @@
             <div class="member-info">
               <h4>{{ $e->nama_event }}</h4>
               <small style="color: gray"> {{ $e->tanggal_mulai }}</small>
-              <p>{{ substr($e->deskripsi,0,20) }}<a href="{{route('index')}}/show/{{ $e->id }}">...Readmore</a></p>
+              <p>{{ substr($e->deskripsi,0,20) }}<a href="{{route('index')}}/show/{{ $e->id }}" target="_blank">...Readmore</a></p>
               <div class="social">
                 <a href="javascript:;"><i class="ri-twitter-fill"></i></a>
                 <a href="javascript:;"><i class="ri-facebook-fill"></i></a>

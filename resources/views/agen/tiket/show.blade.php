@@ -59,7 +59,12 @@
                             </tr>
                             <tr>
                                 <td>Keterangan:</td>
-                                <td>{!! $tiket->keterangan !!}</td>
+                                <td>
+                                    @php $paragraphs = explode(PHP_EOL, $tiket->keterangan); @endphp
+                                    @foreach($paragraphs as $paragraph)
+                                        {{{ $paragraph }}}<br/>
+                                    @endforeach
+                                </td>
                             </tr>
                             <tr>
                                 <td>Dibuat Pada:</td>

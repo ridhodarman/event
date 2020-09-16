@@ -12,10 +12,11 @@
                 <tr>
                     <th>No</th>
                     <th>Nama Peserta</th>
+                    <th>Tiket</th>
                     <th>Event</th>
-                    <th>Jenis Tiket</th>
                     <th>Tanggal Input</th>
                     <th>Agen</th>
+                    <th>-</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,10 +24,15 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{$t->nama_peserta}}</td>
-                    <td>{{$t->nama_event}}</td>
                     <td>{{$t->nama_tiket}}</td>
+                    <td>{{$t->nama_event}}</td>
                     <td>{{$t->created_at}}</td>
                     <td>{{$t->name}}</td>
+                    <td>
+                        <a href="{{route('tiket2')}}/show/{{ $t->id }}">
+                            <button class="btn btn-xs" title="lihat detail"><span class="glyphicon glyphicon-folder-open"></span></button>
+                        </a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

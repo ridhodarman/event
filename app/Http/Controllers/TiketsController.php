@@ -25,7 +25,7 @@ class TiketsController extends Controller
                         ->join('jenis_tikets', 'jenis_tikets.id', '=', 'tikets.jenis_tiket')
                         ->join('events', 'events.id', '=', 'jenis_tikets.event_id')
                         ->where('agen_id', '=', $agen->id)
-                        ->orderBy('tikets.created_at')->get();
+                        ->orderBy('tikets.created_at', 'desc')->get();
         //return $tiket;
         return view ('agen.tiket.index',['tiket' => $tiket]);
     }
@@ -136,6 +136,13 @@ class TiketsController extends Controller
      */
     public function update(Request $request, Tiket $tiket)
     {
+        if (Auth::check()) { $user = Auth::user()->id; }
+        $agen = Agen::select('id')->where('user_id', $user)->first();
+
+        if ($tiket->agen_id != $agen->id) {
+            return "agen tidak valid";
+        }
+
         //return $request;
         $request->validate([
             'nama_peserta' => 'required|not_regex:/`/i',
@@ -164,6 +171,14 @@ class TiketsController extends Controller
      */
     public function destroy(Tiket $tiket)
     {
+        if (Auth::check()) { $user = Auth::user()->id; }
+        $agen = Agen::select('id')->where('user_id', $user)->first();
+
+        if ($tiket->agen_id != $agen->id) {
+            return "agen tidak valid";
+        }
+        
+        
         $tiket = Tiket::find($tiket->id);
         $tiket->delete();
 
