@@ -84,16 +84,15 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"
-                                        aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
                                     <h4 class="modal-title">Hapus Tiket</h4>
                                 </div>
                                 <div class="modal-body">
                                     Yakin hapus tiket ini?
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default"
-                                        data-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                     &emsp;
                                     <form action="" method="POST" class="d-inline" style="float: right">
                                         @method('delete')
@@ -123,37 +122,40 @@
                                     </div>
                                     <div class="modal-body">
                                         <label>Nama Peserta</label>
-                                        <input type="text" class="form-control" name="nama_peserta" value="{{$tiket->nama_peserta}}"/>
+                                        <input type="text" class="form-control" name="nama_peserta"
+                                            value="{{$tiket->nama_peserta}}" />
                                         @error('nama_peserta')
                                         <div class="alert alert-danger">
                                             {{ $message }}
                                         </div>
                                         <script>$(document).ready(function () { $('#exampleModal-edit').modal('show'); });</script>
                                         @enderror
-                                        <br/>
+                                        <br />
                                         <label>Jenis Tiket</label>
                                         <select class="form-control" id="jenis" name="jenis_tiket">
                                             @foreach ($jenis as $j)
                                             <option value="{{ $j->id }}">{{ $j->nama_tiket }}</option>
                                             @endforeach
                                         </select>
-                                        <br/>
+                                        <br />
                                         <label>Asal</label>
-                                        <input type="text" class="form-control" name="asal" value="{{ old('asal', $tiket->asal) }}"/>
+                                        <input type="text" class="form-control" name="asal"
+                                            value="{{ old('asal', $tiket->asal) }}" />
                                         @error('asal')
                                         <div class="alert alert-danger">
                                             {{ $message }}
                                         </div>
                                         <script>$(document).ready(function () { $('#exampleModal-edit').modal('show'); });</script>
                                         @enderror
-                                        <br/>
+                                        <br />
                                         <div class="form-group">
                                             <label>No. Whatsapp</label>
                                             <div class="input-group">
                                                 <span class="input-group-addon">+62</span>
-                                                <input type="text" class="form-control" placeholder="8xxxxxxx" 
-                                                name="no_wa" class="form-control @error('no_wa') is-invalid @enderror"
-                                                value="{{ old('no_wa', $tiket->no_wa) }}"/>
+                                                <input type="text" class="form-control" placeholder="8xxxxxxx"
+                                                    name="no_wa"
+                                                    class="form-control @error('no_wa') is-invalid @enderror"
+                                                    value="{{ old('no_wa', $tiket->no_wa) }}" />
                                             </div>
                                             @error('no_wa')
                                             <div class="alert alert-danger">
@@ -162,13 +164,12 @@
                                             <script>$(document).ready(function () { $('#exampleModal-edit').modal('show'); });</script>
                                             @enderror
                                         </div>
-                        
+
                                         <div class="form-group">
                                             <label>E-mail</label>
-                                            <input type="text" class="form-control"
-                                                placeholder="" 
-                                                name="e_mail" class="form-control @error('e_mail') is-invalid @enderror"
-                                                value="{{ old('e_mail', $tiket->e_mail) }}"/>
+                                            <input type="text" class="form-control" placeholder="" name="e_mail"
+                                                class="form-control @error('e_mail') is-invalid @enderror"
+                                                value="{{ old('e_mail', $tiket->e_mail) }}" />
                                             @error('e_mail')
                                             <div class="alert alert-danger">
                                                 {{ $message }}
@@ -176,9 +177,10 @@
                                             <script>$(document).ready(function () { $('#exampleModal-edit').modal('show'); });</script>
                                             @enderror
                                         </div>
-                                        <br/>
+                                        <br />
                                         <label>Keterangan</label>
-                                        <textarea class="form-control" name="keterangan">{{$tiket->keterangan}}</textarea>
+                                        <textarea class="form-control"
+                                            name="keterangan">{{$tiket->keterangan}}</textarea>
                                         @error('keterangan')
                                         <div class="alert alert-danger">
                                             {{ $message }}
@@ -199,34 +201,34 @@
             </div>
         </div>
         @php
-            $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]"."/kode_tiket/".$tiket->kode_tiket;
-            $link = base64_encode($link);
-            $n = base64_encode($tiket->nama_peserta);
-            $a = base64_encode($tiket->asal);
-            //$w = base64_encode($tiket->no_wa);
-            $e = base64_encode($tiket->email);
-            $k = base64_encode($tiket->kode_tiket);
-            $f = base64_encode($tiket->foto_tiket);
+        $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") .
+        "://$_SERVER[HTTP_HOST]"."/kode_tiket/".$tiket->kode_tiket;
+        $link = base64_encode($link);
+        $n = base64_encode($tiket->nama_peserta);
+        $a = base64_encode($tiket->asal);
+        //$w = base64_encode($tiket->no_wa);
+        $e = base64_encode($tiket->email);
+        $k = base64_encode($tiket->kode_tiket);
+        $f = base64_encode($tiket->foto_tiket);
 
-            try {
-                $w = base64_encode( "+62".substr($tiket->no_wa, 0, -3)."***" );
-            }
-            catch (Exception $e) {
-                $w = base64_encode( $tiket->no_wa );
-            }
+        try {
+        $w = base64_encode( "+62".substr($tiket->no_wa, 0, -3)."***" );
+        }
+        catch (Exception $e) {
+        $w = base64_encode( $tiket->no_wa );
+        }
 
-            try {
-                $email = explode("@", $tiket->e_mail);
-                $e = substr($email[0], 0, -3)."***";
-                $e = base64_encode( $e."@".$email[1] );
-            }
-            catch (Exception $e) {
-                $e = base64_encode( $tiket->e_mail );
-            }
+        try {
+        $email = explode("@", $tiket->e_mail);
+        $e = substr($email[0], 0, -3)."***";
+        $e = base64_encode( $e."@".$email[1] );
+        }
+        catch (Exception $e) {
+        $e = base64_encode( $tiket->e_mail );
+        }
         @endphp
         <div class="col-sm-6">
-            <a class="btn btn-social btn-github" 
-                href="{{ route('index') }}/print2.php?
+            <a class="btn btn-social btn-github" href="{{ route('index') }}/print2.php?
 link={{$link}}&
 n={{$n}}&
 a={{$a}}&
@@ -234,8 +236,7 @@ w={{$w}}&
 e={{$e}}&
 k={{$k}}&
 f={{$f}}&
-                    " 
-                target="_blank">
+                    " target="_blank">
                 <i class="fa fa-barcode"></i> Print Tiket
             </a>
             <br /><br />
@@ -243,60 +244,71 @@ f={{$f}}&
                 data-target="#exampleModal-e">
                 <i class="fa fa-envelope"></i> Kirim tiket via E-mail
             </button>
-            <div class="modal fade" id="exampleModal-e" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal-e" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"
-                                aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title">Kirim tiket via E-mail</h4>
                         </div>
-                        <div class="modal-body">
-                            Masukkan E-mail
-                            <input type="text" class="form-control" placeholder="masukkan email peserta ..." value="{{$tiket->e_mail}}"/>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default"
-                                data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary"
-                                data-dismiss="modal">Kirim</button>
-                        </div>
+                        <form action="{{ url('/sendTiket') }}" method="post">
+                            {{ csrf_field() }}
+                            <div class="modal-body">
+                                E-mail:
+                                <input type="text" class="form-control" placeholder="masukkan email peserta ..."
+                                    value="{{$tiket->e_mail}}" name="email"/>
+                                <input type="" name="nama" value="{{$tiket->nama_peserta}}">
+                                <input type="" name="event" value="{{$tiket->nama_event}}">
+                                <input type="" name="kode" value="{{$tiket->kode_tiket}}">
+                                <input type="" name="tiket" value="{{$tiket->nama_tiket}}">
+                                <input type="" name="link" value="{{ route('index') }}/print2.php?
+link={{$link}}&
+n={{$n}}&
+a={{$a}}&
+w={{$w}}&
+e={{$e}}&
+k={{$k}}&
+f={{$f}}&">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Kirim</button>
+                            </div>
+                        </form>
                     </div><!-- /.modal-content -->
                 </div>
             </div>
             <br /><br />
-            <button type="button" class="btn btn-social btn-success" data-toggle="modal"
-                data-target="#exampleModal-wa">
+            <button type="button" class="btn btn-social btn-success" data-toggle="modal" data-target="#exampleModal-wa">
                 <i class="fa fa-whatsapp"></i> Kirim via WhatsApp
             </button>
-            <div class="modal fade" id="exampleModal-wa" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal-wa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"
-                                aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title">Kirim tiket via WhatsApp</h4>
                         </div>
                         <div class="modal-body">
                             <label> Masukkan nomor WhatsApp </label>
                             <div class="input-group">
                                 <span class="input-group-addon">+62</span>
-                                <input type="text" class="form-control" placeholder="8xxxxxxx" id="no_wa" value="{{$tiket->no_wa}}">
+                                <input type="text" class="form-control" placeholder="8xxxxxxx" id="no_wa"
+                                    value="{{$tiket->no_wa}}">
                             </div>
-                            <br/>
+                            <br />
                             <label> Pesan </label>
                             <textarea class="form-control" id="pesan_wa">
 Hi {{ $tiket->nama_peserta }}. 
 Kode tiket anda adalah: {{ $tiket->kode_tiket }} .
-Untuk validasi atau cek tiket dapat dilakukan melalui link: 
-{{ $cek = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]"."/cek-tiket" }}
                             </textarea>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default"
-                                data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                             <button type="button" class="btn btn-primary" onclick="kirim_wa()"
                                 data-dismiss="modal">Kirim</button>
                         </div>
@@ -307,23 +319,65 @@ Untuk validasi atau cek tiket dapat dilakukan melalui link:
     </diV>
 </section><!-- /.content -->
 
+
+<section class="main-section">
+    <!-- Add Your Content Inside -->
+    <div class="content">
+        <!-- Remove This Before You Start -->
+        @if(\Session::has('alert-failed'))
+        <div class="alert alert-failed">
+            <div>{{Session::get('alert-failed')}}</div>
+        </div>
+        @endif
+        @if(\Session::has('alert-success'))
+        <div class="alert alert-success">
+            <div>{{Session::get('alert-success')}}</div>
+        </div>
+        @endif
+        <form action="{{ url('/sendEmail') }}" method="post">
+            {{ csrf_field() }}
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="nama">Nama:</label>
+                <input type="text" class="form-control" id="name" name="nama" />
+            </div>
+            <div class="form-group">
+                <label for="judul">Judul:</label>
+                <input type="text" class="form-control" id="judul" name="judul" />
+            </div>
+            <div class="form-group">
+                <label for="pesan">Pesan:</label>
+                <textarea class="form-control" id="pesan" name="pesan"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-md btn-primary">Send Email</button>
+            </div>
+        </form>
+    </div>
+    <!-- /.content -->
+</section>
+
+
 @php
-    echo '
-        <script>
-            let jenis ='.$tiket->jenis.'
-        </script>
-    '
+echo '
+<script>
+    let jenis = '.$tiket->jenis.'
+</script>
+'
 @endphp
 
 <script>
 
-    function kirim_wa(){
+    function kirim_wa() {
         let nomor = document.getElementById("no_wa").value;
         let pesan = document.getElementById("pesan_wa").value;
-        window.open(`https://api.whatsapp.com/send?phone=62${nomor}&text=${pesan}`); 
+        window.open(`https://api.whatsapp.com/send?phone=62${nomor}&text=${pesan}`);
     }
 
-    $( document ).ready(function() {
+    $(document).ready(function () {
         $("#jenis").val(jenis);
     });
 </script>

@@ -73,6 +73,11 @@ Route::middleware(['AksesAgen'])->group(function () {
     Route::get('/profil', 'PagesController@profil')->name('profil');
     Route::patch('/profil', 'PagesController@edit_profil');
     Route::patch('/profil', 'PagesController@edit_profil');
+
+    Route::get('/email', function () {
+        return view('send_email');
+    });
+    Route::post('/sendTiket', 'Email@sendTiket');
 });
 
 Route::get('/cek-tiket', function () { return view('kode.index'); })->name('cek');
