@@ -28,8 +28,8 @@
                 @csrf
                 <!-- text input -->
                 <div class="form-group">
-                    <label>Nama Peserta</label>
-                    <input type="text" placeholder="nama lengkap peserta seminar/event..."
+                    <label>Nama Lengkap</label>
+                    <input type="text" placeholder="masukkan nama lengkap peserta (untuk cetak sertifikat)"
                         name="nama_peserta" class="form-control @error('nama_peserta') is-invalid @enderror"
                         value="{{ old('nama_peserta') }}"/>
                     @error('nama_peserta')

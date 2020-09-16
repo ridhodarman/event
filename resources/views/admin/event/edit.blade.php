@@ -58,9 +58,22 @@
                 @enderror
             </div>
         </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Informasi</label>
+            <div class="col-sm-10">
+                <textarea class="form-control @error('informasi') is-invalid @enderror" name="informasi"
+                                placeholder="">{{ old('informasi', $event->informasi) }}</textarea>
+                @error('informasi')
+                <div class="alert alert-danger">
+                    {{ $message }}
+                </div>
+                @enderror
+            </div>
+        </div>
         
         <div style="float: right;">
-            <button type="submit" class="btn btn-primary mr-2">Edit</button>
+            <button type="submit" class="btn btn-primary mr-2">Save</button>
         </div>
     </form>
 

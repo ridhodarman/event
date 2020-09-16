@@ -1,361 +1,877 @@
-<!doctype html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Boardicle Email</title>
-    <style>
-        /* -------------------------------------
-            GLOBAL RESETS
-        ------------------------------------- */
-        img {
-            border: none;
-            -ms-interpolation-mode: bicubic;
-            max-width: 100%; }
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--[if IE]><html xmlns="http://www.w3.org/1999/xhtml" class="ie"><![endif]-->
+<!--[if !IE]><!-->
+<html style="margin: 0;padding: 0;" xmlns="http://www.w3.org/1999/xhtml">
+<!--<![endif]-->
 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <!--[if !mso]><!-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--<![endif]-->
+    <meta name="viewport" content="width=device-width" />
+    <style type="text/css">
+        @media only screen and (min-width: 620px) {
+            .wrapper {
+                min-width: 600px !important
+            }
+
+            .wrapper h1 {}
+
+            .wrapper h1 {
+                font-size: 26px !important;
+                line-height: 34px !important
+            }
+
+            .wrapper h2 {}
+
+            .wrapper h3 {}
+
+            .column {}
+
+            .wrapper .size-8 {
+                font-size: 8px !important;
+                line-height: 14px !important
+            }
+
+            .wrapper .size-9 {
+                font-size: 9px !important;
+                line-height: 16px !important
+            }
+
+            .wrapper .size-10 {
+                font-size: 10px !important;
+                line-height: 18px !important
+            }
+
+            .wrapper .size-11 {
+                font-size: 11px !important;
+                line-height: 19px !important
+            }
+
+            .wrapper .size-12 {
+                font-size: 12px !important;
+                line-height: 19px !important
+            }
+
+            .wrapper .size-13 {
+                font-size: 13px !important;
+                line-height: 21px !important
+            }
+
+            .wrapper .size-14 {
+                font-size: 14px !important;
+                line-height: 21px !important
+            }
+
+            .wrapper .size-15 {
+                font-size: 15px !important;
+                line-height: 23px !important
+            }
+
+            .wrapper .size-16 {
+                font-size: 16px !important;
+                line-height: 24px !important
+            }
+
+            .wrapper .size-17 {
+                font-size: 17px !important;
+                line-height: 26px !important
+            }
+
+            .wrapper .size-18 {
+                font-size: 18px !important;
+                line-height: 26px !important
+            }
+
+            .wrapper .size-20 {
+                font-size: 20px !important;
+                line-height: 28px !important
+            }
+
+            .wrapper .size-22 {
+                font-size: 22px !important;
+                line-height: 31px !important
+            }
+
+            .wrapper .size-24 {
+                font-size: 24px !important;
+                line-height: 32px !important
+            }
+
+            .wrapper .size-26 {
+                font-size: 26px !important;
+                line-height: 34px !important
+            }
+
+            .wrapper .size-28 {
+                font-size: 28px !important;
+                line-height: 36px !important
+            }
+
+            .wrapper .size-30 {
+                font-size: 30px !important;
+                line-height: 38px !important
+            }
+
+            .wrapper .size-32 {
+                font-size: 32px !important;
+                line-height: 40px !important
+            }
+
+            .wrapper .size-34 {
+                font-size: 34px !important;
+                line-height: 43px !important
+            }
+
+            .wrapper .size-36 {
+                font-size: 36px !important;
+                line-height: 43px !important
+            }
+
+            .wrapper .size-40 {
+                font-size: 40px !important;
+                line-height: 47px !important
+            }
+
+            .wrapper .size-44 {
+                font-size: 44px !important;
+                line-height: 50px !important
+            }
+
+            .wrapper .size-48 {
+                font-size: 48px !important;
+                line-height: 54px !important
+            }
+
+            .wrapper .size-56 {
+                font-size: 56px !important;
+                line-height: 60px !important
+            }
+
+            .wrapper .size-64 {
+                font-size: 64px !important;
+                line-height: 63px !important
+            }
+        }
+    </style>
+    <meta name="x-apple-disable-message-reformatting" />
+    <style type="text/css">
         body {
-            background-color: #f6f6f6;
-            font-family: sans-serif;
-            -webkit-font-smoothing: antialiased;
-            font-size: 14px;
-            line-height: 1.4;
             margin: 0;
             padding: 0;
-            -ms-text-size-adjust: 100%;
-            -webkit-text-size-adjust: 100%; }
-
-        table {
-            border-collapse: separate;
-            mso-table-lspace: 0pt;
-            mso-table-rspace: 0pt;
-            width: 100%; }
-        table td {
-            font-family: sans-serif;
-            font-size: 14px;
-            vertical-align: top; }
-
-        /* -------------------------------------
-            BODY & CONTAINER
-        ------------------------------------- */
-
-        .body {
-            background-color: #f6f6f6;
-            width: 100%; }
-
-        /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
-        .container {
-            display: block;
-            Margin: 0 auto !important;
-            /* makes it centered */
-            max-width: 580px;
-            padding: 10px;
-            width: 580px; }
-
-        /* This should also be a block element, so that it will fill 100% of the .container */
-        .content {
-            box-sizing: border-box;
-            display: block;
-            Margin: 0 auto;
-            max-width: 580px;
-            padding: 10px; }
-
-        /* -------------------------------------
-            HEADER, FOOTER, MAIN
-        ------------------------------------- */
-        .main {
-            background: #ffffff;
-            border-radius: 3px;
-            width: 100%; }
-
-        .wrapper {
-            box-sizing: border-box;
-            padding: 20px; }
-
-        .content-block {
-            padding-bottom: 10px;
-            padding-top: 10px;
         }
 
-        .footer {
-            clear: both;
-            Margin-top: 10px;
-            text-align: center;
-            width: 100%; }
-        .footer td,
-        .footer p,
-        .footer span,
-        .footer a {
-            color: #999999;
-            font-size: 12px;
-            text-align: center; }
+        table {
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
 
-        /* -------------------------------------
-            TYPOGRAPHY
-        ------------------------------------- */
-        h1,
-        h2,
-        h3,
-        h4 {
-            color: #000000;
-            font-family: sans-serif;
-            font-weight: 400;
-            line-height: 1.4;
-            margin: 0;
-            Margin-bottom: 30px; }
+        * {
+            line-height: inherit;
+        }
 
-        h1 {
-            font-size: 35px;
-            font-weight: 300;
-            text-align: center;
-            text-transform: capitalize; }
+        [x-apple-data-detectors] {
+            color: inherit !important;
+            text-decoration: none !important;
+        }
 
-        p,
-        ul,
-        ol {
-            font-family: sans-serif;
-            font-size: 14px;
-            font-weight: normal;
-            margin: 0;
-            Margin-bottom: 15px; }
-        p li,
-        ul li,
-        ol li {
-            list-style-position: inside;
-            margin-left: 5px; }
+        .wrapper .footer__share-button a:hover,
+        .wrapper .footer__share-button a:focus {
+            color: #ffffff !important;
+        }
 
-        a {
-            color: #3498db;
-            text-decoration: underline; }
+        .btn a:hover,
+        .btn a:focus,
+        .footer__share-button a:hover,
+        .footer__share-button a:focus,
+        .email-footer__links a:hover,
+        .email-footer__links a:focus {
+            opacity: 0.8;
+        }
 
-        /* -------------------------------------
-            BUTTONS
-        ------------------------------------- */
-        .btn {
+        .preheader,
+        .header,
+        .layout,
+        .column {
+            transition: width 0.25s ease-in-out, max-width 0.25s ease-in-out;
+        }
+
+        .preheader td {
+            padding-bottom: 8px;
+        }
+
+        .layout,
+        div.header {
+            max-width: 400px !important;
+            -fallback-width: 95% !important;
+            width: calc(100% - 20px) !important;
+        }
+
+        div.preheader {
+            max-width: 360px !important;
+            -fallback-width: 90% !important;
+            width: calc(100% - 60px) !important;
+        }
+
+        .snippet,
+        .webversion {
+            Float: none !important;
+        }
+
+        .stack .column {
+            max-width: 400px !important;
+            width: 100% !important;
+        }
+
+        .fixed-width.has-border {
+            max-width: 402px !important;
+        }
+
+        .fixed-width.has-border .layout__inner {
             box-sizing: border-box;
-            width: 100%; }
-        .btn > tbody > tr > td {
-            padding-bottom: 15px; }
-        .btn table {
-            width: auto; }
-        .btn table td {
-            background-color: #ffffff;
-            border-radius: 5px;
-            text-align: center; }
-        .btn a {
-            background-color: #ffffff;
-            border: solid 1px #3498db;
-            border-radius: 5px;
-            box-sizing: border-box;
-            color: #3498db;
-            cursor: pointer;
-            display: inline-block;
-            font-size: 14px;
-            font-weight: bold;
-            margin: 0;
-            padding: 12px 25px;
-            text-decoration: none;
-            text-transform: capitalize; }
+        }
 
-        .btn-primary table td {
-            background-color: #3498db; }
+        .snippet,
+        .webversion {
+            width: 50% !important;
+        }
 
-        .btn-primary a {
-            background-color: #3498db;
-            border-color: #3498db;
-            color: #ffffff; }
+        .ie .btn {
+            width: 100%;
+        }
 
-        /* -------------------------------------
-            OTHER STYLES THAT MIGHT BE USEFUL
-        ------------------------------------- */
-        .last {
-            margin-bottom: 0; }
+        .ie .stack .column,
+        .ie .stack .gutter {
+            display: table-cell;
+            float: none !important;
+        }
 
-        .first {
-            margin-top: 0; }
+        .ie div.preheader,
+        .ie .email-footer {
+            max-width: 560px !important;
+            width: 560px !important;
+        }
 
-        .align-center {
-            text-align: center; }
+        .ie .snippet,
+        .ie .webversion {
+            width: 280px !important;
+        }
 
-        .align-right {
-            text-align: right; }
+        .ie div.header,
+        .ie .layout {
+            max-width: 600px !important;
+            width: 600px !important;
+        }
 
-        .align-left {
-            text-align: left; }
+        .ie .two-col .column {
+            max-width: 300px !important;
+            width: 300px !important;
+        }
 
-        .clear {
-            clear: both; }
+        .ie .three-col .column,
+        .ie .narrow {
+            max-width: 200px !important;
+            width: 200px !important;
+        }
 
-        .mt0 {
-            margin-top: 0; }
+        .ie .wide {
+            width: 400px !important;
+        }
 
-        .mb0 {
-            margin-bottom: 0; }
+        .ie .stack.fixed-width.has-border,
+        .ie .stack.has-gutter.has-border {
+            max-width: 602px !important;
+            width: 602px !important;
+        }
 
-        .preheader {
-            color: transparent;
+        .ie .stack.two-col.has-gutter .column {
+            max-width: 290px !important;
+            width: 290px !important;
+        }
+
+        .ie .stack.three-col.has-gutter .column,
+        .ie .stack.has-gutter .narrow {
+            max-width: 188px !important;
+            width: 188px !important;
+        }
+
+        .ie .stack.has-gutter .wide {
+            max-width: 394px !important;
+            width: 394px !important;
+        }
+
+        .ie .stack.two-col.has-gutter.has-border .column {
+            max-width: 292px !important;
+            width: 292px !important;
+        }
+
+        .ie .stack.three-col.has-gutter.has-border .column,
+        .ie .stack.has-gutter.has-border .narrow {
+            max-width: 190px !important;
+            width: 190px !important;
+        }
+
+        .ie .stack.has-gutter.has-border .wide {
+            max-width: 396px !important;
+            width: 396px !important;
+        }
+
+        .ie .fixed-width .layout__inner {
+            border-left: 0 none white !important;
+            border-right: 0 none white !important;
+        }
+
+        .ie .layout__edges {
             display: none;
-            height: 0;
-            max-height: 0;
-            max-width: 0;
-            opacity: 0;
-            overflow: hidden;
-            mso-hide: all;
-            visibility: hidden;
-            width: 0; }
+        }
 
-        .powered-by a {
-            text-decoration: none; }
+        .mso .layout__edges {
+            font-size: 0;
+        }
 
-        hr {
-            border: 0;
-            border-bottom: 1px solid #f6f6f6;
-            Margin: 20px 0; }
+        .layout-fixed-width,
+        .mso .layout-full-width {
+            background-color: #ffffff;
+        }
 
-        /* -------------------------------------
-            RESPONSIVE AND MOBILE FRIENDLY STYLES
-        ------------------------------------- */
-        @media only screen and (max-width: 620px) {
-            table[class=body] h1 {
-                font-size: 28px !important;
-                margin-bottom: 10px !important; }
-            table[class=body] p,
-            table[class=body] ul,
-            table[class=body] ol,
-            table[class=body] td,
-            table[class=body] span,
-            table[class=body] a {
-                font-size: 16px !important; }
-            table[class=body] .wrapper,
-            table[class=body] .article {
-                padding: 10px !important; }
-            table[class=body] .content {
-                padding: 0 !important; }
-            table[class=body] .container {
-                padding: 0 !important;
-                width: 100% !important; }
-            table[class=body] .main {
-                border-left-width: 0 !important;
-                border-radius: 0 !important;
-                border-right-width: 0 !important; }
-            table[class=body] .btn table {
-                width: 100% !important; }
-            table[class=body] .btn a {
-                width: 100% !important; }
-            table[class=body] .img-responsive {
-                height: auto !important;
-                max-width: 100% !important;
-                width: auto !important; }}
+        @media only screen and (min-width: 620px) {
 
-        /* -------------------------------------
-            PRESERVE THESE STYLES IN THE HEAD
-        ------------------------------------- */
-        @media all {
-            .ExternalClass {
-                width: 100%; }
-            .ExternalClass,
-            .ExternalClass p,
-            .ExternalClass span,
-            .ExternalClass font,
-            .ExternalClass td,
-            .ExternalClass div {
-                line-height: 100%; }
-            .apple-link a {
-                color: inherit !important;
-                font-family: inherit !important;
-                font-size: inherit !important;
-                font-weight: inherit !important;
-                line-height: inherit !important;
-                text-decoration: none !important; }
-            .btn-primary table td:hover {
-                background-color: #34495e !important; }
-            .btn-primary a:hover {
-                background-color: #34495e !important;
-                border-color: #34495e !important; } }
+            .column,
+            .gutter {
+                display: table-cell;
+                Float: none !important;
+                vertical-align: top;
+            }
 
+            div.preheader,
+            .email-footer {
+                max-width: 560px !important;
+                width: 560px !important;
+            }
+
+            .snippet,
+            .webversion {
+                width: 280px !important;
+            }
+
+            div.header,
+            .layout,
+            .one-col .column {
+                max-width: 600px !important;
+                width: 600px !important;
+            }
+
+            .fixed-width.has-border,
+            .fixed-width.x_has-border,
+            .has-gutter.has-border,
+            .has-gutter.x_has-border {
+                max-width: 602px !important;
+                width: 602px !important;
+            }
+
+            .two-col .column {
+                max-width: 300px !important;
+                width: 300px !important;
+            }
+
+            .three-col .column,
+            .column.narrow,
+            .column.x_narrow {
+                max-width: 200px !important;
+                width: 200px !important;
+            }
+
+            .column.wide,
+            .column.x_wide {
+                width: 400px !important;
+            }
+
+            .two-col.has-gutter .column,
+            .two-col.x_has-gutter .column {
+                max-width: 290px !important;
+                width: 290px !important;
+            }
+
+            .three-col.has-gutter .column,
+            .three-col.x_has-gutter .column,
+            .has-gutter .narrow {
+                max-width: 188px !important;
+                width: 188px !important;
+            }
+
+            .has-gutter .wide {
+                max-width: 394px !important;
+                width: 394px !important;
+            }
+
+            .two-col.has-gutter.has-border .column,
+            .two-col.x_has-gutter.x_has-border .column {
+                max-width: 292px !important;
+                width: 292px !important;
+            }
+
+            .three-col.has-gutter.has-border .column,
+            .three-col.x_has-gutter.x_has-border .column,
+            .has-gutter.has-border .narrow,
+            .has-gutter.x_has-border .narrow {
+                max-width: 190px !important;
+                width: 190px !important;
+            }
+
+            .has-gutter.has-border .wide,
+            .has-gutter.x_has-border .wide {
+                max-width: 396px !important;
+                width: 396px !important;
+            }
+        }
+
+        @supports (display: flex) {
+            @media only screen and (min-width: 620px) {
+                .fixed-width.has-border .layout__inner {
+                    display: flex !important;
+                }
+            }
+        }
+
+        @media only screen and (-webkit-min-device-pixel-ratio: 2),
+        only screen and (min--moz-device-pixel-ratio: 2),
+        only screen and (-o-min-device-pixel-ratio: 2/1),
+        only screen and (min-device-pixel-ratio: 2),
+        only screen and (min-resolution: 192dpi),
+        only screen and (min-resolution: 2dppx) {
+            .fblike {
+                background-image: url(https://i7.createsend1.com/static/eb/master/13-the-blueprint-3/images/fblike@2x.png) !important;
+            }
+
+            .tweet {
+                background-image: url(https://i8.createsend1.com/static/eb/master/13-the-blueprint-3/images/tweet@2x.png) !important;
+            }
+
+            .linkedinshare {
+                background-image: url(https://i9.createsend1.com/static/eb/master/13-the-blueprint-3/images/lishare@2x.png) !important;
+            }
+
+            .forwardtoafriend {
+                background-image: url(https://i10.createsend1.com/static/eb/master/13-the-blueprint-3/images/forward@2x.png) !important;
+            }
+        }
+
+        @media (max-width: 321px) {
+            .fixed-width.has-border .layout__inner {
+                border-width: 1px 0 !important;
+            }
+
+            .layout,
+            .stack .column {
+                min-width: 320px !important;
+                width: 320px !important;
+            }
+
+            .border {
+                display: none;
+            }
+
+            .has-gutter .border {
+                display: table-cell;
+            }
+        }
+
+        .mso div {
+            border: 0 none white !important;
+        }
+
+        .mso .w560 .divider {
+            Margin-left: 260px !important;
+            Margin-right: 260px !important;
+        }
+
+        .mso .w360 .divider {
+            Margin-left: 160px !important;
+            Margin-right: 160px !important;
+        }
+
+        .mso .w260 .divider {
+            Margin-left: 110px !important;
+            Margin-right: 110px !important;
+        }
+
+        .mso .w160 .divider {
+            Margin-left: 60px !important;
+            Margin-right: 60px !important;
+        }
+
+        .mso .w354 .divider {
+            Margin-left: 157px !important;
+            Margin-right: 157px !important;
+        }
+
+        .mso .w250 .divider {
+            Margin-left: 105px !important;
+            Margin-right: 105px !important;
+        }
+
+        .mso .w148 .divider {
+            Margin-left: 54px !important;
+            Margin-right: 54px !important;
+        }
+
+        .mso .size-8,
+        .ie .size-8 {
+            font-size: 8px !important;
+            line-height: 14px !important;
+        }
+
+        .mso .size-9,
+        .ie .size-9 {
+            font-size: 9px !important;
+            line-height: 16px !important;
+        }
+
+        .mso .size-10,
+        .ie .size-10 {
+            font-size: 10px !important;
+            line-height: 18px !important;
+        }
+
+        .mso .size-11,
+        .ie .size-11 {
+            font-size: 11px !important;
+            line-height: 19px !important;
+        }
+
+        .mso .size-12,
+        .ie .size-12 {
+            font-size: 12px !important;
+            line-height: 19px !important;
+        }
+
+        .mso .size-13,
+        .ie .size-13 {
+            font-size: 13px !important;
+            line-height: 21px !important;
+        }
+
+        .mso .size-14,
+        .ie .size-14 {
+            font-size: 14px !important;
+            line-height: 21px !important;
+        }
+
+        .mso .size-15,
+        .ie .size-15 {
+            font-size: 15px !important;
+            line-height: 23px !important;
+        }
+
+        .mso .size-16,
+        .ie .size-16 {
+            font-size: 16px !important;
+            line-height: 24px !important;
+        }
+
+        .mso .size-17,
+        .ie .size-17 {
+            font-size: 17px !important;
+            line-height: 26px !important;
+        }
+
+        .mso .size-18,
+        .ie .size-18 {
+            font-size: 18px !important;
+            line-height: 26px !important;
+        }
+
+        .mso .size-20,
+        .ie .size-20 {
+            font-size: 20px !important;
+            line-height: 28px !important;
+        }
+
+        .mso .size-22,
+        .ie .size-22 {
+            font-size: 22px !important;
+            line-height: 31px !important;
+        }
+
+        .mso .size-24,
+        .ie .size-24 {
+            font-size: 24px !important;
+            line-height: 32px !important;
+        }
+
+        .mso .size-26,
+        .ie .size-26 {
+            font-size: 26px !important;
+            line-height: 34px !important;
+        }
+
+        .mso .size-28,
+        .ie .size-28 {
+            font-size: 28px !important;
+            line-height: 36px !important;
+        }
+
+        .mso .size-30,
+        .ie .size-30 {
+            font-size: 30px !important;
+            line-height: 38px !important;
+        }
+
+        .mso .size-32,
+        .ie .size-32 {
+            font-size: 32px !important;
+            line-height: 40px !important;
+        }
+
+        .mso .size-34,
+        .ie .size-34 {
+            font-size: 34px !important;
+            line-height: 43px !important;
+        }
+
+        .mso .size-36,
+        .ie .size-36 {
+            font-size: 36px !important;
+            line-height: 43px !important;
+        }
+
+        .mso .size-40,
+        .ie .size-40 {
+            font-size: 40px !important;
+            line-height: 47px !important;
+        }
+
+        .mso .size-44,
+        .ie .size-44 {
+            font-size: 44px !important;
+            line-height: 50px !important;
+        }
+
+        .mso .size-48,
+        .ie .size-48 {
+            font-size: 48px !important;
+            line-height: 54px !important;
+        }
+
+        .mso .size-56,
+        .ie .size-56 {
+            font-size: 56px !important;
+            line-height: 60px !important;
+        }
+
+        .mso .size-64,
+        .ie .size-64 {
+            font-size: 64px !important;
+            line-height: 63px !important;
+        }
     </style>
+
+    <!--[if !mso]><!-->
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic|Ubuntu:400,700,400italic,700italic);
+    </style>
+    <link
+        href="https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic|Ubuntu:400,700,400italic,700italic"
+        rel="stylesheet" type="text/css" />
+    <!--<![endif]-->
+    <style type="text/css">
+        body {
+            background-color: #ededf1
+        }
+
+        .logo a:hover,
+        .logo a:focus {
+            color: #859bb1 !important
+        }
+
+        .mso .layout-has-border {
+            border-top: 1px solid #b4b4c4;
+            border-bottom: 1px solid #b4b4c4
+        }
+
+        .mso .layout-has-bottom-border {
+            border-bottom: 1px solid #b4b4c4
+        }
+
+        .mso .border,
+        .ie .border {
+            background-color: #b4b4c4
+        }
+
+        .mso h1,
+        .ie h1 {}
+
+        .mso h1,
+        .ie h1 {
+            font-size: 26px !important;
+            line-height: 34px !important
+        }
+
+        .mso h2,
+        .ie h2 {}
+
+        .mso h3,
+        .ie h3 {}
+
+        .mso .layout__inner,
+        .ie .layout__inner {}
+
+        .mso .footer__share-button p {}
+
+        .mso .footer__share-button p {
+            font-family: Ubuntu, sans-serif
+        }
+    </style>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta property="og:title" content="My First Campaign" />
 </head>
-<body class="">
-<table border="0" cellpadding="0" cellspacing="0" class="body">
-    <tr>
-        <td>&nbsp;</td>
-        <td class="container">
-            <div class="content">
+<!--[if mso]>
+  <body class="mso">
+<![endif]-->
+<!--[if !mso]><!-->
+@php
+    $home_link = $cek = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+    $cek = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]"."/cek-tiket"
+@endphp
+<body class="full-padding" style="margin: 0;padding: 0;-webkit-text-size-adjust: 100%;">
+    <!--<![endif]-->
+    <table class="wrapper"
+        style="border-collapse: collapse;table-layout: fixed;min-width: 320px;width: 100%;background-color: #ededf1;"
+        cellpadding="0" cellspacing="0" role="presentation">
+        <tbody>
+            <tr>
+                <td>
+                    <div role="banner">
+                        <div class="preheader"
+                            style="Margin: 0 auto;max-width: 560px;min-width: 280px; width: 280px;width: calc(28000% - 167440px);">
+                            <div style="border-collapse: collapse;display: table;width: 100%;">
+                                <!--[if (mso)|(IE)]><table align="center" class="preheader" cellpadding="0" cellspacing="0" role="presentation"><tr><td style="width: 280px" valign="top"><![endif]-->
+                                <div class="snippet"
+                                    style="display: table-cell;Float: left;font-size: 12px;line-height: 19px;max-width: 280px;min-width: 140px; width: 140px;width: calc(14000% - 78120px);padding: 10px 0 5px 0;color: #7c7e7f;font-family: Ubuntu,sans-serif;">
 
-                <!-- START CENTERED WHITE CONTAINER -->
-                <span class="preheader">Tiket {{ $tiket }}</span>
-                <table class="main">
+                                </div>
+                                <!--[if (mso)|(IE)]></td><td style="width: 280px" valign="top"><![endif]-->
+                                <div class="webversion"
+                                    style="display: table-cell;Float: left;font-size: 12px;line-height: 19px;max-width: 280px;min-width: 139px; width: 139px;width: calc(14100% - 78680px);padding: 10px 0 5px 0;text-align: right;color: #7c7e7f;font-family: Ubuntu,sans-serif;">
 
-                    <!-- START MAIN CONTENT AREA -->
-                    <tr>
-                        <td class="wrapper">
-                            <table border="0" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td>
-                                        <p>Hi {{ $nama }}</p>
-                                        <p>Anda telah terdaftar pada event "{{ $event }}"</p>
+                                </div>
+                                <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+                            </div>
+                        </div>
+                        <div class="header"
+                            style="Margin: 0 auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);"
+                            id="emb-email-header-container">
+                            <!--[if (mso)|(IE)]><table align="center" class="header" cellpadding="0" cellspacing="0" role="presentation"><tr><td style="width: 600px"><![endif]-->
+                            <div class="logo emb-logo-margin-box"
+                                style="font-size: 26px;line-height: 32px;Margin-top: 6px;Margin-bottom: 20px;color: #c3ced9;font-family: Roboto,Tahoma,sans-serif;Margin-left: 20px;Margin-right: 20px;"
+                                align="center">
+                                <a href="{{ $home_link }}">
+                                  <div class="logo-center" align="center" id="emb-email-header"><img
+                                        style="display: block;height: auto;width: 100%;border: 0;max-width: 130px;"
+                                        src="{{ URL::asset('assets/images/qosin.png') }}" alt="" width="130" /></div>
+                                </a>
+                            </div>
+                            <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+                        </div>
+                    </div>
+                    <div>
+                        <div class="layout one-col fixed-width stack"
+                            style="Margin: 0 auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;">
+                            <div class="layout__inner"
+                                style="border-collapse: collapse;display: table;width: 100%;background-color: #ffffff;">
+                                <!--[if (mso)|(IE)]><table align="center" cellpadding="0" cellspacing="0" role="presentation"><tr class="layout-fixed-width" style="background-color: #ffffff;"><td style="width: 600px" class="w560"><![endif]-->
+                                <div class="column"
+                                    style="text-align: left;color: #7c7e7f;font-size: 14px;line-height: 21px;font-family: PT Serif,Georgia,serif;">
 
-                                        <table border="0" cellpadding="0" cellspacing="0">
-                                            <tbody>
-                                            <tr>
-                                                <td align="left">
-                                                    <table border="0" cellpadding="0" cellspacing="0">
-                                                        <tbody>
-                                                        <tr>
-                                                            <td> <div class="container">
-                                                                    <center><p>Kode Tiket Anda :</p></center>
-                                                                    <hr>
-                                                                    <center>
-                                                                        <p><h2> {{ $kode }} </h2></p>
-                                                                        <p style="font-size: 125%;">Silahkan download/cetak tiket anda melalui <a href="{{ $link }}">link berikut ini.</a></p>
-                                                                    </center>
-                                                                    <hr>
-                                                                    @php
-                                                                        $cek = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]"."/cek-tiket"
-                                                                    @endphp
-                                                                    <center><p>Untuk verfikasi tiket dapat dilakukan melalui <a href="{{ $cek }}">link berikut ini.</a><br> Terimaksih telah mendaftar.</p></center>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                        {{--<p>This is a really simple email template. Its sole purpose is to get the recipient to click the button with no distractions.</p>--}}
-                                        {{--<p>Good luck! Hope it works.</p>--}}
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
+                                    <div style="Margin-left: 20px;Margin-right: 20px;Margin-top: 24px;">
+                                        <div style="mso-line-height-rule: exactly;line-height: 10px;font-size: 1px;">
+                                            &nbsp;</div>
+                                    </div>
 
-                    <!-- END MAIN CONTENT AREA -->
-                </table>
+                                    <div style="Margin-left: 20px;Margin-right: 20px;">
+                                        <div class="divider"
+                                            style="display: block;font-size: 2px;line-height: 2px;Margin-left: auto;Margin-right: auto;width: 40px;background-color: #b4b4c4;Margin-bottom: 20px;">
+                                            &nbsp;</div>
+                                    </div>
 
-                <!-- START FOOTER -->
-                <div class="footer">
-                    <table border="0" cellpadding="0" cellspacing="0">
-                        <tr>
-                            <td class="content-block">
-                                <span class="apple-link">Panitia</span>
-                                {{--<br> Don't like these emails? <a href="http://i.imgur.com/CScmqnj.gif">Unsubscribe</a>.--}}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="content-block powered-by">
-                                Powered by <a href="event.qosin.id">QOSin Event</a>.
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <!-- END FOOTER -->
+                                    <div style="Margin-left: 20px;Margin-right: 20px;">
+                                        <div style="mso-line-height-rule: exactly;line-height: 5px;font-size: 1px;">
+                                            &nbsp;</div>
+                                    </div>
 
-                <!-- END CENTERED WHITE CONTAINER -->
-            </div>
-        </td>
-        <td>&nbsp;</td>
-    </tr>
-</table>
+                                    <div style="Margin-left: 20px;Margin-right: 20px;">
+                                        <div
+                                            style="mso-line-height-rule: exactly;mso-text-raise: 11px;vertical-align: middle;">
+                                            <h2
+                                                style="Margin-top: 0;Margin-bottom: 0;font-style: normal;font-weight: normal;color: #3e4751;font-size: 16px;line-height: 24px;font-family: Ubuntu,sans-serif;">
+                                                <strong>Hai {{ $nama }}.</strong></h2>
+                                            <p style="Margin-top: 16px;Margin-bottom: 0;">
+                                              Anda Sudah terdaftar pada event 
+                                              <font style="color: black">"{{ $event }}."</font>
+                                              <div style="Margin-top: 15px; text-align: center;">
+                                                <h3 style="Margin-top: 0;Margin-bottom: 0;font-style: normal;font-weight: normal;color: #788991;font-size: 16px;line-height: 24px;text-align: center;">Kode Tiket Anda:</h3>
+                                              </div>
+                                              <h1
+                                                style="Margin-top: 12px;Margin-bottom: 0;font-style: normal;font-weight: normal;color: #3e4751;font-size: 22px;line-height: 31px;font-family: Ubuntu,sans-serif;text-align: center;">
+                                                {{ $kode }}</h1>
+                                            </p>
+                                            <p style="Margin-top: 20px;Margin-bottom: 20px; text-align: center;">
+                                              Silahkan cetak atau simpan tiket anda dengan mengklik tombol dibawah ini.&nbsp;</p>
+                                        </div>
+                                    </div>
+
+                                    <div style="Margin-left: 20px;Margin-right: 20px;">
+                                        <div class="btn btn--flat btn--large"
+                                            style="Margin-bottom: 20px;text-align: center;">
+                                            <![if !mso]><a
+                                                style="border-radius: 4px;display: inline-block;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;text-align: center;text-decoration: none !important;transition: opacity 0.1s ease-in;color: #ffffff !important;background-color: #4eaacc;font-family: arial;"
+                                                href="{{ $link }}">Tiket {{ $tiket }}</a>
+                                            <![endif]>
+                                            <!--[if mso]><p style="line-height:0;margin:0;">&nbsp;</p><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="http://test.com" style="width:239px" arcsize="9%" fillcolor="#4EAACC" stroke="f"><v:textbox style="mso-fit-shape-to-text:t" inset="0px,11px,0px,11px"><center style="font-size:14px;line-height:24px;color:#FFFFFF;font-family:PT Serif,Georgia,serif;font-weight:bold;mso-line-height-rule:exactly;mso-text-raise:4px">READ THE FULL BLOG POST</center></v:textbox></v:roundrect><![endif]-->
+                                            <div style="Margin-top: 20px;Margin-bottom: 20px; text-align: center;">
+                                              Untuk verfikasi tiket dapat dilakukan melalui 
+                                              <a href="{{ $cek }}" style="color: green">link berikut ini.</a>
+                                              <br/>
+                                              Terimaksih telah mendaftar.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style="Margin-left: 20px;Margin-right: 20px;">
+                                        <div
+                                            style="mso-line-height-rule: exactly;mso-text-raise: 11px;vertical-align: middle;">
+                                            <p style="Margin-top: 0;Margin-bottom: 20px;">Kind regards,<br />
+                                                Panitia</p>
+                                        </div>
+                                    </div>
+
+                                    <div style="Margin-left: 20px;Margin-right: 20px;Margin-bottom: 24px;">
+                                        <div style="font-size: 12px;font-style: normal;font-weight: normal;line-height: 19px;"
+                                            align="left">
+                                            <!-- <img style="border: 0;display: block;height: auto;width: 100%;max-width: 160px;"
+                                                alt="" width="160"
+                                                src="images/signature4cropped-990000079e01453c.png" /> -->
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+                            </div>
+                        </div>
+
+                        </div>
+                        <div style="text-align: center;color: darkgray; margin-top: 20px;">
+                           Powered by <a href="{{ $home_link }}" style="color: gray; text-decoration: none;">QOSin Event</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
 </body>
+
 </html>

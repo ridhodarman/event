@@ -111,7 +111,7 @@ class TiketsController extends Controller
                     ->where('tikets.id', '=', $tiket)
                     ->first();
 
-        $jenis = Jenis_tiket::Select('id', 'nama_tiket')->get();
+        $jenis = Jenis_tiket::Select('id', 'nama_tiket')->where('event_id', '=', $tiket->event_id)->get();
         
         return view( 'agen.tiket.show',['tiket' => $tiket, 'jenis' => $jenis] );
     }
@@ -181,7 +181,7 @@ class TiketsController extends Controller
                         ->join('events', 'events.id', '=', 'jenis_tikets.event_id')
                         ->where('events.id', '=', $event)
                         ->where('agen_id', '=', $agen->id)
-                        ->orderBy('tikets.created_at')->get();
+                        ->orderBy('tikets.created_at', 'desc')->get();
         $event = Event::select('id', 'nama_event')->where('id', '=', $event)->first();
         //return $tiket;
         return view ('agen.tiket.event',['tiket' => $tiket, 'event' => $event]);
@@ -204,7 +204,7 @@ class TiketsController extends Controller
     public function cek($tiket)
     {
         $tiket = Tiket::select('tikets.*', 'jenis_tikets.nama_tiket', 'events.nama_event', 
-                                'jenis_tikets.event_id', 'jenis_tikets.foto_tiket', 
+                                'jenis_tikets.event_id', 'jenis_tikets.foto_tiket', 'events.informasi',
                                 'users.name', 'agens.no_whatsapp')
                     ->join('jenis_tikets', 'jenis_tikets.id', '=', 'tikets.jenis_tiket')
                     ->join('events', 'events.id', '=', 'jenis_tikets.event_id')

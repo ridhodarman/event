@@ -106,7 +106,8 @@ class EventsController extends Controller
             ->update([
                 'nama_event' => $request->nama_event,
                 'tanggal_mulai' => $request->tanggal_mulai,
-                'deskripsi' => $request->deskripsi
+                'deskripsi' => $request->deskripsi,
+                'informasi' => $request->informasi
             ]);
         $pesan = "Data event ".$request->nama_event.' berhasil diubah';
         return redirect('/event/'.$event->id)->with('status', $pesan);

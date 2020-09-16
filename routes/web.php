@@ -77,7 +77,7 @@ Route::middleware(['AksesAgen'])->group(function () {
     Route::get('/email', function () {
         return view('send_email');
     });
-    Route::post('/sendTiket', 'Email@sendTiket');
+    Route::post('/sendTiket', 'EmailController@sendTiket');
 });
 
 Route::get('/cek-tiket', function () { return view('kode.index'); })->name('cek');

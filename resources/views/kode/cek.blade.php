@@ -95,7 +95,9 @@
 
                     </tbody>
                 </table>
-                <p> Username dan password Webinar & Talkshow internasional akan dikirim pada H-1 acara via e-mail</p>
+                <center>
+                    <p> {{ $tiket->informasi }}</p>
+                </center>
                 @else
                 <span class="contact1-form-title" style="color: orange">
                     Tiket Anda Belum Terdaftar <br />

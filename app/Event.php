@@ -9,5 +9,5 @@ class Event extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
-    protected $fillable = ['nama_event', 'deskripsi', 'foto_brosur', 'tanggal_mulai' ];
+    protected $fillable = ['nama_event', 'deskripsi', 'foto_brosur', 'tanggal_mulai', 'informasi' ];
 }

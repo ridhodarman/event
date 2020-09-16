@@ -35,7 +35,7 @@
         &emsp;
         <a href="{{ route('event') }}/{{$event->id}}/edit">
             <button type="button" class="btn btn-outline-primary btn-fw">
-                <i class="glyphicon glyphicon-edit"></i> Edit Informasi Event
+                <i class="glyphicon glyphicon-edit"></i> Edit Data Event
             </button>
         </a>
     </form>
@@ -71,6 +71,11 @@
                             <td>Deskripsi</td>
                             <td>:</td>
                             <td>{{$event->deskripsi}}</td>
+                        </tr>
+                        <tr>
+                            <td>Informasi</td>
+                            <td>:</td>
+                            <td>{{$event->informasi}}</td>
                         </tr>
                         <tr>
                             <td>Dibuat Pada</td>

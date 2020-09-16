@@ -59,7 +59,7 @@
                             </tr>
                             <tr>
                                 <td>Keterangan:</td>
-                                <td>{{$tiket->keterangan}}</td>
+                                <td>{!! $tiket->keterangan !!}</td>
                             </tr>
                             <tr>
                                 <td>Dibuat Pada:</td>
@@ -67,7 +67,7 @@
                             </tr>
                             </tr>
                             <tr>
-                                <td>Terakhir Diubah:</td>
+                                <td>Terakhir diupdate:</td>
                                 <td>{{$tiket->updated_at}}
                             </tr>
                             </tr>
@@ -259,18 +259,19 @@ f={{$f}}&
                                 E-mail:
                                 <input type="text" class="form-control" placeholder="masukkan email peserta ..."
                                     value="{{$tiket->e_mail}}" name="email"/>
-                                <input type="" name="nama" value="{{$tiket->nama_peserta}}">
-                                <input type="" name="event" value="{{$tiket->nama_event}}">
-                                <input type="" name="kode" value="{{$tiket->kode_tiket}}">
-                                <input type="" name="tiket" value="{{$tiket->nama_tiket}}">
-                                <input type="" name="link" value="{{ route('index') }}/print2.php?
+                                <input type="hidden" name="nama" value="{{$tiket->nama_peserta}}">
+                                <input type="hidden" name="event" value="{{$tiket->nama_event}}">
+                                <input type="hidden" name="kode" value="{{$tiket->kode_tiket}}">
+                                <input type="hidden" name="tiket" value="{{$tiket->nama_tiket}}">
+                                <input type="text" name="link" value="{{ route('index') }}/print2.php?
 link={{$link}}&
 n={{$n}}&
 a={{$a}}&
 w={{$w}}&
 e={{$e}}&
 k={{$k}}&
-f={{$f}}&">
+f={{$f}}&"
+readonly style="width: 1px; height: 1px;">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -318,47 +319,6 @@ Kode tiket anda adalah: {{ $tiket->kode_tiket }} .
         </div>
     </diV>
 </section><!-- /.content -->
-
-
-<section class="main-section">
-    <!-- Add Your Content Inside -->
-    <div class="content">
-        <!-- Remove This Before You Start -->
-        @if(\Session::has('alert-failed'))
-        <div class="alert alert-failed">
-            <div>{{Session::get('alert-failed')}}</div>
-        </div>
-        @endif
-        @if(\Session::has('alert-success'))
-        <div class="alert alert-success">
-            <div>{{Session::get('alert-success')}}</div>
-        </div>
-        @endif
-        <form action="{{ url('/sendEmail') }}" method="post">
-            {{ csrf_field() }}
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email">
-            </div>
-            <div class="form-group">
-                <label for="nama">Nama:</label>
-                <input type="text" class="form-control" id="name" name="nama" />
-            </div>
-            <div class="form-group">
-                <label for="judul">Judul:</label>
-                <input type="text" class="form-control" id="judul" name="judul" />
-            </div>
-            <div class="form-group">
-                <label for="pesan">Pesan:</label>
-                <textarea class="form-control" id="pesan" name="pesan"></textarea>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-md btn-primary">Send Email</button>
-            </div>
-        </form>
-    </div>
-    <!-- /.content -->
-</section>
 
 
 @php
