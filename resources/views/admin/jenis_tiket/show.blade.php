@@ -43,7 +43,7 @@
     <div style="float: right; padding-bottom: 30px;">
         <a href="{{ route('event') }}/{{$jenis_tiket->event_id}}">
             <button type="button" class="btn btn-default">
-                <i class="glyphicon glyphicon-chevron-left"></i> Kembali ke daftar event
+                <i class="glyphicon glyphicon-chevron-left"></i> Kembali ke detail event
             </button>
         </a>
     </div>

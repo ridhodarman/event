@@ -19,7 +19,6 @@ class CreateEventsTable extends Migration
             $table->date('tanggal_mulai');
             $table->text('deskripsi')->nullable();
             $table->string('foto_brosur')->nullable();
-            $table->string('informasi')->nullable();
             $table->timestamps();
             $table->softDeletes('deleted_at', 0);
         });

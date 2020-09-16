@@ -128,11 +128,11 @@
           <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="{{ $loop->iteration }}00">
             <div>
               <h5>{{ $e->nama_event }}</h5>
-              <small style="color: gray"> {{ $e->tanggal_mulai }}</small>
+              <small style="color: gray"> {{ $e->tanggal_mulai }}</small><br/>
               <img src="{{ URL::asset('assets/150x100.png') }}" data-original="{{ URL::asset('foto/brosur/'.$e->foto_brosur) }}"
                 class="lazy img-fluid" style="cursor: pointer;"
                 onclick="javascript:location.href=`{{route('index')}}/show/{{ $e->id }}`">
-                <p>{{ substr($e->deskripsi,0,35) }}<a href="{{route('index')}}/show/{{ $e->id }}">...Readmore</a></p>
+                <p>{{ substr($e->deskripsi,0,55) }}<a href="{{route('index')}}/show/{{ $e->id }}">...Readmore</a></p>
             </div>
             <!-- <div class="member-info">
               <h4>{{ $e->nama_event }}</h4>
@@ -149,6 +149,14 @@
         </div>
       @endforeach
 
+      @if ( count($event) < 1 )
+        <h4>Tidak ada event terdekat</h4>
+      @endif
+    </div>
+    <div style="padding-top: 5px;">
+      <center>
+      <a href="{{ route('all') }}">More event..</a>
+      </center>
     </div>
   </section><!-- End Team Section -->
 
@@ -208,11 +216,13 @@
               <p>official@qosin.id</p>
             </div>
 
-            <div class="phone">
-              <i class="icofont"></i>
-              <h4>Instagram:</h4>
-              <p>@qosin_event</p>
-            </div>
+            <a href="https://www.instagram.com/qosin_event/" target="_blank">
+              <div class="phone">
+                <i class="icofont"></i>
+                <h4>Instagram:</h4>
+                <p>@qosin_event</p>
+              </div>
+            </a>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1071.623269609764!2d100.36461606572725!3d-0.9379684178286526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4b924d862c027%3A0x10d0377ac17869e2!2sJati%20Baru%2C%20Kec.%20Padang%20Tim.%2C%20Kota%20Padang%2C%20Sumatera%20Barat!5e1!3m2!1sid!2sid!4v1599578740624!5m2!1sid!2sid" frameborder="0" allowfullscreen></iframe>
           </div>
 

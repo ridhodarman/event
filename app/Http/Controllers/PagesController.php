@@ -164,4 +164,10 @@ class PagesController extends Controller
         
         return view ('agen.tiket.print',['tiket' => $tiket]);
     }
+
+    public function all() {
+        $event = Event::select('id','nama_event', 'tanggal_mulai', 'deskripsi', 'foto_brosur')->orderBy('tanggal_mulai', 'desc')->get();
+        $faq = Faq::select('tanya', 'jawab')->orderBy('urutan')->get();
+        return view ('more',['event' => $event, 'faq' => $faq]);
+    }
 }

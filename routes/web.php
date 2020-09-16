@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PagesController@index')->name('index');
 Route::get('/show/{event}', 'PagesController@show');
+Route::get('/all', 'PagesController@all')->name('all');
 
 Auth::routes();
 Route::get('/changePassword','HomeController@showChangePasswordForm');

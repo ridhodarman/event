@@ -68,7 +68,10 @@
             </div>
 
             <p style="color: black; margin-left: -5px;">
-                {{ $event->deskripsi }}
+              @php $paragraphs = explode(PHP_EOL, $event->deskripsi); @endphp
+              @foreach($paragraphs as $paragraph)
+                  {{{ $paragraph }}}<br/>
+              @endforeach
             </p>
 
         </div>
