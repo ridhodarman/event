@@ -162,6 +162,24 @@ class PagesController extends Controller
         return view ('admin.tiket.show',['tiket' => $tiket]);
     }
 
+    public function tiket_eksport($mulai, $sampai) {
+        //return $request;
+        $tiket = Tiket::select('tikets.*', 'nama_tiket', 'nama_event', 'event_id', 'foto_tiket',
+                                'name', 'no_whatsapp', 'email'
+                        )
+                        ->join('jenis_tikets', 'jenis_tikets.id', '=', 'tikets.jenis_tiket')
+                        ->join('events', 'events.id', '=', 'jenis_tikets.event_id')
+                        ->join('agens', 'agens.id', '=', 'tikets.agen_id')
+                        ->join('users', 'users.id', '=', 'agens.user_id')
+                        ->whereBetween('tikets.created_at', [$mulai, $sampai])
+                        ->get();
+        //return $tiket;
+        return view ('admin.tiket.eksport',['tiket' => $tiket,
+                                            'mulai' => $mulai,
+                                            'sampai' => $sampai
+                                            ]);
+    }
+
     public function print($kode) {
         $tiket = Tiket::select('tikets.*', 'jenis_tikets.nama_tiket', 'events.nama_event', 
                                 'jenis_tikets.event_id', 'jenis_tikets.foto_tiket'

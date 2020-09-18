@@ -15,7 +15,7 @@
                     <th>Urutan</th>
                     <th>Pertanyaan</th>
                     <th>Jawaban</th>
-                    <th>Dibuat Pada</th>
+                    <!-- <th>Dibuat Pada</th> -->
                     <th>-</th>
                 </tr>
             </thead>
@@ -25,9 +25,10 @@
                     <td>{{$f->urutan}}</td>
                     <td>{{$f->tanya}}</td>
                     <td>{{$f->jawab}}</td>
-                    <td>{{$f->created_at}}</td>
+                    <!-- <td>{{$f->created_at}}</td> -->
                     <td>
                         <button>Edit</button>
+                        <button>Hapus</button>
                     </td>
                 </tr>
                 @endforeach

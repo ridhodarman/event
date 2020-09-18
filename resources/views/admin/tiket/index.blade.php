@@ -6,6 +6,7 @@
                 data-toggle="offcanvas" title="Maximize Panel"></span></a> Riwayat Penjualan Tiket</h3>
 </div>
 <div class="panel-body">
+    <br/><br/>
     <div class="table-responsive">
         <table id="example" class="table table-striped table-bordered table-hover display" style="width:100%">
             <thead>
@@ -38,9 +39,35 @@
             </tbody>
         </table>
     </div>
+    <br/>
+    <h5>Ekspor ke Excel:</h5>
+    <div class="row">
+        <div class="col-sm-1">
+            <label>Dari Tanggal:</label>
+        </div>
+        <div class="col-sm-3">
+            <input type="date" class="form-control" id="mulai" value="2020-01-01">
+        </div>
+        <div class="col-sm-1">
+            <label>Sampai tanggal:</label>
+        </div>
+        <div class="col-sm-3">
+            <input type="date" class="form-control" id="sampai" value="{{ date('Y-m-d') }}">
+        </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-success" onclick="ekspor()">
+                <i class="fa fa-file-excel-o"></i> Export
+            </button>
+        </div>
+    </div>
 </div><!-- panel body -->
 
 <script>
+    function ekspor() {
+        let mulai = document.getElementById("mulai").value;
+        let sampai = document.getElementById("sampai").value;
+        window.open(`{{ route('tiket2') }}/eksport/${mulai}/${sampai}`); 
+    }
     $(document).ready(function () {
         $('#example').DataTable();
     });

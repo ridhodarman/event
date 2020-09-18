@@ -115,7 +115,7 @@
                   </li>
                 <li class="list-group-item" id="event"><a href="{{route('event')}}"><i class="glyphicon glyphicon-bell"></i>Event</li>
                 <li class="list-group-item" id="tiket"><a href="{{route('tiket2')}}"><i class="glyphicon glyphicon-list-alt"></i>Riwayat Penjualan tiket</li>
-                <li class="list-group-item" id="faq"><a href="{{route('faq')}}"><i class="glyphicon glyphicon-list-alt"></i>FAQ</li>
+                <li class="list-group-item" id="faq"><a href="{{route('faq')}}"><i class="glyphicon glyphicon-th-list"></i>FAQ</li>
               </ul>
           </div>
           <div class="col-xs-12 col-sm-9 content">

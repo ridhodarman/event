@@ -57,6 +57,7 @@ Route::middleware(['AksesAdmin'])->group(function () {
 
     Route::get('/tiket', 'PagesController@tiket')->name('tiket2');
     Route::get('/tiket/show/{id}', 'PagesController@tiket_info');
+    Route::get('/tiket/eksport/{mulai}/{sampai}', 'PagesController@tiket_eksport');
 
     Route::get('/faq', 'FaqsController@index')->name('faq');
 });
