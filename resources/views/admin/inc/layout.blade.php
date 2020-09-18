@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>QOSin Event</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="shortcut icon" href=""/>
     <link rel="bookmark" href="{{ URL::asset('favicon_16.ico') }}"/>

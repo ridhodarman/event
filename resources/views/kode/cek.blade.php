@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="{{ URL::asset('cek_tiket/images/icons/favicon.ico') }}" />
+    <link rel="icon" type="image/png" href="{{ URL::asset('cek_tiket/images/icons/qosin.png') }}" />
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css"
         href="{{ URL::asset('cek_tiket/vendor/bootstrap/css/bootstrap.min.css') }}" />
@@ -113,21 +113,39 @@
                         "://$_SERVER[HTTP_HOST]"."/kode_tiket/".$tiket->kode_tiket;
                         $link = base64_encode($link);
                         $n = base64_encode($tiket->nama_peserta);
-                        $e = base64_encode($tiket->nama_event);
-                        $t = base64_encode($tiket->nama_tiket);
+                        $a = base64_encode($tiket->asal);
+                        //$w = base64_encode($tiket->no_wa);
+                        $e = base64_encode($tiket->email);
                         $k = base64_encode($tiket->kode_tiket);
                         $f = base64_encode($tiket->foto_tiket);
+
+                        try {
+                        $w = base64_encode( "+62".substr($tiket->no_wa, 0, -3)."***" );
+                        }
+                        catch (Exception $e) {
+                        $w = base64_encode( $tiket->no_wa );
+                        }
+
+                        try {
+                        $email = explode("@", $tiket->e_mail);
+                        $e = substr($email[0], 0, -3)."***";
+                        $e = base64_encode( $e."@".$email[1] );
+                        }
+                        catch (Exception $e) {
+                        $e = base64_encode( $tiket->e_mail );
+                        }
                         @endphp
                         <tr>
                             <td>
-                                <a href="{{ route('index') }}/print2.php?
-link={{$link}}&
+                                <a href="{{ route('index') }}/cHJpbnQ.php?
+l={{$link}}&
 n={{$n}}&
+a={{$a}}&
+w={{$w}}&
 e={{$e}}&
-t={{$t}}&
 k={{$k}}&
 f={{$f}}&
-                                " target="_blank">
+                    " target="_blank">
                                     <button class="contact1-form-btn" type="button">
                                         <span>
                                             Cetak Tiket

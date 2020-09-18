@@ -31,7 +31,7 @@ if (Auth::check())
 
                     {{ __('You are logged in!') }}
                     <br/>
-                    Anda sudah berhasil register akun, silahkan <b>hubungi admin</b> untuk verifikasi status sebagai agen.
+                    Anda sudah berhasil register akun, silahkan <b>hubungi admin</b> untuk verifikasi status sebagai panitia.
                 </div>
             </div>
         </div>

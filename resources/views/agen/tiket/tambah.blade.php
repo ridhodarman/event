@@ -39,7 +39,7 @@
                     @enderror
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label>Asal Instansi / Lokasi</label>
                     <input type="text" class="form-control"
                         placeholder="nama instansi/ kampus atau lokasi asal peserta ..." 
@@ -50,7 +50,7 @@
                         {{ $message }}
                     </div>
                     @enderror
-                </div>
+                </div> -->
 
                 <div class="form-group">
                     <label>No. Whatsapp</label>

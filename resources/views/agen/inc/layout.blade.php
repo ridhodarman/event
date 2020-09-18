@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>QOSin Event</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="{{ URL::asset('agen_page/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />    
@@ -49,7 +49,7 @@
       
       <header class="main-header">
         <!-- Logo -->
-        <a href="{{route('agen_index')}}" class="logo"><b>Agen</b></a>
+        <a href="{{route('agen_index')}}" class="logo"><b>Panitia</b></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->

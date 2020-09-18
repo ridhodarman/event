@@ -130,7 +130,7 @@ f={{$f}}&"
             </tr>
 
             <tr>
-                <td>Jenis Tiket</td>
+                <td>Keterangan</td>
                 <td>:</td>
                 <td>
                     @php $paragraphs = explode(PHP_EOL, $tiket->keterangan); @endphp

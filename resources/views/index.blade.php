@@ -15,14 +15,14 @@
         <li class="active"><a href="#home">Home</a></li>
         <li><a href="#event">List Event</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li class="drop-down"><a href="javascript:;">Agen</a>
+        <li class="drop-down"><a href="javascript:;">Panitia/Partner</a>
           <ul>
             <li class="drop-down"><a href="#">Akses</a>
               <ul>
                 @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ route('agen_index') }}">Halaman Agen</a>
+                        <a href="{{ route('agen_index') }}">Halaman Panitia</a>
                     @else
                       <li><a href="{{ route('login') }}">Sign In</a></li>
                         @if (Route::has('register'))
@@ -218,7 +218,7 @@
 
             <a href="https://www.instagram.com/qosin_event/" target="_blank">
               <div class="phone">
-                <i class="icofont"></i>
+                <i class="icofont"><img src="{{ URL::asset('assets/images/ig.png') }}"></i>
                 <h4>Instagram:</h4>
                 <p>@qosin_event</p>
               </div>

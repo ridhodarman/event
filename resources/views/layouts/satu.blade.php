@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>{{ config('app.name', 'Laravel') }}</title>
+  <title>QOSin Event</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{ URL::asset('cek_tiket/images/icons/favicon.ico') }}" rel="icon">
+  <link href="{{ URL::asset('cek_tiket/images/icons/qosin.png') }}" rel="icon">
   <link href="{{ URL::asset('halaman_awal/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -40,14 +40,14 @@
   @yield('content')
   <div class="container footer-bottom clearfix">
     <div class="copyright">
-      &copy;  <strong><span> </span></strong> Some Rights Reserved
+      Copyright &copy; 2020 <strong><span> QOSin Event</span></strong>. Some Rights Reserved
     </div>
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
-       <a href="#">.</a>
+       Powered by<a href="#"> QOSin</a>
     </div>
   </div>
   </footer><!-- End Footer -->

@@ -18,7 +18,7 @@
     @elseif (session('hapus'))
     <div class="alert alert-warning alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        {!! session('hapus') !!} Atau coba cek tong sampah
+        {!! session('hapus') !!}
     </div>
     @endif
     <div style="float: right;">

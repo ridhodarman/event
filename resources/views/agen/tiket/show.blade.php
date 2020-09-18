@@ -32,7 +32,7 @@
                         <tbody>
 
                             <tr>
-                                <td>Nama Peserta:</td>
+                                <td>Nama Lengkap Peserta (untuk dicetak di dalam sertifikat):</td>
                                 <td>{{$tiket->nama_peserta}}</td>
                             </tr>
                             <tr>
@@ -233,8 +233,8 @@
         }
         @endphp
         <div class="col-sm-6">
-            <a class="btn btn-social btn-github" href="{{ route('index') }}/print2.php?
-link={{$link}}&
+            <a class="btn btn-social btn-github" href="{{ route('index') }}/cHJpbnQ.php?
+l={{$link}}&
 n={{$n}}&
 a={{$a}}&
 w={{$w}}&
@@ -268,8 +268,8 @@ f={{$f}}&
                                 <input type="hidden" name="event" value="{{$tiket->nama_event}}">
                                 <input type="hidden" name="kode" value="{{$tiket->kode_tiket}}">
                                 <input type="hidden" name="tiket" value="{{$tiket->nama_tiket}}">
-                                <input type="text" name="link" value="{{ route('index') }}/print2.php?
-link={{$link}}&
+                                <input type="text" name="link" value="{{ route('index') }}/cHJpbnQ.php?
+l={{$link}}&
 n={{$n}}&
 a={{$a}}&
 w={{$w}}&
