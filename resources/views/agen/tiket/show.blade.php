@@ -215,6 +215,7 @@
         $e = base64_encode($tiket->email);
         $k = base64_encode($tiket->kode_tiket);
         $f = base64_encode($tiket->foto_tiket);
+        $t = base64_encode($tiket->nama_tiket);
 
         try {
         $w = base64_encode( "+62".substr($tiket->no_wa, 0, -3)."***" );
@@ -241,7 +242,7 @@ w={{$w}}&
 e={{$e}}&
 k={{$k}}&
 f={{$f}}&
-                    " target="_blank">
+t={{$t}}&" target="_blank">
                 <i class="fa fa-barcode"></i> Print Tiket
             </a>
             <br /><br />
@@ -275,7 +276,8 @@ a={{$a}}&
 w={{$w}}&
 e={{$e}}&
 k={{$k}}&
-f={{$f}}&"
+f={{$f}}&
+t={{$t}}&"
 readonly style="width: 1px; height: 1px;">
                             </div>
                             <div class="modal-footer">

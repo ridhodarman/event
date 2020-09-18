@@ -67,16 +67,17 @@ height:1%;
 	<div style="max-width: 595px;">
     <div style="display: flex;">
         <div>
-            <img src="foto/tiket/<?php echo base64_decode($_GET['f']); ?>" style="max-width: 300px; ">
+            <img src="foto/tiket/<?php echo base64_decode($_GET['f']); ?>" style="max-height: 190px; ">
         </div>
         <div>
         	&nbsp;
         </div>
         	<div style="float: right;">
-        		<small><?php echo base64_decode($_GET['n']); ?> <br/></small>
+        		<small style="font-size: 110%"><?php echo base64_decode($_GET['n']); ?> <br/></small>
         		<!-- <small style="font-size: 73%"> Asal: <?php //echo base64_decode($_GET['a']); ?> </small><br/> -->
         		<small style="font-size: 73%"> No. Whatsapp: <?php echo base64_decode($_GET['w']); ?> </small><br/>
             <small style="font-size: 73%"> Email: <?php echo base64_decode($_GET['e']); ?> </small><br/>
+            <small style="font-size: 73%"> Jenis Tiket: <?php echo base64_decode($_GET['t']); ?> </small><br/>
         		<small>Kode Tiket: <b><?php echo base64_decode($_GET['k']); ?></b></small> <br/>
         	
 <?php

@@ -51,10 +51,10 @@
                             <td>Nama Peserta:</td>
                             <td>{{$tiket->nama_peserta}}</td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td>Asal:</td>
                             <td>{{$tiket->asal}}</td>
-                        </tr>
+                        </tr> -->
                         @php
                             try {
                                 $no = "+62".substr($tiket->no_wa, 0, -3)."***";
@@ -118,6 +118,7 @@
                         $e = base64_encode($tiket->email);
                         $k = base64_encode($tiket->kode_tiket);
                         $f = base64_encode($tiket->foto_tiket);
+                        $t = base64_encode($tiket->nama_tiket);
 
                         try {
                         $w = base64_encode( "+62".substr($tiket->no_wa, 0, -3)."***" );
@@ -145,6 +146,7 @@ w={{$w}}&
 e={{$e}}&
 k={{$k}}&
 f={{$f}}&
+t={{$t}}&
                     " target="_blank">
                                     <button class="contact1-form-btn" type="button">
                                         <span>
