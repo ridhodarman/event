@@ -56,7 +56,9 @@ Route::middleware(['AksesAdmin'])->group(function () {
     Route::delete('/agen/{agen}', 'AgensController@destroy');
 
     Route::get('/tiket', 'PagesController@tiket')->name('tiket2');
-    Route::get('/tiket/show/{id}', 'PagesController@tiket_info');
+    Route::get('/tiket/{id}', 'PagesController@tiket_info');
+    Route::patch('/tiket/status/{tiket}', 'TiketsController@status');
+    Route::delete('/tiket/{tiket}', 'TiketsController@hapus');
     Route::get('/tiket/eksport/{mulai}/{sampai}', 'PagesController@tiket_eksport');
 
     Route::get('/faq', 'FaqsController@index')->name('faq');

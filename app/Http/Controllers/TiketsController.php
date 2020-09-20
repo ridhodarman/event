@@ -231,4 +231,22 @@ class TiketsController extends Controller
         return view( 'kode.cek',['tiket' => $tiket] );
     }
 
+    public function status(Request $request, Tiket $tiket)
+    {
+        Tiket::where('id', $tiket->id)->update([ 
+                'status' => $request->status
+            ]);
+        $pesan = "Status tiket berhasil diubah";
+        return redirect('/tiket/'.$tiket->id)->with('status', $pesan);
+    }
+
+    public function hapus(Tiket $tiket)
+    {   
+        $tiket = Tiket::find($tiket->id);
+        $tiket->delete();
+
+        $pesan = "tiket #".$tiket->kode_tiket." ".$tiket->nama_peserta." berhasil dihapus";
+        return redirect('/tiket')->with('hapus', $pesan);
+    }
+
 }

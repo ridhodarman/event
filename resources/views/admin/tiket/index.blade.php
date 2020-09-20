@@ -6,7 +6,12 @@
                 data-toggle="offcanvas" title="Maximize Panel"></span></a> Riwayat Penjualan Tiket</h3>
 </div>
 <div class="panel-body">
-    <br/><br/>
+    @if (session('hapus'))
+    <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {!! session('hapus') !!}
+    </div>
+    @endif
     <div class="table-responsive">
         <table id="example" class="table table-striped table-bordered table-hover display" style="width:100%">
             <thead>
@@ -17,6 +22,7 @@
                     <th>Event</th>
                     <th>Tanggal Input</th>
                     <th>Agen</th>
+                    <th>Status</th>
                     <th>-</th>
                 </tr>
             </thead>
@@ -30,7 +36,14 @@
                     <td>{{$t->created_at}}</td>
                     <td>{{$t->name}}</td>
                     <td>
-                        <a href="{{route('tiket2')}}/show/{{ $t->id }}">
+                        @if ($t->status)
+                            <font color="green"> Sudah Lunas </font>
+                        @elseif ($t->status===0)
+                            <font color="red"> Belum Lunas </font>
+                        @endif
+                    </td>
+                    <td>
+                        <a href="{{route('tiket2')}}/{{ $t->id }}">
                             <button class="btn btn-xs" title="lihat detail"><span class="glyphicon glyphicon-folder-open"></span></button>
                         </a>
                     </td>

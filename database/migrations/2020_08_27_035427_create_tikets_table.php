@@ -20,6 +20,7 @@ class CreateTiketsTable extends Migration
             $table->string('kode_tiket')->unique();
             $table->string('bukti_pembayaran')->nullable();
             $table->text('keterangan')->nullable();
+            $table->boolean('lunas')->nullable();
             $table->foreignId('jenis_tiket')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('agen_id')->nullable()->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

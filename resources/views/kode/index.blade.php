@@ -55,6 +55,13 @@
                         </span>
                     </button>
                 </div>
+                <br/>
+                <center>
+                    <small>
+                        <span>*</span>
+                        Jika belum punya, silahkan hubungi panitia yang tercantum di pamfletnya
+                    </small>
+                </center>
             </form>
         </div>
     </div>

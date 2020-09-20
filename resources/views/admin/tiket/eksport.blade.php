@@ -13,6 +13,7 @@ header($l);
             <th>Email</th>
             <th>Tiket</th>
             <th>Kode Tiket</th>
+            <th>Status</th>
             <th>Event</th>
             <th>Agen</th>
             <th>WA Agen</th>
@@ -32,6 +33,13 @@ header($l);
             <td>{{$t->e_mail}}</td>
             <td>{{$t->nama_tiket}}</td>
             <td>{{$t->kode_tiket}}</td>
+            <td>
+                @if ($t->status)
+                    <font color="green"> Sudah Lunas </font>
+                @elseif ($t->status===0)
+                    <font color="red"> Belum Lunas </font>
+                @endif
+            </td>
             <td>{{$t->nama_event}}</td>
             <td>{{$t->name}}</td>
             <td>{{$t->no_whatsapp}}</td>

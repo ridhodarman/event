@@ -139,7 +139,7 @@ class PagesController extends Controller
     }
 
     public function tiket() {
-        $tiket = Tiket::select('tikets.id','nama_peserta', 'nama_tiket', 'events.nama_event', 'tikets.created_at', 'users.name')
+        $tiket = Tiket::select('tikets.id','nama_peserta', 'nama_tiket', 'events.nama_event', 'tikets.created_at', 'users.name', 'status')
                         ->join('jenis_tikets', 'jenis_tikets.id', '=', 'tikets.jenis_tiket')
                         ->join('events', 'events.id', '=', 'jenis_tikets.event_id')
                         ->join('agens', 'agens.id', '=', 'tikets.agen_id')

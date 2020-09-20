@@ -22,7 +22,7 @@
                 @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ route('agen_index') }}">Halaman Panitia</a>
+                        <a href="{{ route('home') }}">Halaman Panitia</a>
                     @else
                       <li><a href="{{ route('login') }}">Sign In</a></li>
                         @if (Route::has('register'))
