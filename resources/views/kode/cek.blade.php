@@ -56,8 +56,11 @@
                             <td>{{$tiket->asal}}</td>
                         </tr> -->
                         @php
+                        $no = "";
                             try {
-                                $no = "+62".substr($tiket->no_wa, 0, -3)."***";
+                                if ($tiket->no_wa) {
+                                    $no = "+62".substr($tiket->no_wa, 0, -3)."***";
+                                }
                             }
                             catch (Exception $e) {
                                 $no = $tiket->no_wa;
@@ -101,7 +104,7 @@
                 @else
                 <span class="contact1-form-title" style="color: orange">
                     Tiket Anda Belum Terdaftar <br />
-                    <small>Silah cek kembali tiket anda, atau hubungi admin/panitian</small>
+                    <small>Silah cek kembali tiket anda, atau hubungi admin/panitia</small>
                 </span>
                 @endif
 
@@ -120,12 +123,17 @@
                         $f = base64_encode($tiket->foto_tiket);
                         $t = base64_encode($tiket->nama_tiket);
 
+                        $no = "";
                         try {
-                        $w = base64_encode( "+62".substr($tiket->no_wa, 0, -3)."***" );
+                            if ($tiket->no_wa) {
+                                $no = "+62".substr($tiket->no_wa, 0, -3)."***";
+                            }
                         }
                         catch (Exception $e) {
-                        $w = base64_encode( $tiket->no_wa );
+                            $no = $tiket->no_wa;
                         }
+                        
+                        $w = base64_encode( $no );
 
                         try {
                         $email = explode("@", $tiket->e_mail);

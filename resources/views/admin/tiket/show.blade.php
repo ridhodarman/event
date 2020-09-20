@@ -26,12 +26,17 @@
         $f = base64_encode($tiket->foto_tiket);
         $t = base64_encode($tiket->nama_tiket);
 
+        $no = "";
         try {
-        $w = base64_encode( "+62".substr($tiket->no_wa, 0, -3)."***" );
+            if ($tiket->no_wa) {
+                $no = "+62".substr($tiket->no_wa, 0, -3)."***";
+            }
         }
         catch (Exception $e) {
-        $w = base64_encode( $tiket->no_wa );
+            $no = $tiket->no_wa;
         }
+        
+        $w = base64_encode( $no );
 
         try {
         $email = explode("@", $tiket->e_mail);
@@ -50,14 +55,14 @@
                 <td>
                     {{ $tiket->kode_tiket }}
                     <a href="{{ route('index') }}/cHJpbnQ.php?
-                    l={{$link}}&
-                    n={{$n}}&
-                    a={{$a}}&
-                    w={{$w}}&
-                    e={{$e}}&
-                    k={{$k}}&
-                    f={{$f}}&
-                    t={{$t}}&" 
+l={{$link}}&
+n={{$n}}&
+a={{$a}}&
+w={{$w}}&
+e={{$e}}&
+k={{$k}}&
+f={{$f}}&
+t={{$t}}&" 
                     target="_blank" style="background-color: rgb(160, 158, 158); color: white; padding-left: 5px; padding-right: 5px; border-radius: 5px;">
                         Lihat tiket
                     </a>

@@ -218,7 +218,7 @@
 
             <a href="https://www.instagram.com/qosin_event/" target="_blank">
               <div class="phone">
-                <i class="icofont"><img src="{{ URL::asset('assets/images/ig.png') }}"></i>
+                <i class="ri-instagram-fill"></i>
                 <h4>Instagram:</h4>
                 <p>@qosin_event</p>
               </div>
