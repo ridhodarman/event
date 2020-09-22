@@ -44,8 +44,7 @@
             class="lazy" width="100px" onclick="window.open(`{{ URL::asset('foto/brosur/'.$e->foto_brosur) }}`)" style="cursor: pointer;">
           {{ substr($e->deskripsi,0,200) }}... <a href="{{route('index')}}/show/{{ $e->id }}" target="_blank">Readmore</a><br /> <br />
           <a href="{{ route('tiket') }}/event/{{$e->id}}">
-            <button class="btn btn-success"><i class="fa fa-fw fa-ticket"></i> Klik disini untuk penjualan
-              tiket</button>
+            <button class="btn btn-success"><i class="fa fa-fw fa-ticket"></i> Klik disini untuk buat tiket</button>
           </a>
         </div>
       </div>

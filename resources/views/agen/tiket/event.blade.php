@@ -10,7 +10,7 @@
     <ol class="breadcrumb" style="padding-right: 100px;">
         <a href="{{ route('tiket') }}/tambah/event/{{$event->id}}">
             <button class="btn btn-primary">
-                <i class="fa fa-tags"></i> Tambahkan Penjualan Tiket
+                <i class="fa fa-tags"></i> Buat Tiket
             </button>
         </a>
     </ol>

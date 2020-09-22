@@ -197,6 +197,7 @@ t={{$t}}&" target="_blank"
                 <input type="hidden" name="status" value="1"></input>
                 <li><button class="tombol-trans" type="submit">&emsp;Sudah Lunas</button></li>
             </form>
+            <br/>
             <form action="/tiket/status/{{$tiket->id}}" method="POST">
                 @method('patch')
                 @csrf
@@ -220,7 +221,7 @@ t={{$t}}&" target="_blank"
     $('#tombol-hapus').on('click', function (e) {
         if (peringatan == true) {
             swal({
-                title: "Hapus Jenis Tiket ini?",
+                title: "Hapus Tiket ini?",
                 text: "Once deleted, you will not be able to recover this imaginary file!",
                 icon: "warning",
                 buttons: true,
