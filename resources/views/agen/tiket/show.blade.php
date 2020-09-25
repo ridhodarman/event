@@ -202,6 +202,16 @@
                             </form>
                         </div>
                     </div>
+                    <div style="float: right;">
+                    @if ($tiket->status)
+                        <img src="{{ URL::asset('assets/150x100.png') }}" data-original="{{ URL::asset('foto/aset/lunas.png') }}"
+                            class="lazy" width="100px">
+                    @elseif ($tiket->status===0)
+                        <img src="{{ URL::asset('assets/150x100.png') }}" data-original="{{ URL::asset('foto/aset/belum-lunas.png') }}"
+                            class="lazy" width="100px">
+                    @endif
+                    &emsp;
+                    </div>
                 </div>
             </div>
         </div>

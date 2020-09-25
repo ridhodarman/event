@@ -20,7 +20,7 @@
 <!-- Main content -->
 <section class="content">
     <script src="{{ URL::asset('agen_page/jquery.min.js') }}" type="text/javascript"></script>
-    <div class="table-responsive">
+    <div class="table-responsive" style="background-color: white;">
         <div class="box">
             <table id="example" class="table table-striped table-bordered table-hover display">
                 <thead>
@@ -31,6 +31,7 @@
                         <th>Jenis Tiket</th>
                         <th>Tanggal Input</th>
                         <th>-</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,6 +48,13 @@
                                     <i class="fa fa-folder-open-o"></i> View detail
                                 </span>
                             </a>
+                        </td>
+                        <td>
+                            @if ($t->status)
+                                <font color="green"> Sudah Lunas </font>
+                            @elseif ($t->status===0)
+                                <font color="darkred"> Belum Lunas </font>
+                            @endif
                         </td>
                     </tr>
                     @endforeach
