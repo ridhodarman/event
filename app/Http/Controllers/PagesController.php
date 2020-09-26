@@ -145,8 +145,14 @@ class PagesController extends Controller
                         ->join('agens', 'agens.id', '=', 'tikets.agen_id')
                         ->join('users', 'users.id', '=', 'agens.user_id')
                         ->orderBy('tikets.created_at', 'desc')->get();
-        //return $tiket;
-        return view ('admin.tiket.index',['tiket' => $tiket]);
+        
+        $agen = Agen::select('agens.id','name', 'email')
+                    ->Join('users', 'users.id', '=', 'agens.user_id')
+                    ->orderBy('name')->get();
+        
+        $event = Event::select('id','nama_event', 'tanggal_mulai')->orderBy('tanggal_mulai', 'DESC')->get();
+
+        return view ('admin.tiket.index',['tiket' => $tiket, 'agen' => $agen, 'event' => $event]);
     }
 
     public function tiket_info($id) {

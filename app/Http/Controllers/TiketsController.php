@@ -249,4 +249,31 @@ class TiketsController extends Controller
         return redirect('/tiket')->with('hapus', $pesan);
     }
 
+    public function filter(Request $request)
+    {
+        $tiket = Tiket::select('tikets.id','nama_peserta', 'nama_tiket', 'events.nama_event', 'tikets.created_at', 'status', 'name', 'kode_tiket')
+                        ->join('jenis_tikets', 'jenis_tikets.id', '=', 'tikets.jenis_tiket')
+                        ->join('events', 'events.id', '=', 'jenis_tikets.event_id')
+                        ->join('agens', 'agens.id', '=', 'tikets.agen_id')
+                        ->join('users', 'users.id', '=', 'agens.user_id')
+                        ->orderBy('tikets.created_at', 'desc');
+
+        if ($request->event) {
+            $tiket = $tiket->where('event_id', '=', $request->event);
+        }
+
+        if ($request->agen) {
+            $tiket = $tiket->where('agen_id', '=', $request->agen);
+        }
+        
+        $tiket = $tiket ->get();
+        
+        return view ('admin.tiket.filter',['tiket' => $tiket]);
+    }
+
+    public function ganti_status(Request $request)
+    {
+        Tiket::whereIn('id', $request->tiket)->update(['status' => $request->status]);
+        return redirect()->back()->with('sukses', 'status berhasil diubah');   
+    }
 }

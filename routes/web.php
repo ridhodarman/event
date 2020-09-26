@@ -60,6 +60,8 @@ Route::middleware(['AksesAdmin'])->group(function () {
     Route::patch('/tiket/status/{tiket}', 'TiketsController@status');
     Route::delete('/tiket/{tiket}', 'TiketsController@hapus');
     Route::get('/tiket/eksport/{mulai}/{sampai}', 'PagesController@tiket_eksport');
+    Route::get('/tiket/admin/filter', 'TiketsController@filter');
+    Route::post('/tiket/admin/ganti-status', 'TiketsController@ganti_status');
 
     Route::get('/faq', 'FaqsController@index')->name('faq');
 });

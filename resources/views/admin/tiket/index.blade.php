@@ -52,27 +52,80 @@
             </tbody>
         </table>
     </div>
-    <br/>
-    <h5>Ekspor ke Excel:</h5>
-    <div class="row">
-        <div class="col-sm-1">
-            <label>Dari Tanggal:</label>
-        </div>
-        <div class="col-sm-3">
-            <input type="date" class="form-control" id="mulai" value="2020-01-01">
-        </div>
-        <div class="col-sm-1">
-            <label>Sampai tanggal:</label>
-        </div>
-        <div class="col-sm-3">
-            <input type="date" class="form-control" id="sampai" value="{{ date('Y-m-d') }}">
-        </div>
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-success" onclick="ekspor()">
-                <i class="fa fa-file-excel-o"></i> Export
-            </button>
+    
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exportModal">
+        <i class="fa fa-file-excel-o"></i> Export ke Excel
+    </button>
+    <div class="modal fade" id="exportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">Ekspor data tiket ke excel</h5>
+                </div>
+                <div class="modal-body">
+                    <label>Dari Tanggal:</label>
+                    <input type="date" class="form-control" id="mulai" value="2020-01-01">
+                    <br/>
+                    <label>Sampai tanggal:</label>
+                    <input type="date" class="form-control" id="sampai" value="{{ date('Y-m-d') }}">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success" onclick="ekspor()">
+                        <i class="fa fa-file-excel-o"></i> Ekspor
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
+    &emsp;
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#statusModal">
+        <i class="glyphicon glyphicon-import"></i> Ubah Status Tiket
+    </button>
+
+    <div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form action="{{ route('tiket2') }}/admin/filter" method="GET">@csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h5 class="modal-title" id="exampleModalLabel">Pilih list tiket</h5>
+                    </div>
+                    <div class="modal-body">
+                        <label>Pilih Event:</label>
+                        <br/>
+                        <select class="js-example-basic-single" style="width: 100%;" name="event">
+                            <option value="">Semua Event</option>
+                            @foreach ($event as $e)
+                                <option value="{{$e->id}}">{{$e->nama_event}}: {{$e->tanggal_mulai}}</option>
+                            @endforeach
+                        </select>
+                        <br/><br/>
+                        <label>Pilih Agen:</label>
+                        <br/>
+                        <select class="js-example-basic-single" style="width: 100%;" name="agen">
+                            <option value="">Semua agen</option>
+                            @foreach ($agen as $a)
+                                <option value="{{$a->id}}">{{$a->name}} ( {{$a->email}} )</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-default">
+                            <i class="glyphicon glyphicon-barcode"></i> View
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </div><!-- panel body -->
 
 <script>
@@ -86,5 +139,9 @@
     });
 
     $("#tiket").css("font-weight", "bolder");
+
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
 </script>
 @endsection
