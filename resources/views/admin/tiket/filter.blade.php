@@ -48,8 +48,13 @@
                         </td>
                         <td>{{$t->nama_peserta}}</td>
                         <td>{{$t->nama_tiket}}</td>
+                        <td>
+                            
+                            <a href="{{route('tiket2')}}/{{ $t->id }}" target="_blank">
+                                {{$t->kode_tiket}}
+                            </a>
+                        </td>
                         <td>{{$t->created_at}}</td>
-                        <td>{{$t->kode_tiket}}</td>
                         <td>
                             @if ($t->status)
                                 <font color="green"> Sudah Lunas </font>

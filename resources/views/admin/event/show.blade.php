@@ -25,6 +25,13 @@
         {!! session('status-foto') !!}
     </div>
     @endif
+    <div style="float: right; padding-bottom: 30px;">
+        <a href="{{ route('event') }}">
+            <button type="button" class="btn btn-default">
+                <i class="glyphicon glyphicon-chevron-left"></i> Kembali ke daftar event
+            </button>
+        </a>
+    </div>
     <form action="{{ route('event') }}/{{$event->id}}" method="POST" class="d-inline" style="float: left">
         &emsp;
         @method('delete')
@@ -33,20 +40,12 @@
             <i class="glyphicon glyphicon-trash"></i> Hapus Event
         </button>
         &emsp;
-        <a href="{{ route('event') }}/{{$event->id}}/edit">
-            <button type="button" class="btn btn-outline-primary btn-fw">
-                <i class="glyphicon glyphicon-edit"></i> Edit Data Event
-            </button>
-        </a>
     </form>
-
-    <div style="float: right; padding-bottom: 30px;">
-        <a href="{{ route('event') }}">
-            <button type="button" class="btn btn-default">
-                <i class="glyphicon glyphicon-chevron-left"></i> Kembali ke daftar event
-            </button>
-        </a>
-    </div>
+    <a href="{{ route('event') }}/{{$event->id}}/edit">
+        <button type="button" class="btn btn-outline-primary btn-fw">
+            <i class="glyphicon glyphicon-edit"></i> Edit Data Event
+        </button>
+    </a>
 
 
 
@@ -70,7 +69,12 @@
                         <tr>
                             <td>Deskripsi</td>
                             <td>:</td>
-                            <td>{{$event->deskripsi}}</td>
+                            <td>
+                                @php $paragraphs = explode(PHP_EOL, $event->deskripsi); @endphp
+                                @foreach($paragraphs as $paragraph)
+                                    {{{ $paragraph }}}<br/>
+                                @endforeach
+                            </td>
                         </tr>
                         <tr>
                             <td>Informasi</td>

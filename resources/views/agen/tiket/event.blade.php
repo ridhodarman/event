@@ -31,7 +31,6 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Peserta</th>
-                        <th>Asal</th>
                         <th>Jenis Tiket</th>
                         <th>Tanggal Input</th>
                         <th>-</th>
@@ -43,7 +42,6 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{$t->nama_peserta}}</td>
-                        <td>{{$t->asal}}</td>
                         <td>{{$t->nama_tiket}}</td>
                         <td>{{$t->created_at}}</td>
                         <td>

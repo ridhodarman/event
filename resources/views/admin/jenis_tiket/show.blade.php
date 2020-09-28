@@ -25,6 +25,14 @@
         {!! session('status-hapus-foto') !!}
     </div>
     @endif
+    <div style="float: right; padding-bottom: 30px;">
+        <a href="{{ route('event') }}/{{$jenis_tiket->event_id}}">
+            <button type="button" class="btn btn-default">
+                <i class="glyphicon glyphicon-chevron-left"></i> Kembali ke detail event
+            </button>
+        </a>
+    </div>
+
     <form action="{{ route('jenis_tiket') }}/{{$jenis_tiket->id}}" method="POST" class="d-inline" style="float: left">
         &emsp;
         @method('delete')
@@ -33,20 +41,12 @@
             <i class="glyphicon glyphicon-trash"></i> Hapus Tiket
         </button>
         &emsp;
-        <a href="{{ route('jenis_tiket') }}/{{$jenis_tiket->id}}/edit">
-            <button type="button" class="btn btn-outline-primary btn-fw">
-                <i class="glyphicon glyphicon-edit"></i> Edit Informasi Tiket
-            </button>
-        </a>
     </form>
-
-    <div style="float: right; padding-bottom: 30px;">
-        <a href="{{ route('event') }}/{{$jenis_tiket->event_id}}">
-            <button type="button" class="btn btn-default">
-                <i class="glyphicon glyphicon-chevron-left"></i> Kembali ke detail event
-            </button>
-        </a>
-    </div>
+    <a href="{{ route('jenis_tiket') }}/{{$jenis_tiket->id}}/edit">
+        <button type="button" class="btn btn-outline-primary btn-fw">
+            <i class="glyphicon glyphicon-edit"></i> Edit Info Tiket
+        </button>
+    </a>
 
 
 
@@ -70,7 +70,12 @@
                         <tr>
                             <td>Keterangan</td>
                             <td>:</td>
-                            <td>{{$jenis_tiket->keterangan}}</td>
+                            <td>
+                                @php $paragraphs = explode(PHP_EOL, $jenis_tiket->keterangan); @endphp
+                                @foreach($paragraphs as $paragraph)
+                                    {{{ $paragraph }}}<br/>
+                                @endforeach
+                            </td>
                         </tr>
                         <tr>
                             <td>Dibuat Pada</td>
