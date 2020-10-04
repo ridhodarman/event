@@ -82,9 +82,9 @@
         </div>
     </div>
     &emsp;
-    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#statusModal">
+    <!-- <button type="button" class="btn btn-info" data-toggle="modal" data-target="#statusModal">
         <i class="glyphicon glyphicon-import"></i> Ubah Status Tiket
-    </button>
+    </button> -->
 
     <div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -99,7 +99,7 @@
                     <div class="modal-body">
                         <label>Pilih Event:</label>
                         <br/>
-                        <select class="js-example-basic-single" style="width: 100%;" name="event">
+                        <select class="js-example-basic-single" style="width: 100%;" name="event" style="z-index: 100;">
                             <option value="">Semua Event</option>
                             @foreach ($event as $e)
                                 <option value="{{$e->id}}">{{$e->nama_event}}: {{$e->tanggal_mulai}}</option>
@@ -108,7 +108,7 @@
                         <br/><br/>
                         <label>Pilih Agen:</label>
                         <br/>
-                        <select class="js-example-basic-single" style="width: 100%;" name="agen">
+                        <select class="js-example-basic-single" style="width: 100%;" name="agen" style="z-index: 100;">
                             <option value="">Semua agen</option>
                             @foreach ($agen as $a)
                                 <option value="{{$a->id}}">{{$a->name}} ( {{$a->email}} )</option>
@@ -126,6 +126,45 @@
         </div>
     </div>
 
+    <a onclick="list()" href="#view">
+        <button type="button" class="btn btn-info">
+            <i class="glyphicon glyphicon-import"></i> Ubah Status Tiket
+        </button>
+    </a>
+
+    <div id="pilih-list">
+        <form action="{{ route('tiket2') }}/admin/filter" method="GET">@csrf
+            <strong style="color: darkblue;">Ubah status tiket:</strong>
+            <br/>
+            <div class="alert alert-secondary alert-dismissable" style="background-color: lightblue;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                Silahkan pilih list terlebih dahulu
+            </div>
+            <label>Pilih Event:</label>
+            <br/>
+            <select class="js-example-basic-single" style="width: 100%;" name="event">
+                <option value="">Semua Event</option>
+                @foreach ($event as $e)
+                    <option value="{{$e->id}}">{{$e->nama_event}}: {{$e->tanggal_mulai}}</option>
+                @endforeach
+            </select>
+            <br/><br/>
+            <label>Pilih Agen:</label>
+            <select class="js-example-basic-single" style="width: 100%;" name="agen">
+                <option value="">Semua agen</option>
+                @foreach ($agen as $a)
+                    <option value="{{$a->id}}">{{$a->name}} ( {{$a->email}} )</option>
+                @endforeach
+            </select>
+            <br/><br/>
+            <button type="button" class="btn btn-secondary" onclick="cancel()">Cancel</button>
+            <button type="submit" class="btn btn-default" id="view">
+                <i class="glyphicon glyphicon-barcode"></i> View
+            </button>
+        </form>
+    </div>
+
+
 </div><!-- panel body -->
 
 <script>
@@ -134,8 +173,18 @@
         let sampai = document.getElementById("sampai").value;
         window.open(`{{ route('tiket2') }}/eksport/${mulai}/${sampai}`); 
     }
+
+    function list() {
+        $("#pilih-list").show();
+    }
+
+    function cancel() {
+        $("#pilih-list").hide();
+    }
+
     $(document).ready(function () {
         $('#example').DataTable();
+        $("#pilih-list").hide();
     });
 
     $("#tiket").css("font-weight", "bolder");

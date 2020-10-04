@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('cek_tiket/css/util.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('cek_tiket/css/main.css') }}" />
     <!--===============================================================================================-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -69,7 +70,12 @@
 <script>
     function cek () {
         let kode = document.getElementById("kode").value;
-        window.location = `{{route('kode')}}/${kode}`;
+        if (kode) {
+            window.location = `{{route('kode')}}/${kode}`;
+        }
+        else {
+            swal("Silahkan masukkan kode tiket anda pada kolom yang disediakan");
+        }
     }
 </script>
 

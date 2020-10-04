@@ -99,7 +99,7 @@
                     </tbody>
                 </table>
                 <center>
-                    <p> {{ $tiket->informasi }}</p>
+                    <p> {!! $tiket->informasi !!}</p>
                 </center>
                 @else
                 <span class="contact1-form-title" style="color: orange">
