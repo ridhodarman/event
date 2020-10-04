@@ -70,7 +70,8 @@
 <script>
     function cek () {
         let kode = document.getElementById("kode").value;
-        if (kode) {
+        let kode2 = kode.replace(/\s/g,'');
+        if (kode2) {
             window.location = `{{route('kode')}}/${kode}`;
         }
         else {
