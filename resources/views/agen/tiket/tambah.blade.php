@@ -53,7 +53,7 @@
                 </div> -->
 
                 <div class="form-group">
-                    <label>No. Whatsapp</label>
+                    <label>No. Whatsapp Peserta</label>
                     <div class="input-group">
                         <span class="input-group-addon">+62</span>
                         <input type="text" class="form-control" placeholder="8xxxxxxx" 
@@ -68,9 +68,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label>E-mail</label>
+                    <label>E-mail Peserta</label>
                     <input type="text" class="form-control"
-                        placeholder="" 
+                        placeholder="masukkan email peserta" 
                         name="e_mail" class="form-control @error('e_mail') is-invalid @enderror"
                         value="{{ old('e_mail') }}"/>
                     @error('e_mail')
